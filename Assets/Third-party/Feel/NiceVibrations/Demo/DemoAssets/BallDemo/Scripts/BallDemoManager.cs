@@ -1,11 +1,9 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class BallDemoManager : DemoManager
     {
@@ -17,5 +15,7 @@ namespace Lofelt.NiceVibrations
         {
             Physics2D.gravity = Gravity;
         }
+
+
     }
 }

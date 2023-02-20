@@ -1,26 +1,24 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class ContinuousHapticsDemoManager : DemoManager
     {
-        [Header("Texts")]
-        public float ContinuousAmplitude = 1f;
-        public float ContinuousFrequency = 1f;
+        [Header("Texts")]        
+        public float ContinuousIntensity = 1f;
+        public float ContinuousSharpness = 1f;
         public float ContinuousDuration = 3f;
-        public Text ContinuousAmplitudeText;
-        public Text ContinuousFrequencyText;
+        public Text ContinuousIntensityText;
+        public Text ContinuousSharpnessText;
         public Text ContinuousDurationText;
         public Text ContinuousButtonText;
         [Header("Interface")]
         public MMTouchButton ContinuousButton;
-        public MMProgressBar AmplitudeProgressBar;
-        public MMProgressBar FrequencyProgressBar;
+        public MMProgressBar IntensityProgressBar;
+        public MMProgressBar SharpnessProgressBar;
         public MMProgressBar DurationProgressBar;
         public MMProgressBar ContinuousProgressBar;
         public HapticCurve TargetCurve;
@@ -30,22 +28,28 @@ namespace Lofelt.NiceVibrations
         protected Color _continuousButtonOnColor = new Color32(216, 85, 85, 255);
         protected Color _continuousButtonOffColor = new Color32(242, 27, 80, 255);
         protected bool _continuousActive = false;
-        protected float _amplitudeLastFrame = -1f;
-        protected float _frequencyLastFrame = -1f;
+        protected float _intensityLastFrame = -1f;
+        protected float _sharpnessLastFrame = -1f;
 
+        /// <summary>
+        /// On Awake, we initialize our iOS haptics.
+        /// Of course, this only needs to be done when on iOS, or targeting iOS. 
+        /// A test will be done and this method will do nothing if running on anything else
+        /// </summary>
         protected virtual void Awake()
         {
+            //MMVibrationIOS.iOSInitializeHaptics ();
             ContinuousButton.ReturnToInitialSpriteAutomatically = false;
 
-            ContinuousAmplitudeText.text = ContinuousAmplitude.ToString();
-            ContinuousFrequencyText.text = ContinuousFrequency.ToString();
+            ContinuousIntensityText.text = ContinuousIntensity.ToString();
+            ContinuousSharpnessText.text = ContinuousSharpness.ToString();
             ContinuousDurationText.text = ContinuousDuration.ToString();
 
-            AmplitudeProgressBar.UpdateBar(ContinuousAmplitude, 0f, 1f);
-            FrequencyProgressBar.UpdateBar(ContinuousFrequency, 0f, 1f);
+            IntensityProgressBar.UpdateBar(ContinuousIntensity, 0f, 1f);
+            SharpnessProgressBar.UpdateBar(ContinuousSharpness, 0f, 1f);
             DurationProgressBar.UpdateBar(ContinuousDuration, 0f, 5f);
         }
-
+        
         protected virtual void Update()
         {
             UpdateContinuousDemo();
@@ -59,8 +63,8 @@ namespace Lofelt.NiceVibrations
                 _timeLeft -= Time.deltaTime;
                 Logo.Shaking = true;
                 TargetCurve.Move = true;
-                Logo.Amplitude = NiceVibrationsDemoHelpers.Remap(ContinuousAmplitude, 0f, 1f, 1f, 8f);
-                Logo.Frequency = NiceVibrationsDemoHelpers.Remap(ContinuousFrequency, 0f, 1f, 10f, 25f);
+                Logo.Intensity = NiceVibrationsDemoHelpers.Remap(ContinuousIntensity, 0f, 1f, 1f, 8f);
+                Logo.Sharpness = NiceVibrationsDemoHelpers.Remap(ContinuousSharpness, 0f, 1f, 10f, 25f);
             }
             else
             {
@@ -69,30 +73,31 @@ namespace Lofelt.NiceVibrations
                 TargetCurve.Move = false;
                 if (_continuousActive)
                 {
-                    HapticController.Stop();
+                    MMVibrationManager.StopContinuousHaptic(true);
+                    OnHapticsStopped();
                 }
             }
-            if ((_frequencyLastFrame != ContinuousFrequency) || (_amplitudeLastFrame != ContinuousAmplitude))
+            if ((_sharpnessLastFrame != ContinuousSharpness) || (_intensityLastFrame != ContinuousIntensity))
             {
-                TargetCurve.UpdateCurve(ContinuousAmplitude, ContinuousFrequency);
+                TargetCurve.UpdateCurve(ContinuousIntensity, ContinuousSharpness);
             }
-            _amplitudeLastFrame = ContinuousAmplitude;
-            _frequencyLastFrame = ContinuousFrequency;
+            _intensityLastFrame = ContinuousIntensity;
+            _sharpnessLastFrame = ContinuousSharpness;
         }
 
-        public virtual void UpdateContinuousAmplitude(float newAmplitude)
+        public virtual void UpdateContinuousIntensity(float newIntensity)
         {
-            ContinuousAmplitude = newAmplitude;
-            AmplitudeProgressBar.UpdateBar(ContinuousAmplitude, 0f, 1f);
-            ContinuousAmplitudeText.text = NiceVibrationsDemoHelpers.Round(newAmplitude, 2).ToString();
+            ContinuousIntensity = newIntensity;
+            IntensityProgressBar.UpdateBar(ContinuousIntensity, 0f, 1f);
+            ContinuousIntensityText.text = NiceVibrationsDemoHelpers.Round(newIntensity, 2).ToString();
             UpdateContinuous();
         }
 
-        public virtual void UpdateContinuousFrequency(float newFrequency)
+        public virtual void UpdateContinuousSharpness(float newSharpness)
         {
-            ContinuousFrequency = newFrequency;
-            FrequencyProgressBar.UpdateBar(ContinuousFrequency, 0f, 1f);
-            ContinuousFrequencyText.text = NiceVibrationsDemoHelpers.Round(newFrequency, 2).ToString();
+            ContinuousSharpness = newSharpness;
+            SharpnessProgressBar.UpdateBar(ContinuousSharpness, 0f, 1f);
+            ContinuousSharpnessText.text = NiceVibrationsDemoHelpers.Round(newSharpness, 2).ToString();
             UpdateContinuous();
         }
 
@@ -107,10 +112,9 @@ namespace Lofelt.NiceVibrations
         {
             if (_continuousActive)
             {
-                HapticController.clipLevel = ContinuousAmplitude;
-                HapticController.clipFrequencyShift = ContinuousFrequency;
-                DebugAudioContinuous.volume = ContinuousAmplitude;
-                DebugAudioContinuous.pitch = 0.5f + ContinuousFrequency / 2f;
+                MMVibrationManager.UpdateContinuousHaptic(ContinuousIntensity, ContinuousSharpness, true, -1, true);
+                DebugAudioContinuous.volume = ContinuousIntensity;
+                DebugAudioContinuous.pitch = 0.5f + ContinuousSharpness / 2f;
             }
         }
 
@@ -119,8 +123,7 @@ namespace Lofelt.NiceVibrations
             if (!_continuousActive)
             {
                 // START
-                HapticController.fallbackPreset = HapticPatterns.PresetType.LightImpact;
-                HapticPatterns.PlayConstant(ContinuousAmplitude, ContinuousFrequency, ContinuousDuration);
+                MMVibrationManager.ContinuousHaptic(ContinuousIntensity, ContinuousSharpness, ContinuousDuration, HapticTypes.LightImpact, this, true, -1, true);
                 _timeLeft = ContinuousDuration;
                 ContinuousButtonText.text = "Stop continuous haptic pattern";
                 DurationSlider.interactable = false;
@@ -130,7 +133,7 @@ namespace Lofelt.NiceVibrations
             else
             {
                 // STOP
-                HapticController.Stop();
+                MMVibrationManager.StopContinuousHaptic(true);
                 ResetPlayState();
             }
         }
@@ -138,6 +141,16 @@ namespace Lofelt.NiceVibrations
         protected virtual void OnHapticsStopped()
         {
             ResetPlayState();
+        }
+
+        protected virtual void OnHapticsError()
+        {
+
+        }
+
+        protected virtual void OnHapticsReset()
+        {
+
         }
 
         protected virtual void ResetPlayState()
@@ -152,12 +165,16 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void OnEnable()
         {
-            HapticController.PlaybackStopped += OnHapticsStopped;
+            MMNViOSCoreHaptics.OnHapticPatternStopped += OnHapticsStopped;
+            MMNViOSCoreHaptics.OnHapticPatternError += OnHapticsError;
+            MMNViOSCoreHaptics.OnHapticPatternReset += OnHapticsReset;
         }
 
         protected virtual void OnDisable()
         {
-            HapticController.PlaybackStopped -= OnHapticsStopped;
+            MMNViOSCoreHaptics.OnHapticPatternStopped -= OnHapticsStopped;
+            MMNViOSCoreHaptics.OnHapticPatternError -= OnHapticsError;
+            MMNViOSCoreHaptics.OnHapticPatternReset -= OnHapticsReset;
         }
     }
 }

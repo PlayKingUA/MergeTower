@@ -1,15 +1,13 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class DemoManager : MonoBehaviour
     {
         [Header("Demo")]
-        public AudioSource DebugAudioEmphasis;
+        public AudioSource DebugAudioTransient;
         public AudioSource DebugAudioContinuous;
         public MMUIShaker Logo;
     }

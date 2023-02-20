@@ -1,10 +1,8 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     /// <summary>
     /// This class lets you output the value corresponding to one of the basic signal types it contains. Useful to draw basic signal curves.
@@ -21,7 +19,7 @@ namespace Lofelt.NiceVibrations
             Triangle,
             WhiteNoise
         }
-
+                
         /// <summary>
         /// Returns the corresponding value based on the selected SignalType for a given time value
         /// </summary>
@@ -40,8 +38,8 @@ namespace Lofelt.NiceVibrations
             float t = frequency * time + phase;
 
             switch (signalType)
-            {
-                case SignalType.Sine:
+            { 
+                case SignalType.Sine: 
                     value = (float)Mathf.Sin(2f * Mathf.PI * t);
                     break;
                 case SignalType.Square:
@@ -53,19 +51,19 @@ namespace Lofelt.NiceVibrations
                 case SignalType.Sawtooth:
                     value = 2f * (t - (float)Mathf.Floor(t + 0.5f));
                     break;
-                case SignalType.Pulse:
+                case SignalType.Pulse: 
                     value = (Mathf.Abs(Mathf.Sin(2 * Mathf.PI * t)) < 1.0 - 10E-3) ? (0) : (1);
                     break;
                 case SignalType.WhiteNoise:
-                    value = 2f * Random.Range(0, int.MaxValue) / int.MaxValue - 1f;
+                    value = 2f * Random.Range(0,int.MaxValue) / int.MaxValue - 1f;
                     break;
                 case SignalType.DigitalNoise:
-                    value = Random.Range(0, 2);
+                    value = Random.Range(0,2);
                     break;
             }
 
             return (invert * amplitude * value + offset);
         }
-    }
+    }      
 }
 

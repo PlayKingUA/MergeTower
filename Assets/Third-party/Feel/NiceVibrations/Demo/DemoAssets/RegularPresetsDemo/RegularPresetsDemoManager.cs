@@ -1,10 +1,9 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class RegularPresetsDemoManager : DemoManager
     {
@@ -46,7 +45,7 @@ namespace Lofelt.NiceVibrations
 
         protected virtual IEnumerator ChangeImageCoroutine(Sprite newSprite)
         {
-            DebugAudioEmphasis.Play();
+            DebugAudioTransient.Play();
             IconImageAnimator.SetBool(_idleAnimationParameter, false);
             yield return _turnDelay;
             IconImage.sprite = newSprite;
@@ -56,57 +55,59 @@ namespace Lofelt.NiceVibrations
             IconImage.sprite = IdleSprite;
         }
 
+
+
         public virtual void SelectionButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Selection);
+            MMVibrationManager.Haptic(HapticTypes.Selection, false, true, this);
             ChangeImage(SelectionSprite);
         }
 
         public virtual void SuccessButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Success);
+            MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
             ChangeImage(SuccessSprite);
         }
 
         public virtual void WarningButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Warning);
+            MMVibrationManager.Haptic(HapticTypes.Warning, false, true, this);
             ChangeImage(WarningSprite);
         }
 
         public virtual void FailureButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Failure);
+            MMVibrationManager.Haptic(HapticTypes.Failure, false, true, this);
             ChangeImage(FailureSprite);
         }
 
         public virtual void RigidButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.RigidImpact);
+            MMVibrationManager.Haptic(HapticTypes.RigidImpact, false, true, this);
             ChangeImage(RigidSprite);
         }
 
         public virtual void SoftButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.SoftImpact);
+            MMVibrationManager.Haptic(HapticTypes.SoftImpact, false, true, this);
             ChangeImage(SoftSprite);
         }
 
         public virtual void LightButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.LightImpact);
+            MMVibrationManager.Haptic(HapticTypes.LightImpact, false, true, this);
             ChangeImage(LightSprite);
         }
 
         public virtual void MediumButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.MediumImpact);
+            MMVibrationManager.Haptic(HapticTypes.MediumImpact, false, true, this);
             ChangeImage(MediumSprite);
         }
 
         public virtual void HeavyButton()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.HeavyImpact);
+            MMVibrationManager.Haptic(HapticTypes.HeavyImpact, false, true, this);
             ChangeImage(HeavySprite);
         }
     }

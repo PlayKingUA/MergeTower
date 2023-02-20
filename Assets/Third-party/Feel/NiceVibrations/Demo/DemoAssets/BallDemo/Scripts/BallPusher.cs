@@ -1,10 +1,8 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class BallPusher : MonoBehaviour
     {
@@ -24,6 +22,6 @@ namespace Lofelt.NiceVibrations
             collider.attachedRigidbody.velocity = Vector2.zero;
             collider.attachedRigidbody.AddForce(_direction * Force);
             TargetBall.HitPusher();
-        }
+        }        
     }
 }

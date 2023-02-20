@@ -1,16 +1,14 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     /// <summary>
-    /// A component to handle switches
+    /// A component to handle switches 
     /// </summary>
     public class MMSwitch : MMTouchButton
     {
@@ -21,7 +19,7 @@ namespace Lofelt.NiceVibrations
         public enum SwitchStates { Off, On }
         /// the current state of the switch
         public SwitchStates CurrentSwitchState { get; set; }
-
+        
         [Header("Knob")]
         /// the state the switch should start in
         public SwitchStates InitialState = SwitchStates.Off;
@@ -55,7 +53,7 @@ namespace Lofelt.NiceVibrations
                 if (_animator != null)
                 {
                     _animator.Play("RollLeft");
-                }
+                }                
                 SwitchKnob.transform.position = OffPosition.transform.position;
             }
             else
@@ -63,7 +61,7 @@ namespace Lofelt.NiceVibrations
                 if (_animator != null)
                 {
                     _animator.Play("RollRight");
-                }
+                }                
                 SwitchKnob.transform.position = OnPosition.transform.position;
             }
         }
@@ -83,7 +81,7 @@ namespace Lofelt.NiceVibrations
                 else
                 {
                     SwitchKnob.transform.position = Vector3.Lerp(OffPosition.transform.position, OnPosition.transform.position, value);
-                }
+                }                
             }
         }
 
@@ -99,7 +97,7 @@ namespace Lofelt.NiceVibrations
                 if (_animator != null)
                 {
                     _animator?.SetTrigger("Right");
-                }
+                }                
                 if (SwitchOn != null)
                 {
                     SwitchOn.Invoke();
@@ -111,7 +109,7 @@ namespace Lofelt.NiceVibrations
                 if (_animator != null)
                 {
                     _animator?.SetTrigger("Left");
-                }
+                }                
                 if (SwitchOff != null)
                 {
                     SwitchOff.Invoke();

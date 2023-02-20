@@ -1,12 +1,10 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     [RequireComponent(typeof(Rect))]
     public class MMKnob : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -65,7 +63,7 @@ namespace Lofelt.NiceVibrations
 
             Vector2 v1 = Vector2.down;
             Vector2 v2 = this.transform.position - GetWorldPosition(_pointerEventData.position);
-
+            
             float angle = Vector2.SignedAngle(v1, v2);
 
             angle = Mathf.Clamp(angle, -130f, 130f);

@@ -1,9 +1,9 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     [RequireComponent(typeof(Text))]
     public class VersionNumber : MonoBehaviour
@@ -19,15 +19,18 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Start()
         {
-            // There is not much space in the text, so make the string for alpha
-            // and beta versions a bit shorter
-            _text.text = Version.Replace("-alpha.", "a").Replace("-beta.", "b");
+            _text.text = Version;
 
-#if (UNITY_IOS && !UNITY_EDITOR)
-            _text.text += " iOS " + DeviceCapabilities.platformVersion.ToString();
-#elif (UNITY_ANDROID && !UNITY_EDITOR)
-            _text.text += " Android " + DeviceCapabilities.platformVersion.ToString();
-#endif
+            if (MMVibrationManager.iOS())
+            {
+                _text.text += " iOS " + MMVibrationManager.iOSVersion.ToString();
+            }
+
+            if (MMVibrationManager.Android())
+            {
+                _text.text += " Android " + MMNVAndroid.AndroidSDKVersion().ToString();
+            }
         }
+        
     }
 }

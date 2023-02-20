@@ -1,10 +1,8 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     /// <summary>
     /// Add this bar to an object and link it to a bar (possibly the same object the script is on), and you'll be able to resize the bar object based on a current value, located between a min and max value.
@@ -12,7 +10,7 @@ namespace Lofelt.NiceVibrations
     /// </summary>
     public class MMProgressBar : MonoBehaviour
     {
-        /// the possible fill modes
+        /// the possible fill modes 
         public enum FillModes { LocalScale, FillAmount, Width, Height }
         /// the possible directions for the fill (for local scale and fill amount only)
         public enum BarDirections { LeftToRight, RightToLeft, UpToDown, DownToUp }
@@ -20,7 +18,7 @@ namespace Lofelt.NiceVibrations
         public enum TimeScales { UnscaledTime, Time }
 
         [Header("General Settings")]
-        /// the local scale or fillamount value to reach when the bar is empty
+        /// the local scale or fillamount value to reach when the bar is empty 
         public float StartValue = 0f;
         /// the local scale or fillamount value to reach when the bar is full
         public float EndValue = 1f;
@@ -77,7 +75,7 @@ namespace Lofelt.NiceVibrations
         /// the current progress of the bar
         [Range(0f, 1f)]
         public float BarProgress;
-
+        
         protected float _targetFill;
         protected Vector3 _targetLocalScale = Vector3.one;
         protected float _newPercent;
@@ -309,7 +307,7 @@ namespace Lofelt.NiceVibrations
         }
 
         /// <summary>
-        /// A coroutine that (usually quickly) changes the scale of the bar
+        /// A coroutine that (usually quickly) changes the scale of the bar 
         /// </summary>
         /// <returns>The coroutine.</returns>
         protected virtual IEnumerator BumpCoroutine()

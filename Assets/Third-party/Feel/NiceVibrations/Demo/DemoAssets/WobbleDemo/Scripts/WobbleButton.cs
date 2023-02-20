@@ -1,12 +1,10 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class WobbleButton : MonoBehaviour, IPointerExitHandler, IPointerEnterHandler
     {
@@ -18,7 +16,7 @@ namespace Lofelt.NiceVibrations
         public Animator TargetAnimator;
 
         [Header("Haptics")]
-        public HapticSource SpringHapticSource;
+        public TextAsset AHAPFile;
 
         [Header("Colors")]
         public Image TargetModel;
@@ -53,12 +51,12 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Start()
         {
+            //Initialization();
         }
 
         public virtual void SetPitch(float newPitch)
         {
             SpringAudioSource.pitch = newPitch;
-            SpringHapticSource.frequencyShift = NiceVibrationsDemoHelpers.Remap(newPitch, 0.3f, 1f, -1.0f, 1.0f);
         }
 
         public virtual void Initialization()
@@ -68,7 +66,7 @@ namespace Lofelt.NiceVibrations
             _canvas = GetComponentInParent<Canvas>();
             _initialZPosition = transform.position.z;
             _rectTransform = this.gameObject.GetComponent<RectTransform>();
-            SetNeutralPosition();
+            SetNeutralPosition();            
         }
 
         public virtual void SetNeutralPosition()
@@ -143,7 +141,7 @@ namespace Lofelt.NiceVibrations
             {
                 float time = Remap(Time.time - _dragEndedAt, 0f, DragResetDuration, 0f, 1f);
                 float value = WobbleCurve.Evaluate(time) * WobbleFactor;
-                _newTargetPosition = Vector3.LerpUnclamped(_neutralPosition, _dragEndedPosition, value);
+                _newTargetPosition = Vector3.LerpUnclamped(_neutralPosition, _dragEndedPosition, value);                
                 _newTargetPosition.z = _initialZPosition;
             }
             else
@@ -153,7 +151,7 @@ namespace Lofelt.NiceVibrations
             }
             transform.position = _newTargetPosition;
         }
-
+        
         public virtual void OnPointerEnter(PointerEventData data)
         {
             _pointerID = data.pointerId;
@@ -170,7 +168,7 @@ namespace Lofelt.NiceVibrations
             _newTargetPosition = _neutralPosition + _newTargetPosition;
             _newTargetPosition.z = _initialZPosition;
 
-            _dragging = false;
+            _dragging = false;            
             _dragEndedPosition = _newTargetPosition;
             _dragEndedAt = Time.time;
             _dragResetDirection = _dragEndedPosition - _neutralPosition;
@@ -178,7 +176,9 @@ namespace Lofelt.NiceVibrations
 
             TargetAnimator.SetTrigger(_sparkAnimationParameter);
             SpringAudioSource.Play();
-            SpringHapticSource.Play();
+            MMVibrationManager.AdvancedHapticPattern(AHAPFile.text, _wobbleAndroidPattern, _wobbleAndroidAmplitude, -1,
+                                                        _wobbleAndroidPattern, _wobbleAndroidAmplitude, _wobbleAndroidAmplitude, -1, HapticTypes.LightImpact, 
+                                                        this);
         }
 
         protected virtual float Remap(float x, float A, float B, float C, float D)

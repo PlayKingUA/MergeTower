@@ -1,12 +1,11 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-namespace Lofelt.NiceVibrations
+
+namespace MoreMountains.NiceVibrations
 {
-    public class V2DemoManager : MonoBehaviour
+	public class V2DemoManager : MonoBehaviour
     {
         public List<RectTransform> Pages;
         public int CurrentPage = 0;
@@ -35,7 +34,7 @@ namespace Lofelt.NiceVibrations
                 _paginations.Add(page.GetComponentInChildren<Pagination>());
                 page.gameObject.SetActive(false);
             }
-            foreach (Pagination pagination in _paginations)
+            foreach(Pagination pagination in _paginations)
             {
                 pagination.InitializePagination(Pages.Count);
                 pagination.ActiveColor = ActiveColor;
@@ -53,6 +52,9 @@ namespace Lofelt.NiceVibrations
                 AudioListener.volume = 0f;
                 SoundActive = false;
             }
+
+            // uncomment this to add debug logs
+            // MMVibrationManager.SetDebugMode(true);
         }
 
         public virtual void PreviousPage()
@@ -67,7 +69,7 @@ namespace Lofelt.NiceVibrations
 
         public virtual void NextPage()
         {
-            if (CurrentPage < Pages.Count - 1)
+            if (CurrentPage < Pages.Count-1)
             {
                 CurrentPage++;
                 Transition(CurrentPage - 1, CurrentPage, true);
@@ -85,7 +87,7 @@ namespace Lofelt.NiceVibrations
 
         protected virtual void Transition(int previous, int next, bool goingRight)
         {
-            HapticController.Reset();
+						MMVibrationManager.StopAllHaptics(true);
 
             if (_transitionCoroutine != null)
             {
@@ -134,26 +136,28 @@ namespace Lofelt.NiceVibrations
 
         public virtual void TurnHapticsOn()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Success);
+            MMVibrationManager.SetHapticsActive(true);
+            MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
         }
 
         public virtual void TurnHapticsOff()
         {
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Warning);
+            MMVibrationManager.Haptic(HapticTypes.Warning, false, true, this);
+            MMVibrationManager.SetHapticsActive(false);
         }
 
         public virtual void TurnSoundsOn()
         {
             AudioListener.volume = 1f;
             SoundActive = true;
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Success);
+            MMVibrationManager.Haptic(HapticTypes.Success, false, true, this);
         }
 
         public virtual void TurnSoundsOff()
         {
             AudioListener.volume = 0f;
             SoundActive = false;
-            HapticPatterns.PlayPreset(HapticPatterns.PresetType.Warning);
+            MMVibrationManager.Haptic(HapticTypes.Warning, false, true, this);
         }
     }
 }

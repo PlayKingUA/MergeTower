@@ -1,10 +1,8 @@
-// Copyright (c) Meta Platforms, Inc. and affiliates. 
-
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Lofelt.NiceVibrations
+namespace MoreMountains.NiceVibrations
 {
     public class BallDemoWall : MonoBehaviour
     {
@@ -16,7 +14,7 @@ namespace Lofelt.NiceVibrations
             _rectTransform = this.gameObject.GetComponent<RectTransform>();
             _boxCollider2D = this.gameObject.GetComponent<BoxCollider2D>();
 
-            _boxCollider2D.size = new Vector2(_rectTransform.rect.size.x, _rectTransform.rect.size.y);
-        }
+            _boxCollider2D.size = new Vector2(_rectTransform.rect.size.x , _rectTransform.rect.size.y );
+        }        
     }
 }
