@@ -1,9 +1,11 @@
-﻿using System.Collections;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     public class PowerBarElement : MonoBehaviour
     {

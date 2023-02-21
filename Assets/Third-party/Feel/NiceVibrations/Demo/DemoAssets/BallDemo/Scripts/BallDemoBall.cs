@@ -1,8 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
 using UnityEngine;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     public class BallDemoBall : MonoBehaviour
     {
@@ -12,7 +12,7 @@ namespace MoreMountains.NiceVibrations
         public LayerMask WallMask;
         public LayerMask PusherMask;
         public MMUIShaker LogoShaker;
-        public AudioSource TransientAudioSource;
+        public AudioSource EmphasisAudioSource;
 
         protected Rigidbody2D _rigidBody;
         protected float _lastRaycastTimestamp = 0f;
@@ -24,7 +24,6 @@ namespace MoreMountains.NiceVibrations
             _rigidBody = this.gameObject.GetComponent<Rigidbody2D>();
             _ballAnimator = this.gameObject.GetComponent<Animator>();
             _hitAnimationParameter = Animator.StringToHash("Hit");
-            MMNViOSCoreHaptics.CreateEngine();
         }
 
         protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -60,21 +59,22 @@ namespace MoreMountains.NiceVibrations
 
         protected virtual void HitWall()
         {
-            float intensity = _rigidBody.velocity.magnitude / 100f;
-            MMVibrationManager.TransientHaptic(intensity, 0.7f, true, this);
-            TransientAudioSource.volume = intensity;
+            float amplitude = _rigidBody.velocity.magnitude / 100f;
+            HapticPatterns.PlayEmphasis(amplitude, 0.7f);
+            EmphasisAudioSource.volume = amplitude;
             StartCoroutine(LogoShaker.Shake(0.2f));
-            TransientAudioSource.Play();
+            EmphasisAudioSource.Play();
             _ballAnimator.SetTrigger(_hitAnimationParameter);
         }
 
         public virtual void HitPusher()
         {
             HitPusherParticles.Play();
-            MMVibrationManager.TransientHaptic(0.85f, 0.05f, true, this);
-            TransientAudioSource.volume = 0.1f;
+            HapticController.fallbackPreset = HapticPatterns.PresetType.Selection;
+            HapticPatterns.PlayEmphasis(0.85f, 0.05f);
+            EmphasisAudioSource.volume = 0.1f;
             StartCoroutine(LogoShaker.Shake(0.2f));
-            TransientAudioSource.Play();
+            EmphasisAudioSource.Play();
             _ballAnimator.SetTrigger(_hitAnimationParameter);
         }
     }

@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
+using UnityEngine;
 using System.Collections;
 using System;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using UnityEngine.Events;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     /// <summary>
-    /// A component to handle switches 
+    /// A component to handle switches
     /// </summary>
     public class MMSwitch : MMTouchButton
     {
@@ -19,7 +21,7 @@ namespace MoreMountains.NiceVibrations
         public enum SwitchStates { Off, On }
         /// the current state of the switch
         public SwitchStates CurrentSwitchState { get; set; }
-        
+
         [Header("Knob")]
         /// the state the switch should start in
         public SwitchStates InitialState = SwitchStates.Off;
@@ -53,7 +55,7 @@ namespace MoreMountains.NiceVibrations
                 if (_animator != null)
                 {
                     _animator.Play("RollLeft");
-                }                
+                }
                 SwitchKnob.transform.position = OffPosition.transform.position;
             }
             else
@@ -61,7 +63,7 @@ namespace MoreMountains.NiceVibrations
                 if (_animator != null)
                 {
                     _animator.Play("RollRight");
-                }                
+                }
                 SwitchKnob.transform.position = OnPosition.transform.position;
             }
         }
@@ -81,7 +83,7 @@ namespace MoreMountains.NiceVibrations
                 else
                 {
                     SwitchKnob.transform.position = Vector3.Lerp(OffPosition.transform.position, OnPosition.transform.position, value);
-                }                
+                }
             }
         }
 
@@ -97,7 +99,7 @@ namespace MoreMountains.NiceVibrations
                 if (_animator != null)
                 {
                     _animator?.SetTrigger("Right");
-                }                
+                }
                 if (SwitchOn != null)
                 {
                     SwitchOn.Invoke();
@@ -109,7 +111,7 @@ namespace MoreMountains.NiceVibrations
                 if (_animator != null)
                 {
                     _animator?.SetTrigger("Left");
-                }                
+                }
                 if (SwitchOff != null)
                 {
                     SwitchOff.Invoke();

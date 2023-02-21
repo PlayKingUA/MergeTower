@@ -1,14 +1,16 @@
-﻿using System.Collections;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     public class MMUIShaker : MonoBehaviour
     {
-        public float Intensity;
-        public float Sharpness;
+        public float Amplitude;
+        public float Frequency;
         public bool Shaking = false;
 
         protected Vector3 _initialPosition;
@@ -16,7 +18,7 @@ namespace MoreMountains.NiceVibrations
         protected RectTransform _rectTransform;
 
         protected virtual void Start()
-        {            
+        {
             _rectTransform = this.gameObject.GetComponent<RectTransform>();
             _initialPosition = _rectTransform.localPosition;
         }
@@ -37,9 +39,9 @@ namespace MoreMountains.NiceVibrations
             }
             else
             {
-                _shakePosition.x = Mathf.PerlinNoise(-(Time.time) * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
-                _shakePosition.y = Mathf.PerlinNoise(-(Time.time + 0.25f) * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
-                _shakePosition.z = Mathf.PerlinNoise(-(Time.time + 0.5f) * Sharpness, Time.time * Sharpness) * Intensity - Intensity / 2f;
+                _shakePosition.x = Mathf.PerlinNoise(-(Time.time) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
+                _shakePosition.y = Mathf.PerlinNoise(-(Time.time + 0.25f) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
+                _shakePosition.z = Mathf.PerlinNoise(-(Time.time + 0.5f) * Frequency, Time.time * Frequency) * Amplitude - Amplitude / 2f;
                 _rectTransform.localPosition = _initialPosition + _shakePosition;
             }
         }

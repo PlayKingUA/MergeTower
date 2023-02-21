@@ -1,9 +1,9 @@
-﻿using System.Collections;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     public class CarDemoManager : DemoManager
     {
@@ -19,6 +19,7 @@ namespace MoreMountains.NiceVibrations
         public List<float> Dents;
 
         [Header("Car")]
+
         public AudioSource CarEngineAudioSource;
         public Transform LeftWheel;
         public Transform RightWheel;
@@ -43,7 +44,7 @@ namespace MoreMountains.NiceVibrations
         protected float _knobValue;
         protected Vector3 _initialCarPosition;
         protected Vector3 _carPosition;
-        
+
         protected virtual void Awake()
         {
             Power = MaximumPowerDuration;
@@ -71,7 +72,8 @@ namespace MoreMountains.NiceVibrations
                     _carStarted = true;
                     _carStartedAt = Time.time;
                     _lastStartClickAt = Time.time;
-                    MMVibrationManager.ContinuousHaptic(_knobValue, _knobValue, MaximumPowerDuration, HapticTypes.MediumImpact, this, false, -1, false);
+
+                    HapticPatterns.PlayConstant(_knobValue, _knobValue, MaximumPowerDuration);
                     CarEngineAudioSource.Play();
                 }
                 else
@@ -82,7 +84,7 @@ namespace MoreMountains.NiceVibrations
                     if (Power == MaximumPowerDuration)
                     {
                         Knob.SetActive(true);
-                        Knob._rectTransform.localScale = Vector3.one ;
+                        Knob._rectTransform.localScale = Vector3.one;
                         ReloadingPrompt.SetActive(false);
                     }
                     else
@@ -90,7 +92,7 @@ namespace MoreMountains.NiceVibrations
                         if (!Knob.Active)
                         {
                             Knob.SetValue(CarSpeed);
-                        }                        
+                        }
                     }
                 }
             }
@@ -110,7 +112,8 @@ namespace MoreMountains.NiceVibrations
                         Power -= Time.deltaTime;
                         Power = Mathf.Clamp(Power, 0f, MaximumPowerDuration);
 
-                        MMVibrationManager.UpdateContinuousHaptic(_knobValue, _knobValue, true);
+                        HapticController.clipLevel = _knobValue;
+                        HapticController.clipFrequencyShift = _knobValue;
 
                         if (Power <= 0f)
                         {
@@ -118,13 +121,14 @@ namespace MoreMountains.NiceVibrations
                             Knob.SetActive(false);
                             Knob._rectTransform.localScale = Vector3.one * 0.9f;
                             ReloadingPrompt.SetActive(true);
+                            HapticController.Stop();
                         }
                     }
                     else
                     {
                         _carStarted = false;
                         _lastStartClickAt = Time.time;
-                        MMVibrationManager.StopContinuousHaptic(true);
+                        HapticController.Stop();
                     }
                 }
             }
@@ -134,7 +138,7 @@ namespace MoreMountains.NiceVibrations
         {
             float targetSpeed = _carStarted ? NiceVibrationsDemoHelpers.Remap(Knob.Value, MinimumKnobValue, 1f, 0f, 1f) : 0f;
             CarSpeed = Mathf.Lerp(CarSpeed, targetSpeed, Time.deltaTime * 1f);
-            
+
             CarEngineAudioSource.volume = CarSpeed;
             CarEngineAudioSource.pitch = NiceVibrationsDemoHelpers.Remap(CarSpeed, 0f, 1f, 0.5f, 1.25f);
 
@@ -142,7 +146,7 @@ namespace MoreMountains.NiceVibrations
             RightWheel.Rotate(CarSpeed * Time.deltaTime * WheelRotationSpeed, Space.Self);
 
             _carPosition.x = _initialCarPosition.x + 0f;
-            _carPosition.y = _initialCarPosition.y + 10 * CarSpeed  * Mathf.PerlinNoise(Time.time * 10f, CarSpeed * 10f);
+            _carPosition.y = _initialCarPosition.y + 10 * CarSpeed * Mathf.PerlinNoise(Time.time * 10f, CarSpeed * 10f);
             _carPosition.z = 0f;
             CarBody.localPosition = _carPosition;
 
@@ -174,10 +178,6 @@ namespace MoreMountains.NiceVibrations
                     float elapsedTime = StartClickCurve.Evaluate((Time.time - _lastDentAt) * (1 / DentDuration));
                     Knob._rectTransform.localScale = Vector3.one + Vector3.one * elapsedTime * 0.02f;
                     Knob._image.color = Color.Lerp(ActiveColor, Color.white, elapsedTime * 0.05f);
-                    if (MMVibrationManager.iOS())
-                    {
-                        MMVibrationManager.TransientHaptic(0.4f, 1f);
-                    }                    
                 }
             }
 

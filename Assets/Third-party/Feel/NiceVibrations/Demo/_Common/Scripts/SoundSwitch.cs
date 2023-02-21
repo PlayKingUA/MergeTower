@@ -1,8 +1,10 @@
-﻿using System.Collections;
+// Copyright (c) Meta Platforms, Inc. and affiliates. 
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MoreMountains.NiceVibrations
+namespace Lofelt.NiceVibrations
 {
     public class SoundSwitch : MonoBehaviour
     {
@@ -26,7 +28,7 @@ namespace MoreMountains.NiceVibrations
             {
                 _switch.CurrentSwitchState = MMSwitch.SwitchStates.Off;
                 _switch.InitializeState();
-            }            
+            }
         }
     }
 }
