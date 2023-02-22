@@ -20,7 +20,6 @@ namespace _Scripts.Slot_Logic
 
         #region Properties
         public bool HasFreePlace() => emptySlots.Count > 0;
-        public int WeaponsHealthSum => slots.Sum(slot => slot.WeaponHealth);
         #endregion
 
         #region Monobehaviour Callbacks

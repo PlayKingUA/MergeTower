@@ -62,7 +62,6 @@ namespace _Scripts.Input_Logic
             }
 
             selectedWeapon = weaponSlot.GetWeaponFromSlot();
-            selectedWeapon.SetGreenColor(true);
             previousSlot = weaponSlot;
             weaponSlot.ClearSlot();
 
@@ -83,11 +82,6 @@ namespace _Scripts.Input_Logic
 
         private void EndDragging()
         {
-            if (selectedWeapon != null)
-            {
-                selectedWeapon.SetGreenColor(false);
-            }
-
             selectedWeapon = null;
             selectedSlot = null;
             currentDragState = DragState.Empty;

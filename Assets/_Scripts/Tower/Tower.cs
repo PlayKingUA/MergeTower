@@ -2,6 +2,7 @@
 using _Scripts.Game_States;
 using _Scripts.Interface;
 using _Scripts.Slot_Logic;
+using _Scripts.UI.Upgrade;
 using _Scripts.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -12,13 +13,10 @@ namespace _Scripts.Train
     public class Tower : MonoBehaviour, IAlive
     {
         #region Variables
-        [SerializeField] private float health;
-
         [Inject] private GameStateManager _gameStateManager;
-        [Inject] private SpeedUpLogic _speedUpLogic;
         [Inject] private SlotManager _slotManager;
-        [Inject] private WeaponManager _weaponManager;
-
+        [Inject] private UpgradeMenu _upgradeMenu;
+        
         [ShowInInspector, ReadOnly] public float MaxHealth { get; private set;}
         public float CurrentHealth { get; private set; }
         public bool IsDead { get; private set;}
@@ -29,14 +27,13 @@ namespace _Scripts.Train
         #region Monobehaviour Callbacks
         private void Start()
         {
-            _weaponManager.OnNewWeapon += UpdateMaxHealth;
-            UpdateMaxHealth();
+            _gameStateManager.AttackStarted += UpdateMaxHealth;
         }
         #endregion
 
         private void UpdateMaxHealth()
         {
-            MaxHealth = health + _slotManager.WeaponsHealthSum;
+            MaxHealth = _upgradeMenu.TowerLevel;
             CurrentHealth = MaxHealth;
             HpChanged?.Invoke();
         }

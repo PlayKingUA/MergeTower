@@ -6,16 +6,18 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
     public class UpgradeButton : BuyButton
     {
         #region Variables
-        [SerializeField, Range(1f, 10f)] private float maxUpgrade;
-        [SerializeField] private float startUpgrade;
+        [SerializeField] private float startValue;
         [SerializeField] private float upgradeStep;
-        [Space(10)] [SerializeField] private TextMeshProUGUI valueBefore;
-        [SerializeField] private TextMeshProUGUI moreText;
+        [SerializeField] private float maxUpgrade;
+
+        [Space(10)] 
+        [SerializeField] private TextMeshProUGUI valueBefore;
+        [SerializeField] private GameObject moreText;
         [SerializeField] private TextMeshProUGUI valueAfter;
         #endregion
 
         #region Properties
-        public float Coefficient => GetCoefficient(CurrentLevel);
+        public float Coefficient => GetValue(CurrentLevel);
 
         protected override bool CanBeBought => base.CanBeBought && Coefficient < maxUpgrade;
         #endregion
@@ -31,9 +33,9 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             base.ChangeButtonState(moneyCount);
         }
         
-        private float GetCoefficient(int level)
+        private float GetValue(int level)
         {
-            return startUpgrade + upgradeStep * level;
+            return startValue + upgradeStep * level;
         }
 
         protected override void ClickEvent()
@@ -46,11 +48,11 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         {
             base.UpdateText();
             
-            moreText.gameObject.SetActive(CanBeBought);
+            moreText.SetActive(CanBeBought);
             valueAfter.gameObject.SetActive(CanBeBought);
             
-            valueBefore.text = Coefficient.ToString();
-            valueAfter.text = GetCoefficient(CurrentLevel+ 1).ToString();
+            valueBefore.text = $"{Coefficient}";
+            valueAfter.text = $"{GetValue(CurrentLevel+ 1)}";
         }
     }
 }

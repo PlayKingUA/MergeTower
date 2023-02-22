@@ -46,7 +46,7 @@ namespace _Scripts.UI.Windows
             
             zombieTable.UpdatePanel(_zombieManager.DeadZombies);
 
-            var reward = (int)(_zombieManager.LostHp * _upgradeMenu.IncomeCoefficient);
+            var reward = 0;//(int)(_zombieManager.LostHp * _upgradeMenu.TowerUpgrade);
 
             multiplyButton.SetReward(reward);
             rewardText.text = MoneyDisplay.MoneyText(reward);

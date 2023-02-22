@@ -18,6 +18,7 @@ namespace _Scripts.Units
     public sealed class Zombie : AttackingObject, IAlive
     {
         #region Variables
+        [SerializeField] private int health;
         [SerializeField] private float hpPerLevel;
         [SerializeField] private float dmgPerLevel;
         [Space(10)]
@@ -53,6 +54,12 @@ namespace _Scripts.Units
         #endregion
 
         #region Properties
+        private int Health
+        {
+            set => health = value;
+            get => health;
+        }
+        
         public Transform ShootPoint => shootPoint;
         public ZombieType ZombieType => zombieType;
         

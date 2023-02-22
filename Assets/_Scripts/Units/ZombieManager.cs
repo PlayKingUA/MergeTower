@@ -165,7 +165,7 @@ namespace _Scripts.Units
             zombie.GetDamageEvent += UpdateLostHp;
             zombie.GetDamageEvent += value =>
             {
-                var reward = value * _upgradeMenu.IncomeCoefficient;
+                var reward = value;
                 _moneyWallet.Add((int) reward);
             };
             

@@ -20,10 +20,6 @@ namespace _Scripts.Weapons
         [Space(10)]
         [ShowInInspector, ReadOnly] private WeaponState _currentState;
         [ShowInInspector, ReadOnly] private int _level;
-        [Space(10)]
-        [SerializeField] private MeshRenderer gunRenderer;
-        [SerializeField] private Material transparentMaterial;
-        [SerializeField] private Color DestoyredColor;
 
         [Inject] private GameStateManager _gameStateManager;
         [Inject] protected ZombieManager ZombieManager;
@@ -31,12 +27,11 @@ namespace _Scripts.Weapons
         [Inject] private SpeedUpLogic _speedUpLogic;
 
         protected WeaponAnimator WeaponAnimator;
-        private Quaternion _startRotation;
         private Material _gunMaterial;
-        private Tweener _tween;
+        private Tweener _shakeTween;
 
-        private float _maxShakeStrength = 0.05f;
-        private float _destoryColorChangeDuration = 0.35f;
+        private const float MaxShakeStrength = 0.05f;
+        private const float DestroyColorChangeDuration = 0.35f;
         
         [ShowInInspector, ReadOnly] private protected Zombie TargetZombie;
         #endregion
@@ -45,12 +40,10 @@ namespace _Scripts.Weapons
         public int Level => _level;
         public GameObject AppearFx => appearFx;
 
-        private protected bool CanAttack => TargetZombie != null &&
-                                            Vector3.Distance(transform.position, TargetZombie.transform.position) <=
-                                            attackRadius;
+        private protected bool CanAttack => TargetZombie != null;
 
         protected override float CoolDown =>
-            base.CoolDown / _speedUpLogic.CoolDownSpeedUp / _upgradeMenu.AltSpeedCoefficient;
+            base.CoolDown / _speedUpLogic.CoolDownSpeedUp / _upgradeMenu.TowerHealth;
         
         protected override int Damage => (int) (base.Damage * _upgradeMenu.DamageCoefficient);
 
@@ -63,11 +56,8 @@ namespace _Scripts.Weapons
             WeaponAnimator = GetComponent<WeaponAnimator>();
             
             ChangeState(WeaponState.Idle);
-            _startRotation = gunTransform.rotation;
-
-            _gunMaterial = gunRenderer.material;
-
-            _speedUpLogic.OnTapCountChanged += Shake;
+            
+            //_speedUpLogic.OnTapCountChanged += Shake;
 
             _gameStateManager.Fail += DestroyWeapon;
         }
@@ -80,8 +70,8 @@ namespace _Scripts.Weapons
 
         private void OnDisable()
         {
-            _speedUpLogic.OnTapCountChanged -= Shake;
-            _tween.Kill();
+            //_speedUpLogic.OnTapCountChanged -= Shake;
+            _shakeTween.Kill();
         }
 
         #endregion
@@ -152,21 +142,16 @@ namespace _Scripts.Weapons
             _gunMaterial.SetColor("_EmissionColor", targetColor);
             _gunMaterial.EnableKeyword("_EmissionColor");
             
-            _tween.Rewind();
-            _tween.Kill();
+            _shakeTween.Rewind();
+            _shakeTween.Kill();
             if (_speedUpLogic.EffectPower != 0)
             {
-                _tween = transform.
-                    DOShakePosition(_speedUpLogic.EffectDuration, _speedUpLogic.EffectPower * _maxShakeStrength)
+                _shakeTween = transform.
+                    DOShakePosition(_speedUpLogic.EffectDuration, _speedUpLogic.EffectPower * MaxShakeStrength)
                     .SetLoops(-1, LoopType.Yoyo).SetUpdate(true);
             }
         }
         #endregion
-
-        public void SetGreenColor(bool isGreen)
-        {
-            gunRenderer.material = isGreen ? transparentMaterial : _gunMaterial;
-        }
 
         private void DestroyWeapon()
         {
@@ -180,12 +165,6 @@ namespace _Scripts.Weapons
         private void UpdateTargetZombie()
         {
             TargetZombie = ZombieManager.GetNearestZombie(transform);
-        }
-        
-        protected virtual void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, attackRadius);
         }
     }
 }
