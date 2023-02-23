@@ -10,7 +10,7 @@ namespace _Scripts.UI.Displays
         #region Variables
         [SerializeField] private TextMeshProUGUI hpText;
         [SerializeField] private Slider slider;
-        [Inject] private Train.Tower _tower;
+        [Inject] private Tower_Logic.Tower _tower;
         #endregion
         
         #region Monobehaviour Callbacks

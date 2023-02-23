@@ -7,6 +7,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2234044920685521909, guid: 624feb8c57101ad45a5aeb0533554b8c,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 88b02b94b8a89534ab34e160a1bbe5b6, type: 3}
     - target: {fileID: 3604387891102628392, guid: 624feb8c57101ad45a5aeb0533554b8c,
         type: 3}
       propertyPath: m_Layer
@@ -27,11 +32,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6774645047640472658, guid: 624feb8c57101ad45a5aeb0533554b8c,
-        type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 3888438908456188383}
     - target: {fileID: 8318572943139082245, guid: 624feb8c57101ad45a5aeb0533554b8c,
         type: 3}
       propertyPath: m_RootOrder
@@ -154,41 +154,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 624feb8c57101ad45a5aeb0533554b8c, type: 3}
---- !u!1 &6325086252172432633 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8692823435732292194, guid: 624feb8c57101ad45a5aeb0533554b8c,
-    type: 3}
-  m_PrefabInstance: {fileID: 3414894777067521691}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &3888438908456188383
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325086252172432633}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 88b02b94b8a89534ab34e160a1bbe5b6, type: 3}
-  m_Controller: {fileID: 22100000, guid: 1b9b115e1b774824a8d5eb21bb178222, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
---- !u!114 &2596913783155552296
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6325086252172432633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed499d7a639f4a07b065db03802afc1f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

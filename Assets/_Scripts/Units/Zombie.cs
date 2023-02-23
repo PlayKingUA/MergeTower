@@ -4,8 +4,7 @@ using _Scripts.Game_States;
 using _Scripts.Helpers;
 using _Scripts.Interface;
 using _Scripts.Levels;
-using _Scripts.Train;
-using DG.Tweening;
+using _Scripts.Tower_Logic;
 using QFSW.MOP2;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -14,7 +13,7 @@ using Zenject;
 namespace _Scripts.Units
 {
     [RequireComponent(typeof(ZombieAnimationManager), 
-        typeof(RagdollController))]
+        typeof(RagdollController), typeof(UnitMovement))]
     public sealed class Zombie : AttackingObject, IAlive
     {
         #region Variables
@@ -28,25 +27,21 @@ namespace _Scripts.Units
         [Space]
         [SerializeField] private Color damageColor;
         [SerializeField] private ObjectPool damageText;
-        [Space] 
-        [SerializeField] private float climbDuration = 0.7f;
-        [SerializeField] private float speedOnTrain = 3f;
         [Space]
         [ShowInInspector, ReadOnly] private UnitState _currentState;
 
         private ZombieAnimationManager _zombieAnimationManager;
         private RagdollController _ragdollController;
         private MasterObjectPooler _masterObjectPooler;
+        
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private LevelManager _levelManager;
-        [Inject] private Train.Tower _tower;
-        [Inject] private CoinsAnimation _coinsAnimation;
-        
+        [Inject] private Tower _tower;
 
-        private Material[] _materials;
-        private Tween[] _damageTweens;
         private const float DamageAnimationDuration = 0.15f;
 
+        private UnitMovement _unitMovement;
+        
         public bool IsDead { get; private set; }
 
         public event Action<int> GetDamageEvent;
@@ -73,8 +68,7 @@ namespace _Scripts.Units
             _masterObjectPooler = MasterObjectPooler.Instance;
             _zombieAnimationManager = GetComponent<ZombieAnimationManager>();
             _ragdollController = GetComponent<RagdollController>();
-            _materials = GetComponentInChildren<SkinnedMeshRenderer>().materials;
-            _damageTweens = new Tween[_materials.Length];
+            _unitMovement = GetComponent<UnitMovement>();
         }
 
         protected override void Start()
@@ -161,13 +155,13 @@ namespace _Scripts.Units
             if (Health <= 0)
                 Die();
             
-            for (var i = 0; i < _materials.Length; i++)
+            /*for (var i = 0; i < _materials.Length; i++)
             {
                 _damageTweens[i].Rewind();
                 _damageTweens[i].Kill();
                 _damageTweens[i] = _materials[i].DOColor(damageColor, "_Color", DamageAnimationDuration)
                     .SetLoops(2, LoopType.Yoyo);
-            }
+            }*/
         }
 
         public void Die()

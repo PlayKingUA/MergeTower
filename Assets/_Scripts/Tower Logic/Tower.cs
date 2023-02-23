@@ -3,12 +3,11 @@ using _Scripts.Game_States;
 using _Scripts.Interface;
 using _Scripts.Slot_Logic;
 using _Scripts.UI.Upgrade;
-using _Scripts.Weapons;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.Train
+namespace _Scripts.Tower_Logic
 {
     public class Tower : MonoBehaviour, IAlive
     {
@@ -33,7 +32,7 @@ namespace _Scripts.Train
 
         private void UpdateMaxHealth()
         {
-            MaxHealth = _upgradeMenu.TowerLevel;
+            MaxHealth = _upgradeMenu.TowerHealth;
             CurrentHealth = MaxHealth;
             HpChanged?.Invoke();
         }

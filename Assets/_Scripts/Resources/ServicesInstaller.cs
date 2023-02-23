@@ -3,6 +3,7 @@ using _Scripts.Input_Logic;
 using _Scripts.Levels;
 using _Scripts.Money_Logic;
 using _Scripts.Slot_Logic;
+using _Scripts.Tower_Logic;
 using _Scripts.Tutorial;
 using _Scripts.UI;
 using _Scripts.UI.Tutorial;
@@ -26,7 +27,8 @@ namespace _Scripts.Resources
         [SerializeField] private ZombieManager zombieManager;
         [SerializeField] private GameStateManager gameStateManager;
         [SerializeField] private LevelManager levelManager;
-        [SerializeField] private Train.Tower tower;
+        [SerializeField] private Tower tower;
+        [SerializeField] private AttackZone attackZone;
         [SerializeField] private SpeedUpLogic speedUpLogic;
         [SerializeField] private UpgradeMenu upgradeMenu;
         [SerializeField] private LevelGeneration levelGeneration;
@@ -46,7 +48,8 @@ namespace _Scripts.Resources
             Container.Bind<ZombieManager>().FromInstance(zombieManager).AsSingle().NonLazy();
             Container.Bind<GameStateManager>().FromInstance(gameStateManager).AsSingle().NonLazy();
             Container.Bind<LevelManager>().FromInstance(levelManager).AsSingle().NonLazy();
-            Container.Bind<Train.Tower>().FromInstance(tower).AsSingle().NonLazy();
+            Container.Bind<Tower>().FromInstance(tower).AsSingle().NonLazy();
+            Container.Bind<AttackZone>().FromInstance(attackZone).AsSingle().NonLazy();
             Container.Bind<SpeedUpLogic>().FromInstance(speedUpLogic).AsSingle().NonLazy();
             Container.Bind<UpgradeMenu>().FromInstance(upgradeMenu).AsSingle().NonLazy();
             Container.Bind<LevelGeneration>().FromInstance(levelGeneration).AsSingle().NonLazy();

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using _Scripts.Game_States;
 using _Scripts.Levels;
 using _Scripts.Money_Logic;
-using _Scripts.Train;
+using _Scripts.Tower_Logic;
 using _Scripts.UI.Displays;
 using _Scripts.UI.Upgrade;
 using _Scripts.Weapons;
@@ -17,9 +17,7 @@ namespace _Scripts.Units
     public class ZombieManager : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private Transform creatingPositionFrom;
-        [SerializeField] private Transform creatingPositionTo;
-        [SerializeField] private Transform zombieTransform;
+        [SerializeField] private float spawnRadius;
         [SerializeField] private Zombie[] usualZombie;
         [SerializeField] private Zombie[] fastZombie;
         [SerializeField] private Zombie[] bigZombie;
@@ -33,7 +31,6 @@ namespace _Scripts.Units
 
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private LevelManager _levelManager;
-        [Inject] private UpgradeMenu _upgradeMenu;
         [Inject] private MoneyWallet _moneyWallet;
         [Inject] private SpeedUpLogic _speedUpLogic;
         [Inject] private Tower _tower;
@@ -93,7 +90,7 @@ namespace _Scripts.Units
             OnHpChanged?.Invoke();
         }
 
-        #region Zombie Creating
+        #region Zombie Spawn
         private void StartCreatingZombies()
         {
             _creatingCoroutine = StartCoroutine(CreateZombies());
@@ -157,7 +154,8 @@ namespace _Scripts.Units
 
         private void CreateZombie(Zombie targetZombie, float speedMultiplier)
         {
-            var zombie = _diContainer.InstantiatePrefabForComponent<Zombie>(targetZombie, transform.position, transform.rotation, zombieTransform);
+            var zombie = _diContainer.InstantiatePrefabForComponent<Zombie>(targetZombie, GetSpawnPosition(transform.position),
+                Quaternion.identity, transform);
             
             zombie.Init(speedMultiplier);
             
@@ -165,8 +163,7 @@ namespace _Scripts.Units
             zombie.GetDamageEvent += UpdateLostHp;
             zombie.GetDamageEvent += value =>
             {
-                var reward = value;
-                _moneyWallet.Add((int) reward);
+                _moneyWallet.Add(value);
             };
             
             AliveZombies.Add(zombie);
@@ -192,24 +189,19 @@ namespace _Scripts.Units
             }
             return targetZombie;
         }
+
+        private Vector3 GetSpawnPosition(Vector3 center)
+        {
+            var angle = Random.Range(0, 360f);
+            return new Vector3(
+                center.x + spawnRadius * Mathf.Sin(angle * Mathf.Deg2Rad),
+                center.y,
+                center.z + spawnRadius * Mathf.Cos(angle * Mathf.Deg2Rad)
+                );
+            
+        }
         #endregion
 
-        public Zombie GetNearestZombie(Transform fromTransform)
-        {
-            Zombie targetZombie = null;
-            var minDistance = 1e9f;
-            
-            foreach (var zombie in AliveZombies)
-            {
-                var currentDistance = Vector3.Distance(fromTransform.position, zombie.ShootPoint.position);
-                if (!(currentDistance < minDistance)) continue;
-                minDistance = currentDistance;
-                targetZombie = zombie;
-            }
-
-            return targetZombie;
-        }
-        
         private void RemoveZombie(Zombie zombie)
         {
             AliveZombies.Remove(zombie);
@@ -227,6 +219,12 @@ namespace _Scripts.Units
         {
             if (_creatingCoroutine != null) 
                 StopCoroutine(_creatingCoroutine);
+        }
+        
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, spawnRadius);
         }
     }
 }

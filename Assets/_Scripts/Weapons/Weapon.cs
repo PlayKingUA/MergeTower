@@ -1,6 +1,7 @@
 ﻿using System;
 using _Scripts.Game_States;
 using _Scripts.Slot_Logic;
+using _Scripts.Tower_Logic;
 using _Scripts.UI.Upgrade;
 using _Scripts.Units;
 using DG.Tweening;
@@ -22,7 +23,7 @@ namespace _Scripts.Weapons
         [ShowInInspector, ReadOnly] private int _level;
 
         [Inject] private GameStateManager _gameStateManager;
-        [Inject] protected ZombieManager ZombieManager;
+        [Inject] protected AttackZone AttackZone;
         [Inject] private UpgradeMenu _upgradeMenu;
         [Inject] private SpeedUpLogic _speedUpLogic;
 
@@ -164,7 +165,7 @@ namespace _Scripts.Weapons
         
         private void UpdateTargetZombie()
         {
-            TargetZombie = ZombieManager.GetNearestZombie(transform);
+            TargetZombie = AttackZone.GetNearestZombie(transform);
         }
     }
 }

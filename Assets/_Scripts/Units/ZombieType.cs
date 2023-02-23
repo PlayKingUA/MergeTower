@@ -5,6 +5,7 @@
         Usual,
         Fast,
         Big,
+        Bomb,
         CountTypes
     }
 }
