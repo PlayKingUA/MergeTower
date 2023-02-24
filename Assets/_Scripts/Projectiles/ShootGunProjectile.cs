@@ -18,11 +18,11 @@ namespace _Scripts.Projectiles
             _targetZombies = targetZombies;
             ProjectilePool = objectPool;
             LaunchPosition = transform.position;
-            UpdateTargetZombie(_targetZombies[0]);
+            TargetZombie = _targetZombies[0];
             
-            SetDamage(damage);
+            Damage = damage;
             
-            _flyRoutine = StartCoroutine(FlyToTarget());
+            FlyRoutine = StartCoroutine(FlyToTarget());
             CreateProjectiles(bulletCount);
         }
 
@@ -59,7 +59,7 @@ namespace _Scripts.Projectiles
             projectile.Init(projectileParticles.PoolName, speed);
         }
 
-        public override void HitZombie(Transform damagePoint = null)
+        protected override void SplashHit(Transform damagePoint = null)
         {
             foreach (var zombie in _targetZombies)
             {

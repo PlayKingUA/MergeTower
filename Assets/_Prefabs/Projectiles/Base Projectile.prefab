@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 588428771100745382}
   - component: {fileID: 2216925026567127683}
   - component: {fileID: 7466057708396137894}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Base Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,10 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageRadius: 0.1
+  isSplash: 0
   speed: 20
-  muzzleflarePool: {fileID: 0}
-  shellsPool: {fileID: 11400000, guid: a461427cbf0d7994bb77fcfeceb900ec, type: 2}
   hasShells: 1
+  shellsPool: {fileID: 11400000, guid: a461427cbf0d7994bb77fcfeceb900ec, type: 2}
+  hasMuzzleflare: 1
+  muzzleflarePool: {fileID: 0}
+  hasImpact: 1
+  impactPool: {fileID: 0}
 --- !u!54 &2216925026567127683
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -75,7 +79,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 588428771202438820}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

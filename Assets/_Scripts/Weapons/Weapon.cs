@@ -14,7 +14,7 @@ namespace _Scripts.Weapons
     public class Weapon : AttackingObject
     {
         #region Variables
-        [Space] 
+        [Space(10)] 
         [SerializeField] private GameObject appearFx;
         [SerializeField] private GameObject destroyFx;
         [SerializeField] private Transform gunTransform;
@@ -41,10 +41,10 @@ namespace _Scripts.Weapons
         public int Level => _level;
         public GameObject AppearFx => appearFx;
 
-        private protected bool CanAttack => TargetZombie != null;
+        private protected bool CanAttack => AttackTimer >= CoolDown  && TargetZombie != null;
 
         protected override float CoolDown =>
-            base.CoolDown / _speedUpLogic.CoolDownSpeedUp / _upgradeMenu.TowerHealth;
+            base.CoolDown / _speedUpLogic.CoolDownSpeedUp;
         
         protected override int Damage => (int) (base.Damage * _upgradeMenu.DamageCoefficient);
 

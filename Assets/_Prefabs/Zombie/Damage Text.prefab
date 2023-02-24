@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6725254113649759259}
   - component: {fileID: 8637352389204647307}
   - component: {fileID: 2481334502232658447}
-  m_Layer: 8
+  m_Layer: 5
   m_Name: Damage Text (TMP) (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -33,10 +33,10 @@ RectTransform:
   m_Father: {fileID: 5625927909289481563}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0.7753, y: 0.4595}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8637352389204647307
 MeshRenderer:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281150975
+    rgba: 1932340735
   m_fontColor: {r: 1, g: 0.1745283, b: 0.1745283, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -128,15 +128,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 4
+  m_fontSize: 7.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 1
-  m_fontSizeMax: 5
+  m_fontSizeMax: 10
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -184,7 +184,8 @@ GameObject:
   - component: {fileID: 5625927909289481563}
   - component: {fileID: 5625927909289481560}
   - component: {fileID: 3359735357757755813}
-  m_Layer: 8
+  - component: {fileID: 5271653131944521364}
+  m_Layer: 5
   m_Name: Damage Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +211,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 6.6280003}
-  m_SizeDelta: {x: 0.753, y: 0.4595}
+  m_SizeDelta: {x: 1.4841, y: 0.8151}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &5625927909289481560
 Animator:
@@ -247,3 +248,17 @@ MonoBehaviour:
   pool: {fileID: 11400000, guid: eaa8ddb491176304d9bac4a6d00349ab, type: 2}
   lifeTime: 4
   text: {fileID: 2481334502232658447}
+--- !u!114 &5271653131944521364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4111860961266996014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a08fd20f8c06d5245b3eaf0510b326a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mode: 0
+  targetCamera: {fileID: 0}

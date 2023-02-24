@@ -1,6 +1,4 @@
-﻿using System;
-using _Scripts.Levels;
-using _Scripts.Tower_Logic;
+﻿using _Scripts.Tower_Logic;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
@@ -18,6 +16,11 @@ namespace _Scripts.Units
         {
             _navMeshAgent = GetComponent<NavMeshAgent>();
             _navMeshAgent.SetDestination(_tower.transform.position);
+        }
+
+        public void StopMotion()
+        {
+            _navMeshAgent.enabled = false;
         }
     }
 }

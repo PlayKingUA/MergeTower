@@ -29,12 +29,13 @@ namespace _Scripts.Projectiles
 
         private const float LifeTime = 3.0f;
 
-        protected Coroutine _flyRoutine;
+        protected Coroutine FlyRoutine;
         #endregion
 
         #region Monobehavior Callbacks
         protected override void OnTriggerEnter(Collider other)
         {
+            Debug.Log("Collision with: " + other.name);
             if (hasImpact)
             {
                 MasterObjectPooler.GetObject(impactPool.PoolName, transform.position, transform.rotation);
@@ -42,7 +43,7 @@ namespace _Scripts.Projectiles
 
             if (isSplash)
             {
-                HitZombie();
+                SplashHit();
             }
             else if (other.TryGetComponent(out Zombie zombie))
             {
@@ -55,7 +56,7 @@ namespace _Scripts.Projectiles
         public override void Init(Zombie targetZombie, int damage, ObjectPool objectPool)
         {
             base.Init(targetZombie, damage, objectPool);
-            _flyRoutine = StartCoroutine(FlyToTarget());
+            FlyRoutine = StartCoroutine(FlyToTarget());
 
             if (hasMuzzleflare)
             {
@@ -65,12 +66,6 @@ namespace _Scripts.Projectiles
             {
                 MasterObjectPooler.GetObject(shellsPool.PoolName, transform.position, transform.rotation);
             }
-        }
-
-        public override void HitZombie(Transform damagePoint = null)
-        {
-            base.HitZombie(damagePoint);
-            ReturnToPool();
         }
 
         protected IEnumerator FlyToTarget()
@@ -103,8 +98,8 @@ namespace _Scripts.Projectiles
         
         protected override void ReturnToPool()
         {
-            if(_flyRoutine != null) 
-                StopCoroutine(_flyRoutine);
+            if(FlyRoutine != null) 
+                StopCoroutine(FlyRoutine);
             base.ReturnToPool();
         }
     }

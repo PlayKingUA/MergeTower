@@ -1,5 +1,4 @@
 ﻿using _Scripts.Projectiles;
-using _Scripts.Units;
 using QFSW.MOP2;
 using UnityEngine;
 
@@ -28,7 +27,8 @@ namespace _Scripts.Weapons
         protected override void AttackState()
         {
             base.AttackState();
-            if (AttackTimer < CoolDown|| !CanAttack) 
+            
+            if (!CanAttack) 
                 return;
 
             Fire();

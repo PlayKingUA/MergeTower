@@ -8,27 +8,24 @@ namespace _Scripts.Projectiles
     public class ProjectileBase : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private protected float damageRadius;
-
+        [SerializeField] protected float damageRadius;
+        [SerializeField] protected bool isSplash;
+        [ShowInInspector, ReadOnly] 
+        protected int Damage;
+        
         protected Vector3 LaunchPosition;
         protected Zombie TargetZombie;
 
         private Collider[] _colliders;
         
-        [ShowInInspector] protected int Damage;
-        [SerializeField] protected bool isSplash;
-        private float _damageRadius;
-
-        private protected MasterObjectPooler MasterObjectPooler;
+        protected MasterObjectPooler MasterObjectPooler;
         protected ObjectPool ProjectilePool;
-
         #endregion
         
         #region Monobehavior Callbacks
         protected virtual void Awake()
         {
             MasterObjectPooler = MasterObjectPooler.Instance;
-            _damageRadius = damageRadius;
         }
         protected virtual void Start(){}
         protected virtual  void OnTriggerEnter(Collider other){}
@@ -38,31 +35,17 @@ namespace _Scripts.Projectiles
         {
             ProjectilePool = objectPool;
             LaunchPosition = transform.position;
-            UpdateTargetZombie(targetZombie);
-            
-            SetDamage(damage);
-        }
-
-        public void SetDamage(int damage)
-        {
+            TargetZombie = targetZombie;
             Damage = damage;
         }
 
-        public virtual void UpdateTargetZombie(Zombie targetZombie)
-        {
-            TargetZombie = targetZombie;
-        }
-        
-        protected  virtual void ReturnToPool()
-        {
-            MasterObjectPooler.Release(gameObject, ProjectilePool.PoolName);
-        }
-        
-        public virtual void HitZombie(Transform damagePoint = null)
+        protected virtual void ReturnToPool() => MasterObjectPooler.Release(gameObject, ProjectilePool.PoolName);
+
+        protected virtual void SplashHit(Transform damagePoint = null)
         {
             if (damagePoint == null) damagePoint = transform;
             
-            _colliders = Physics.OverlapSphere(damagePoint.position, _damageRadius);
+            _colliders = Physics.OverlapSphere(damagePoint.position, damageRadius);
 
             for (var i = 0; i < _colliders.Length; i++)
             {
@@ -71,6 +54,8 @@ namespace _Scripts.Projectiles
                 if (!isSplash)
                     break;
             }
+            
+            ReturnToPool();
         }
         
         protected virtual void OnDrawGizmos()

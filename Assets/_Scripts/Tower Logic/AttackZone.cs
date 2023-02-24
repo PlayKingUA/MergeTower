@@ -16,7 +16,8 @@ namespace _Scripts.Tower_Logic
         #region Monobehaviour Callbacks
         private void OnTriggerEnter(Collider other)
         {
-            if (TryGetComponent<Zombie>(out var zombie) == false)
+            Debug.Log("Someone in attack zone");
+            if (other.TryGetComponent<Zombie>(out var zombie) == false)
                 return;
             
             targetZombies.Add(zombie);

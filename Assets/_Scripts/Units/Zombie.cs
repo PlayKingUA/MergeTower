@@ -101,6 +101,10 @@ namespace _Scripts.Units
             {
                 _zombieAnimationManager.SetAnimation(_currentState);
             }
+            else
+            {
+                _unitMovement.StopMotion();
+            }
         }
 
         private void UpdateState()
@@ -172,8 +176,7 @@ namespace _Scripts.Units
             IsDead = true;
 
             DeadEvent?.Invoke(this);
-            
-            transform.parent = null;
+            _unitMovement.StopMotion();
             DisableDust();
             
             _zombieAnimationManager.DisableAnimator();
