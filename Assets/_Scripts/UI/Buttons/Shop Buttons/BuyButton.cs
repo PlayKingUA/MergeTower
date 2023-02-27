@@ -22,14 +22,27 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         [SerializeField] protected float multiplier;
         [SerializeField] protected float powMultiplier;
         [SerializeField] private TextMeshProUGUI priseText;
+        [Space(10)] 
+        [SerializeField] protected int maxLevel;
 
         private Button _button;
-        
-        protected int CurrentLevel;
-        
+
+        private int _currentLevel;
+
+        public int CurrentLevel
+        {
+            get => _currentLevel;
+            private set
+            {
+                _currentLevel = value; 
+                OnLevelChanged?.Invoke();
+            }
+        }
+
         [Inject] protected MoneyWallet MoneyWallet;
 
         public event Action OnBought;
+        public event Action OnLevelChanged;
         #endregion
 
         #region Properties

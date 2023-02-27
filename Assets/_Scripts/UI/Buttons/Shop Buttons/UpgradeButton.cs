@@ -7,35 +7,32 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
     {
         #region Variables
         [SerializeField] private float startValue;
-        [SerializeField] private float upgradeStep;
         [SerializeField] private float maxUpgrade;
 
         [Space(10)] 
         [SerializeField] private TextMeshProUGUI valueBefore;
         [SerializeField] private GameObject moreText;
         [SerializeField] private TextMeshProUGUI valueAfter;
+        [SerializeField] private BuyProgressBar buyProgressBar;
         #endregion
 
         #region Properties
-        public float Coefficient => GetValue(CurrentLevel);
+        public float CurrentValue => GetValue(CurrentLevel);
+        private float GetValue(int level) 
+            => startValue + (maxUpgrade - startValue) * ((float) level / maxLevel);
 
-        protected override bool CanBeBought => base.CanBeBought && Coefficient < maxUpgrade;
+        protected override bool CanBeBought => base.CanBeBought && CurrentValue < maxUpgrade;
         #endregion
         
         protected override void ChangeButtonState(float moneyCount)
         {
-            if (Coefficient >= maxUpgrade)
+            if (CurrentValue >= maxUpgrade)
             {
                 _buttonState = ButtonBuyState.MaxLevel;
                 SetUIState(_buttonState);
                 return;
             }
             base.ChangeButtonState(moneyCount);
-        }
-        
-        private float GetValue(int level)
-        {
-            return startValue + upgradeStep * level;
         }
 
         protected override void ClickEvent()
@@ -51,8 +48,10 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             moreText.SetActive(CanBeBought);
             valueAfter.gameObject.SetActive(CanBeBought);
             
-            valueBefore.text = $"{Coefficient}";
-            valueAfter.text = $"{GetValue(CurrentLevel+ 1)}";
+            valueBefore.text = CurrentValue.ToString(".##");
+            valueAfter.text = GetValue(CurrentLevel+ 1).ToString(".##");
+            
+            buyProgressBar.SetActiveToggles(CurrentLevel);
         }
     }
 }

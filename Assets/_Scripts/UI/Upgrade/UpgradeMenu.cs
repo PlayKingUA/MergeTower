@@ -23,9 +23,9 @@ namespace _Scripts.UI.Upgrade
         #endregion
 
         #region Properties
-        public float DamageCoefficient => rangeUpgrade.Coefficient;
-        public float TowerHealth => towerHealth.Coefficient;
-        public float TowerLevel => towerLevel.Coefficient;
+        public float DamageCoefficient => rangeUpgrade.CurrentValue;
+        public float TowerHealth => towerHealth.CurrentValue;
+        public float TowerLevel => towerLevel.CurrentValue;
         #endregion
         
         private void Awake()
