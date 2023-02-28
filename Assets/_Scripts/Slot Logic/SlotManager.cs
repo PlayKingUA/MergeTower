@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using _Scripts.Tower_Logic;
+using _Scripts.UI.Upgrade;
 using Sirenix.OdinInspector;
 using UnityEngine;
-using Random = UnityEngine.Random;
+using Zenject;
 
 namespace _Scripts.Slot_Logic
 {
@@ -11,11 +12,14 @@ namespace _Scripts.Slot_Logic
     {
         #region Variables
         [SerializeField] private Slot[] slots;
-        [Space]
+        [Space(10)]
         [SerializeField, ReadOnly] private List<Slot> emptySlots;
         [SerializeField, ReadOnly] private List<Slot> busySlots;
 
         private bool _isTutorialArrows;
+        
+        [Inject] private UpgradeMenu _upgradeMenu;
+        [Inject] private Tower _tower;
         #endregion
 
         #region Properties
@@ -25,19 +29,30 @@ namespace _Scripts.Slot_Logic
         #region Monobehaviour Callbacks
         private void Start()
         {
-            Init();
+            _upgradeMenu.TowerLevel.OnLevelChanged += () =>
+            {
+                UpdateSlotsInfo();
+            };
+            UpdateSlotsInfo(true);
         }
         #endregion
 
-        private void Init()
+        private void UpdateSlotsInfo(bool isInit = false)
         {
             emptySlots.Clear();
             busySlots.Clear();
-
-            foreach (var slot in slots)
+            
+            for (var i = 0; i < slots.Length; i++)
             {
-                slot.Init();
+                var slot = slots[i];
+                if (isInit)
+                    slot.Init();
 
+                var isEnabled = i < _tower.CurrentLevelData.SlotPlaces;
+                slot.gameObject.SetActive(isEnabled);
+                if (!isEnabled)
+                    continue;
+                
                 switch (slot.SlotState)
                 {
                     case SlotState.Empty:

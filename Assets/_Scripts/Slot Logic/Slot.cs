@@ -24,7 +24,7 @@ namespace _Scripts.Slot_Logic
         [SerializeField] private Transform weaponPosition;
         [SerializeField] private float motionTime;
 
-        [Space]
+        [Space(10)]
         [SerializeField, Range(0.5f, 2f)]
         private float scaleEffect;
         [SerializeField] private float scaleEffectDuration;
@@ -43,9 +43,7 @@ namespace _Scripts.Slot_Logic
         private string _saveKey = "weaponLevel";
         private static readonly int MaterialColorId = Shader.PropertyToID("_Color");
         private const int NoSlotLevel = -1;
-        #endregion
-
-        #region Properties
+        
         private int GetCurrentLevel => (_weapon) ? _weapon.Level : NoSlotLevel;
         #endregion
 

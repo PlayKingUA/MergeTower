@@ -12,14 +12,17 @@ namespace _Scripts.Tower_Logic
     public class Tower : MonoBehaviour, IAlive
     {
         #region Variables
+        [SerializeField] private TowerData[] levelsData;
+        
         [Inject] private GameStateManager _gameStateManager;
-        [Inject] private SlotManager _slotManager;
         [Inject] private UpgradeMenu _upgradeMenu;
         
         [ShowInInspector, ReadOnly] public float MaxHealth { get; private set;}
         public float CurrentHealth { get; private set; }
         public bool IsDead { get; private set;}
 
+        public TowerData CurrentLevelData => levelsData[_upgradeMenu.TowerLevel.CurrentLevel];
+        
         public event Action HpChanged;
         #endregion
 
@@ -27,6 +30,7 @@ namespace _Scripts.Tower_Logic
         private void Start()
         {
             _gameStateManager.AttackStarted += UpdateMaxHealth;
+            UpdateMaxHealth();
         }
         #endregion
 

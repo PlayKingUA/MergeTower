@@ -112,7 +112,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 61.609}
-  m_SizeDelta: {x: 0, y: 69.063}
+  m_SizeDelta: {x: -28.7761, y: 69.063}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3315106576544321819
 GameObject:
@@ -151,8 +151,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 25.7}
-  m_SizeDelta: {x: 240, y: 25.931}
+  m_AnchoredPosition: {x: 0, y: 22.4294}
+  m_SizeDelta: {x: 209.9, y: 44.8568}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8225229879034806568
 MonoBehaviour:
@@ -167,15 +167,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 40
-    m_Right: 40
+    m_Left: 0
+    m_Right: 0
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
@@ -216,7 +216,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40.4966}
+  m_SizeDelta: {x: 95.03, y: 40.4966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8729483190942212848
 CanvasRenderer:
@@ -282,7 +282,7 @@ MonoBehaviour:
   m_fontSizeMax: 51.09
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 10, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -352,7 +352,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40.4966}
+  m_SizeDelta: {x: 95.03, y: 40.4966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3033829913457872358
 CanvasRenderer:
@@ -418,7 +418,7 @@ MonoBehaviour:
   m_fontSizeMax: 51.09
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 10, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -488,7 +488,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 40.4966}
+  m_SizeDelta: {x: 19.840126, y: 40.4966}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5794219799301517978
 CanvasRenderer:
@@ -844,8 +844,9 @@ MonoBehaviour:
   powMultiplier: 1
   priseText: {fileID: 7081665991367562656}
   maxLevel: 15
+  levelsPerTowerLevel: 5
   startValue: 0
-  maxUpgrade: 2
+  maxValue: 0
   valueBefore: {fileID: 8783128050853019845}
   moreText: {fileID: 5747348960858301558}
   valueAfter: {fileID: 429759256227626009}
