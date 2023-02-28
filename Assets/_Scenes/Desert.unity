@@ -5205,6 +5205,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1821967427}
     m_Modifications:
+    - target: {fileID: 5737273575528519308, guid: bc84d657b3d2fd448a954565eed9a37f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -47.958984
+      objectReference: {fileID: 0}
     - target: {fileID: 6483794165693223360, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_Name
@@ -10283,7 +10288,7 @@ PrefabInstance:
     - target: {fileID: 4231231921558623555, guid: ca54e5b4892b6f449b7e726d1eff0fe6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4231231921558623555, guid: ca54e5b4892b6f449b7e726d1eff0fe6,
         type: 3}
@@ -10393,7 +10398,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 4087
 --- !u!114 &1306231020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10504,6 +10509,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tower.003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4879980107359562149, guid: 22507ac5bdf90e84eb1ef15e989d0db0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22507ac5bdf90e84eb1ef15e989d0db0, type: 3}
