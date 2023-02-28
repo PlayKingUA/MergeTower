@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -75,7 +75,7 @@ PrefabInstance:
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 113.0851
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -115,12 +115,12 @@ PrefabInstance:
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 165.7538
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -56.54255
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 366985359738286125, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -211,12 +211,12 @@ PrefabInstance:
     - target: {fileID: 4030392460292522711, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_Name
-      value: Tower Upgrade Button
+      value: Tower Upgrade Button Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4030392460292522711, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4879870444828061667, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -373,5 +373,65 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0.00081682
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2446454604672163114, guid: b663bd94b13197547ba4357249e33c31, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b663bd94b13197547ba4357249e33c31, type: 3}
+--- !u!114 &3427523544907111435 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7081665991367562656, guid: b663bd94b13197547ba4357249e33c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608709091914697131}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3977636231985549441 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8855559180567484714, guid: b663bd94b13197547ba4357249e33c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608709091914697131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4251514699438626873 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8563112160617582994, guid: b663bd94b13197547ba4357249e33c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608709091914697131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4933849924207611059 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 697685682317935896, guid: b663bd94b13197547ba4357249e33c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608709091914697131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8807061360525593468 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4030392460292522711, guid: b663bd94b13197547ba4357249e33c31,
+    type: 3}
+  m_PrefabInstance: {fileID: 5608709091914697131}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3616966544823575452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8807061360525593468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3113f25788d64346ba8894e8757b22e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - {fileID: 3977636231985549441}
+  - {fileID: 4251514699438626873}
+  - {fileID: 4933849924207611059}
+  saveKey: Tower Level
+  startPrice: 100
+  baseAmount: 200
+  multiplier: 1
+  powMultiplier: 1
+  priseText: {fileID: 3427523544907111435}
+  maxLevel: 2

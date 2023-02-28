@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace _Scripts.UI.Buttons.Shop_Buttons
 {
-    public class UpgradeButton : BuyButton
+    public class UpgradeButton : UpgradeButtonBase
     {
         #region Variables
+        [SerializeField] private int levelsPerTowerLevel = 5;
         [SerializeField] private float startValue;
-        [SerializeField] private float maxUpgrade;
+        [SerializeField] private float maxValue;
 
         [Space(10)] 
         [SerializeField] private TextMeshProUGUI valueBefore;
@@ -18,27 +19,20 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 
         #region Properties
         public float CurrentValue => GetValue(CurrentLevel);
-        private float GetValue(int level) 
-            => startValue + (maxUpgrade - startValue) * ((float) level / maxLevel);
+        private float GetValue(int level) => Mathf.Lerp(startValue, maxValue, (float) level / maxLevel);
 
-        protected override bool CanBeBought => base.CanBeBought && CurrentValue < maxUpgrade;
+        public override bool IsMaxLevel => (int) (CurrentLevel / levelsPerTowerLevel) >= UpgradeMenu.TowerLevel.CurrentLevel + 1;
+
+        public int ProgressBarLevel => IsMaxLevel 
+            ? levelsPerTowerLevel 
+            : CurrentLevel % levelsPerTowerLevel;
         #endregion
-        
-        protected override void ChangeButtonState(float moneyCount)
-        {
-            if (CurrentValue >= maxUpgrade)
-            {
-                _buttonState = ButtonBuyState.MaxLevel;
-                SetUIState(_buttonState);
-                return;
-            }
-            base.ChangeButtonState(moneyCount);
-        }
 
-        protected override void ClickEvent()
+        protected override void Start()
         {
-            base.ClickEvent();
-            ChangeButtonState(MoneyWallet.MoneyCount);
+            base.Start();
+            UpgradeMenu.TowerLevel.OnLevelChanged += ChangeButtonState;
+            ChangeButtonState();
         }
 
         protected override void UpdateText()
@@ -51,7 +45,7 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             valueBefore.text = CurrentValue.ToString(".##");
             valueAfter.text = GetValue(CurrentLevel+ 1).ToString(".##");
             
-            buyProgressBar.SetActiveToggles(CurrentLevel);
+            buyProgressBar.SetActiveToggles(ProgressBarLevel);
         }
     }
 }

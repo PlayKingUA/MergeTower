@@ -11,7 +11,7 @@ namespace _Scripts.UI.Upgrade
         [Space(10)]
         [SerializeField] private UpgradeButton rangeUpgrade;
         [SerializeField] private UpgradeButton towerHealth;
-        [SerializeField] private UpgradeButton towerLevel;
+        [SerializeField] private TowerUpgrade towerLevel;
         
         [Space(10)]
         [SerializeField] private Button openAbilitiesButton;
@@ -25,7 +25,7 @@ namespace _Scripts.UI.Upgrade
         #region Properties
         public float DamageCoefficient => rangeUpgrade.CurrentValue;
         public float TowerHealth => towerHealth.CurrentValue;
-        public float TowerLevel => towerLevel.CurrentValue;
+        public TowerUpgrade TowerLevel => towerLevel;
         #endregion
         
         private void Awake()

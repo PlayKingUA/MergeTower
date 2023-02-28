@@ -13,7 +13,7 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
     public class BuyButton : MonoBehaviour
     {
         #region Variables
-        [ShowInInspector] protected ButtonBuyState _buttonState;
+        [ShowInInspector] private ButtonBuyState _buttonState;
         [SerializeField] private GameObject[] states;
         [SerializeField] private string saveKey = "WeaponPrice";
         [Space(10)]
@@ -22,11 +22,10 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         [SerializeField] protected float multiplier;
         [SerializeField] protected float powMultiplier;
         [SerializeField] private TextMeshProUGUI priseText;
-        [Space(10)] 
-        [SerializeField] protected int maxLevel;
 
         private Button _button;
 
+        [ShowInInspector, ReadOnly]
         private int _currentLevel;
 
         public int CurrentLevel
@@ -59,33 +58,29 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(Click);
+            Load();
         }
 
         protected virtual void Start()
         {
-            Load();
-            CheckMoney(MoneyWallet.MoneyCount);
-            
-            MoneyWallet.MoneyCountChanged += CheckMoney;
-        }
+            UpdateText();
 
-        protected virtual void OnDisable()
-        {
-            MoneyWallet.MoneyCountChanged -= CheckMoney;
+            MoneyWallet.MoneyCountChanged += CheckMoney;
+            CheckMoney(MoneyWallet.MoneyCount);
         }
         #endregion
         
         #region Display
-        protected virtual void ChangeButtonState(float moneyCount)
+        protected virtual void ChangeButtonState()
         {
-            _buttonState = (moneyCount >= CurrentPrise)
+            SetUIState((MoneyWallet.MoneyCount >= CurrentPrise)
                 ? ButtonBuyState.BuyWithMoney
-                : ButtonBuyState.BuyWithADs;
-            SetUIState(_buttonState);
+                : ButtonBuyState.BuyWithADs);
         }
 
         protected void SetUIState(ButtonBuyState targetState)
         {
+            _buttonState = targetState;
             foreach (var state in states)
             {
                 state.SetActive(false);
@@ -96,6 +91,8 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             _button.interactable = targetState != ButtonBuyState.BuyWithADs;
             states[(int)ButtonBuyState.BuyWithMoney].SetActive(targetState != ButtonBuyState.MaxLevel);
             states[(int)ButtonBuyState.MaxLevel].SetActive(targetState == ButtonBuyState.MaxLevel);
+            
+            UpdateText();
         }
 
         protected virtual void UpdateText()
@@ -117,7 +114,6 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
                     ClickEvent();
                     break;
                 case ButtonBuyState.BuyWithADs:
-                    //ToDo show add
                     break;
                 case ButtonBuyState.MaxLevel:
                     return;
@@ -129,10 +125,10 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         protected virtual void ClickEvent()
         {
             CurrentLevel++;
-            UpdateText();
             Save();
             
             OnBought?.Invoke();
+            ChangeButtonState();
         }
         #endregion
         
@@ -145,13 +141,12 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         private void Load()
         {
             CurrentLevel = PlayerPrefs.GetInt(saveKey);
-            UpdateText();
         }
         #endregion
 
         private void CheckMoney(float moneyCount)
         {
-            ChangeButtonState(moneyCount);
+            ChangeButtonState();
         }
 
         public void SetInteractable(bool isInteractable)
