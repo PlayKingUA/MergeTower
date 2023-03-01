@@ -111,8 +111,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 61.609}
-  m_SizeDelta: {x: -28.7761, y: 69.063}
+  m_AnchoredPosition: {x: 0, y: 60.0861}
+  m_SizeDelta: {x: -28.7761, y: 82.9819}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3315106576544321819
 GameObject:
@@ -274,10 +274,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.4
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 51.09
   m_fontStyle: 0
@@ -410,10 +410,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.4
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 51.09
   m_fontStyle: 0
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 10, w: 0}
+  m_margin: {x: 10, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -546,10 +546,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35.4
-  m_fontSizeBase: 24
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 0
   m_fontSizeMax: 51.09
   m_fontStyle: 0
@@ -597,7 +597,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2024618782, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17.2
+      value: -35
       objectReference: {fileID: 0}
     - target: {fileID: 257106686798201843, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
@@ -659,6 +659,16 @@ PrefabInstance:
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5737273575528519308, guid: bc84d657b3d2fd448a954565eed9a37f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 77.547
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737273575528519308, guid: bc84d657b3d2fd448a954565eed9a37f,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.773
+      objectReference: {fileID: 0}
     - target: {fileID: 6483794165693223360, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_Name
@@ -673,7 +683,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 84063999b9e1741d099c1d8f7bbc0f7a,
+      objectReference: {fileID: 21300000, guid: dd149fa44e6f9a743a0b26323225d63e,
         type: 3}
     - target: {fileID: 7164128826443486353, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}

@@ -139,11 +139,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2024618782, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 147
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024618782, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 94
+      objectReference: {fileID: 0}
+    - target: {fileID: 2024618782, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 2024618783, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 41d4323f253da4231926d204a4916fc0,
+      objectReference: {fileID: 21300000, guid: 32412d5761f0dfd4ead28f28f9f5c748,
         type: 3}
+    - target: {fileID: 2868248142433262270, guid: bc84d657b3d2fd448a954565eed9a37f,
+        type: 3}
+      propertyPath: m_text
+      value: BUY SOLDIER
+      objectReference: {fileID: 0}
     - target: {fileID: 5737273575528519308, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -154,6 +171,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon Button
       objectReference: {fileID: 0}
+    - target: {fileID: 7164128826443486353, guid: bc84d657b3d2fd448a954565eed9a37f,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eae987ae3c846d949951bd495c2bdcfc,
+        type: 3}
     - target: {fileID: 7710742948962050874, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_Pivot.x

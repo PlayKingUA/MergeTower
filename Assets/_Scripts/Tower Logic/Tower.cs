@@ -1,7 +1,6 @@
 ﻿using System;
 using _Scripts.Game_States;
 using _Scripts.Interface;
-using _Scripts.Slot_Logic;
 using _Scripts.UI.Upgrade;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -13,6 +12,7 @@ namespace _Scripts.Tower_Logic
     {
         #region Variables
         [SerializeField] private TowerData[] levelsData;
+        [SerializeField] private Transform meshes;
         
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private UpgradeMenu _upgradeMenu;
@@ -21,8 +21,8 @@ namespace _Scripts.Tower_Logic
         public float CurrentHealth { get; private set; }
         public bool IsDead { get; private set;}
 
-        public TowerData CurrentLevelData => levelsData[_upgradeMenu.TowerLevel.CurrentLevel];
-        
+        public TowerData CurrentLevelData => levelsData[CurrentLevel];
+        private int CurrentLevel => _upgradeMenu.TowerLevel.CurrentLevel;
         public event Action HpChanged;
         #endregion
 
@@ -31,6 +31,8 @@ namespace _Scripts.Tower_Logic
         {
             _gameStateManager.AttackStarted += UpdateMaxHealth;
             UpdateMaxHealth();
+
+            _upgradeMenu.TowerLevel.OnLevelChanged += ChangeMesh;
         }
         #endregion
 
@@ -39,6 +41,14 @@ namespace _Scripts.Tower_Logic
             MaxHealth = _upgradeMenu.TowerHealth;
             CurrentHealth = MaxHealth;
             HpChanged?.Invoke();
+        }
+
+        private void ChangeMesh()
+        {
+            for (int i = 0; i < meshes.childCount; i++)
+            {
+                meshes.GetChild(i).gameObject.SetActive(i == CurrentLevel);
+            }
         }
         
         #region Get Damage\Die
