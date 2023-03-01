@@ -4,10 +4,7 @@ using System.Collections.Generic;
 using _Scripts.Game_States;
 using _Scripts.Levels;
 using _Scripts.Money_Logic;
-using _Scripts.Tower_Logic;
 using _Scripts.UI.Displays;
-using _Scripts.UI.Upgrade;
-using _Scripts.Weapons;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -32,8 +29,6 @@ namespace _Scripts.Units
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private LevelManager _levelManager;
         [Inject] private MoneyWallet _moneyWallet;
-        [Inject] private SpeedUpLogic _speedUpLogic;
-        [Inject] private Tower _tower;
         [Inject] private DiContainer _diContainer;
 
         private Coroutine _creatingCoroutine;
@@ -133,16 +128,17 @@ namespace _Scripts.Units
                             }
                         }
                         
-                        CreateZombie(GetTargetZombie(zombieType), zombieWave.SpeedMultiplier);
+                        CreateZombie(GetTargetZombie(zombieType));
                         yield return new WaitForSeconds(subWave.TimeBetweenZombie);
                     }
+                    yield return new WaitUntil(() => AliveZombies.Count == 0);
                     yield return new WaitForSeconds(subWave.TimeBetweenWaves);
                 }
+                yield return new WaitUntil(() => AliveZombies.Count == 0);
                 yield return new WaitForSeconds(zombieWave.TimeBetweenWaves - messageTimeBeforeLastWave);
                 if (zombieWave == _zombiesWaves[^2])
                     HugeWaveMessage?.Invoke();
                 yield return new WaitForSeconds(messageTimeBeforeLastWave);
-
             }
         }
 
@@ -152,13 +148,11 @@ namespace _Scripts.Units
             LastWaveStarted?.Invoke();
         }
 
-        private void CreateZombie(Zombie targetZombie, float speedMultiplier)
+        private void CreateZombie(Zombie targetZombie)
         {
             var zombie = _diContainer.InstantiatePrefabForComponent<Zombie>(targetZombie, GetSpawnPosition(transform.position),
                 Quaternion.identity, transform);
-            
-            zombie.Init(speedMultiplier);
-            
+
             zombie.DeadEvent += RemoveZombie;
             zombie.GetDamageEvent += UpdateLostHp;
             zombie.GetDamageEvent += value =>

@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1175405669
 Transform:
@@ -99,7 +99,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &558340683810465114
 Transform:
@@ -177,6 +177,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Rock.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399279722576153041, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021210554508807314, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6781176886075362730, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
         type: 3}
@@ -257,10 +267,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118053835082390847}
     m_Modifications:
+    - target: {fileID: 1085630896879987046, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
       propertyPath: m_Name
       value: Desert.Cactus.Big (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5029154015430941512, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
@@ -341,6 +361,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Rock.002 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4374273817785560709, guid: 4548a7a466eefd9439d02806fdac9a15,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067670241163825354, guid: 4548a7a466eefd9439d02806fdac9a15,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8888649319600546203, guid: 4548a7a466eefd9439d02806fdac9a15,
         type: 3}
       propertyPath: m_RootOrder
@@ -419,6 +449,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Tree.Trunk
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445895254141219837, guid: e3353e45b08bbae47b6e35ec482baef0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5814128569974440601, guid: e3353e45b08bbae47b6e35ec482baef0,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6636531728250122021, guid: e3353e45b08bbae47b6e35ec482baef0,
         type: 3}
@@ -513,6 +553,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Rocks.Small (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 755149105337999867, guid: c60bc58ec16f7eb40807dbbc3671ea90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194898569225925498, guid: c60bc58ec16f7eb40807dbbc3671ea90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6203494319326676046, guid: c60bc58ec16f7eb40807dbbc3671ea90,
         type: 3}
@@ -663,6 +713,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2931233113906766046, guid: e4f756a7352224d4596cee7c0e22edc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617827283001135618, guid: e4f756a7352224d4596cee7c0e22edc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4f756a7352224d4596cee7c0e22edc4, type: 3}
 --- !u!1001 &5884131943528183944
@@ -676,6 +736,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Ground (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2909022554725112823, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6871282831563233705, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
         type: 3}
@@ -696,6 +761,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114010483474430027, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8130958127066197682, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
         type: 3}
@@ -776,6 +846,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118053835082390847}
     m_Modifications:
+    - target: {fileID: 899020347699101295, guid: d55d146b2f02af047b1241feff4cd583,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3201389115259531060, guid: d55d146b2f02af047b1241feff4cd583,
         type: 3}
       propertyPath: m_RootOrder
@@ -850,6 +925,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Tree
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274260833275351747, guid: d55d146b2f02af047b1241feff4cd583,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55d146b2f02af047b1241feff4cd583, type: 3}
@@ -930,10 +1010,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5634447090650410520, guid: efe11104b8b56c54aa2e263851708e3b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7550575070244570147, guid: efe11104b8b56c54aa2e263851708e3b,
         type: 3}
       propertyPath: m_Name
       value: Desert.Barell
+      objectReference: {fileID: 0}
+    - target: {fileID: 7550575070244570147, guid: efe11104b8b56c54aa2e263851708e3b,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: efe11104b8b56c54aa2e263851708e3b, type: 3}
@@ -948,6 +1038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Stone.Flat
+      objectReference: {fileID: 0}
+    - target: {fileID: 19104404766315023, guid: ab3de549cf504fa48aec6c24a6b76001,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2089856362208295107, guid: ab3de549cf504fa48aec6c24a6b76001,
         type: 3}
@@ -1014,6 +1109,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8409936091815765794, guid: ab3de549cf504fa48aec6c24a6b76001,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab3de549cf504fa48aec6c24a6b76001, type: 3}
 --- !u!1001 &5884131944157876751
@@ -1023,10 +1123,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118053835082390847}
     m_Modifications:
+    - target: {fileID: 1085630896879987046, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
       propertyPath: m_Name
       value: Desert.Cactus.Big (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5029154015430941512, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
@@ -1177,6 +1287,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2931233113906766046, guid: e4f756a7352224d4596cee7c0e22edc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617827283001135618, guid: e4f756a7352224d4596cee7c0e22edc4,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4f756a7352224d4596cee7c0e22edc4, type: 3}
 --- !u!1001 &5884131944258117508
@@ -1186,6 +1306,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118053835082390847}
     m_Modifications:
+    - target: {fileID: 899020347699101295, guid: d55d146b2f02af047b1241feff4cd583,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3201389115259531060, guid: d55d146b2f02af047b1241feff4cd583,
         type: 3}
       propertyPath: m_RootOrder
@@ -1261,6 +1386,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Tree (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8274260833275351747, guid: d55d146b2f02af047b1241feff4cd583,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d55d146b2f02af047b1241feff4cd583, type: 3}
 --- !u!1001 &5884131944290773451
@@ -1330,6 +1460,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 5767927522126705911, guid: b380c99c8f0a69448b42a558ee8b9467,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5767927522126705915, guid: b380c99c8f0a69448b42a558ee8b9467, type: 3}
     - {fileID: 5767927522126705912, guid: b380c99c8f0a69448b42a558ee8b9467, type: 3}
@@ -1388,6 +1523,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Rock.001 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399279722576153041, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 4021210554508807314, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 6781176886075362730, guid: 67d8ac822a4ca664eb84a485c2bc5c83,
         type: 3}
@@ -1538,6 +1683,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Cactus
       objectReference: {fileID: 0}
+    - target: {fileID: 7064142168552518428, guid: b1265aaac8a5bae4897f2c85b3ea667c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 9215634335275511782, guid: b1265aaac8a5bae4897f2c85b3ea667c,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b1265aaac8a5bae4897f2c85b3ea667c, type: 3}
 --- !u!1001 &5884131944453897261
@@ -1551,6 +1706,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Desert.Cactus.Medium
+      objectReference: {fileID: 0}
+    - target: {fileID: 540865200250977814, guid: 817ed42bbaf7c0a4e8a63cd3b7b8fa28,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335582222517859529, guid: 817ed42bbaf7c0a4e8a63cd3b7b8fa28,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 7227661260765187220, guid: 817ed42bbaf7c0a4e8a63cd3b7b8fa28,
         type: 3}
@@ -1651,6 +1816,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Rocks.Small
       objectReference: {fileID: 0}
+    - target: {fileID: 755149105337999867, guid: c60bc58ec16f7eb40807dbbc3671ea90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6194898569225925498, guid: c60bc58ec16f7eb40807dbbc3671ea90,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6203494319326676046, guid: c60bc58ec16f7eb40807dbbc3671ea90,
         type: 3}
       propertyPath: m_RootOrder
@@ -1731,10 +1906,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 118053835082390847}
     m_Modifications:
+    - target: {fileID: 1085630896879987046, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
       propertyPath: m_Name
       value: Desert.Cactus.Big
+      objectReference: {fileID: 0}
+    - target: {fileID: 3265973493184643186, guid: f0d1b379d3f24e242986ced025d8460e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 5029154015430941512, guid: f0d1b379d3f24e242986ced025d8460e,
         type: 3}
@@ -1820,6 +2005,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Rock.002
       objectReference: {fileID: 0}
+    - target: {fileID: 4374273817785560709, guid: 4548a7a466eefd9439d02806fdac9a15,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 7067670241163825354, guid: 4548a7a466eefd9439d02806fdac9a15,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 8888649319600546203, guid: 4548a7a466eefd9439d02806fdac9a15,
         type: 3}
       propertyPath: m_RootOrder
@@ -1899,6 +2094,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Desert.Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 2909022554725112823, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6871282831563233705, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -1918,6 +2118,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 14.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114010483474430027, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 8130958127066197682, guid: d5a866e1a2aa36743ac09ab65dc54fc3,
         type: 3}

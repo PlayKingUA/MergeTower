@@ -75,6 +75,9 @@ namespace _Scripts.Units
         {
             base.Start();
             ChangeState(UnitState.Run);
+            
+            Health = (int) (Health + (_levelManager.CurrentLevel - 1) * hpPerLevel);
+            Damage = (int) (Damage + (_levelManager.CurrentLevel - 1) * dmgPerLevel);
         }
 
         protected override void Update()
@@ -133,12 +136,6 @@ namespace _Scripts.Units
         }
         #endregion
 
-        public void Init(float speedMultiplier)
-        {
-            Health = (int) (Health + (_levelManager.CurrentLevel - 1) * hpPerLevel);
-            Damage = (int) (Damage + (_levelManager.CurrentLevel - 1) * dmgPerLevel);
-        }
-        
         public void Attack()
         {
             _tower.GetDamage(Damage);

@@ -1,4 +1,3 @@
-using System;
 using _Scripts.Game_States;
 using _Scripts.Levels;
 using _Scripts.UI.Windows;
@@ -14,7 +13,7 @@ namespace _Scripts.UI.Displays
     public class ProgressDisplay : MonoBehaviour
     {
         #region Variables
-        [SerializeField] private CanvasGroup distanceTextObject;
+        [SerializeField] private CanvasGroup progressPanel;
         [SerializeField] private TextMeshProUGUI currentLevelText;
         [SerializeField] private TextMeshProUGUI nextLevelText;
         [SerializeField] private Slider progressSlider;
@@ -31,12 +30,12 @@ namespace _Scripts.UI.Displays
         #region Monobehaviour Callbacks
         private void Awake()
         {
-            _zombieManager.OnHpChanged += DisplayHp;
+            _zombieManager.OnHpChanged += DisplayProgress;
             
-            _gameStateManager.PrepareToBattle += () => { EnableDistanceObject(false);};
+            _gameStateManager.PrepareToBattle += () => { EnableProgressPanel(false);};
             _gameStateManager.AttackStarted += () =>
             {
-                EnableDistanceObject(true);
+                EnableProgressPanel(true);
                 UpdateBossPosition();
             };
 
@@ -45,11 +44,11 @@ namespace _Scripts.UI.Displays
 
         private void Start()
         {
-            DisplayHp();
+            progressSlider.value = 0f;
         }
         #endregion
 
-        private void DisplayHp()
+        private void DisplayProgress()
         {
             progressSlider.DOValue(_zombieManager.Progress, 0.1f).SetSpeedBased();
         }
@@ -60,9 +59,9 @@ namespace _Scripts.UI.Displays
             nextLevelText.text = (level.index + 1).ToString();
         }
         
-        private void EnableDistanceObject(bool isEnabled)
+        private void EnableProgressPanel(bool isEnabled)
         {
-            WindowsManager.CanvasGroupSwap(distanceTextObject, isEnabled);
+            WindowsManager.CanvasGroupSwap(progressPanel, isEnabled);
         }
 
         private void UpdateBossPosition()

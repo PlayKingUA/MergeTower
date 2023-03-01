@@ -1,6 +1,4 @@
-﻿using System;
-using System.Linq;
-using _Scripts.Game_States;
+﻿using _Scripts.Game_States;
 using _Scripts.UI.Buttons;
 using _Scripts.UI.Displays;
 using _Scripts.UI.Upgrade;
@@ -46,7 +44,7 @@ namespace _Scripts.UI.Windows
             
             zombieTable.UpdatePanel(_zombieManager.DeadZombies);
 
-            var reward = 0;//(int)(_zombieManager.LostHp * _upgradeMenu.TowerUpgrade);
+            var reward = (int)(_zombieManager.LostHp);
 
             multiplyButton.SetReward(reward);
             rewardText.text = MoneyDisplay.MoneyText(reward);
