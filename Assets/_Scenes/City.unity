@@ -2043,7 +2043,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 594082c9fb6b33f4f8c42e8a6e4a117a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceTextObject: {fileID: 0}
+  progressPanel: {fileID: 0}
   currentLevelText: {fileID: 0}
   nextLevelText: {fileID: 0}
   progressSlider: {fileID: 0}
@@ -13776,7 +13776,7 @@ PrefabInstance:
     - target: {fileID: 4879980107359562149, guid: 22507ac5bdf90e84eb1ef15e989d0db0,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22507ac5bdf90e84eb1ef15e989d0db0, type: 3}
@@ -15887,7 +15887,7 @@ PrefabInstance:
     - target: {fileID: 3482921541496826747, guid: d38332d8d9416144a8a9002f2d00b794,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7144989805080271913, guid: d38332d8d9416144a8a9002f2d00b794,
         type: 3}
