@@ -4725,7 +4725,7 @@ GameObject:
   - component: {fileID: 442642}
   - component: {fileID: 9547814}
   m_Layer: 0
-  m_Name: SA_Character_FemaleHero
+  m_Name: SA_Character_FemaleHero_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

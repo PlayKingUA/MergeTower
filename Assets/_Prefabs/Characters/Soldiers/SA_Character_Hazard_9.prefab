@@ -3700,7 +3700,7 @@ GameObject:
   - component: {fileID: 417618}
   - component: {fileID: 9519390}
   m_Layer: 0
-  m_Name: SA_Character_Hazard
+  m_Name: SA_Character_Hazard_9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
