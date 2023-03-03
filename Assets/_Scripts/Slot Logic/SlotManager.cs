@@ -48,7 +48,7 @@ namespace _Scripts.Slot_Logic
                 if (isInit)
                     slot.Init();
 
-                var isEnabled = i < _tower.CurrentLevelData.SlotPlaces;
+                var isEnabled = i < _tower.CurrentTowerLevel.SlotPlaces;
                 slot.gameObject.SetActive(isEnabled);
                 if (!isEnabled)
                     continue;
@@ -64,6 +64,8 @@ namespace _Scripts.Slot_Logic
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
+
+                slot.transform.position = _tower.CurrentTowerLevel.GetSlotPosition(i);
             }
             
             if (_isTutorialArrows)
