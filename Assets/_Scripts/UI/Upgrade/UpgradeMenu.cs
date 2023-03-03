@@ -10,7 +10,7 @@ namespace _Scripts.UI.Upgrade
         #region Variables
         [Space(10)]
         [SerializeField] private UpgradeButton rangeUpgrade;
-        [SerializeField] private UpgradeButton towerHealth;
+        [SerializeField] private UpgradeButton healthUpgrade;
         [SerializeField] private TowerUpgrade towerLevel;
         
         [Space(10)]
@@ -23,8 +23,8 @@ namespace _Scripts.UI.Upgrade
         #endregion
 
         #region Properties
-        public float DamageCoefficient => rangeUpgrade.CurrentValue;
-        public float TowerHealth => towerHealth.CurrentValue;
+        public UpgradeButton RangeUpgrade => rangeUpgrade;
+        public UpgradeButton HealthUpgrade => healthUpgrade;
         public TowerUpgrade TowerLevel => towerLevel;
         #endregion
         

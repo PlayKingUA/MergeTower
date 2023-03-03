@@ -28,7 +28,7 @@ namespace _Scripts.Tower_Logic
         #region Monobehaviour Callbacks
         private void Start()
         {
-            _gameStateManager.AttackStarted += UpdateMaxHealth;
+            _upgradeMenu.HealthUpgrade.OnLevelChanged += UpdateMaxHealth;
             UpdateMaxHealth();
 
             _upgradeMenu.TowerLevel.OnLevelChanged += ChangeMesh;
@@ -38,7 +38,7 @@ namespace _Scripts.Tower_Logic
 
         private void UpdateMaxHealth()
         {
-            MaxHealth = _upgradeMenu.TowerHealth;
+            MaxHealth = _upgradeMenu.HealthUpgrade.CurrentValue;
             CurrentHealth = MaxHealth;
             HpChanged?.Invoke();
         }
