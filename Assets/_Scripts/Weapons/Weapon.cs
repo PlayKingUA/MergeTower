@@ -45,9 +45,6 @@ namespace _Scripts.Weapons
 
         protected override float CoolDown =>
             base.CoolDown / _speedUpLogic.CoolDownSpeedUp;
-        
-        protected override int Damage => (int) (base.Damage * _upgradeMenu.DamageCoefficient);
-
         #endregion
         
         #region Monobehaviour Callbacks

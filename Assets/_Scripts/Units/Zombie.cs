@@ -88,7 +88,7 @@ namespace _Scripts.Units
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent(out Tower tower))
+            if (other.TryGetComponent(out TowerLevel tower))
                 ChangeState(UnitState.Attack);
         }
         #endregion

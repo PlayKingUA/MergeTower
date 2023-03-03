@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using _Scripts.UI.Upgrade;
 using _Scripts.Units;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using Zenject;
 
 namespace _Scripts.Tower_Logic
 {
@@ -11,9 +14,21 @@ namespace _Scripts.Tower_Logic
         [ShowInInspector, ReadOnly] private float _attackRadius;
 
         public List<Zombie> targetZombies = new();
+
+        private float _yScale;
+
+        [Inject] private UpgradeMenu _upgradeMenu;
         #endregion
 
         #region Monobehaviour Callbacks
+        private void Start()
+        {
+            _yScale = transform.localScale.y;
+            
+            _upgradeMenu.RangeUpgrade.OnLevelChanged += UpdateRadius;
+            UpdateRadius();
+        }
+
         private void OnTriggerEnter(Collider other)
         {
             Debug.Log("Someone in attack zone");
@@ -26,8 +41,8 @@ namespace _Scripts.Tower_Logic
 
         private void OnDrawGizmos()
         {
-            Gizmos.color = Color.red;
-            //Gizmos.DrawWireSphere(transform.position, attackRadius);
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, _attackRadius);
         }
         #endregion
         
@@ -45,6 +60,12 @@ namespace _Scripts.Tower_Logic
             }
 
             return targetZombie;
+        }
+
+        private void UpdateRadius()
+        {
+            var targetDiameter = _upgradeMenu.RangeUpgrade.CurrentValue * 2;
+            transform.localScale = new Vector3(targetDiameter, _yScale, targetDiameter);
         }
         
         private void RemoveZombie(Zombie zombie)

@@ -11,8 +11,7 @@ namespace _Scripts.Tower_Logic
     public class Tower : MonoBehaviour, IAlive
     {
         #region Variables
-        [SerializeField] private TowerData[] levelsData;
-        [SerializeField] private Transform meshes;
+        [SerializeField] private TowerLevel[] levelsData;
         
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private UpgradeMenu _upgradeMenu;
@@ -21,7 +20,7 @@ namespace _Scripts.Tower_Logic
         public float CurrentHealth { get; private set; }
         public bool IsDead { get; private set;}
 
-        public TowerData CurrentLevelData => levelsData[CurrentLevel];
+        public TowerLevel CurrentTowerLevel => levelsData[CurrentLevel];
         private int CurrentLevel => _upgradeMenu.TowerLevel.CurrentLevel;
         public event Action HpChanged;
         #endregion
@@ -29,25 +28,26 @@ namespace _Scripts.Tower_Logic
         #region Monobehaviour Callbacks
         private void Start()
         {
-            _gameStateManager.AttackStarted += UpdateMaxHealth;
+            _upgradeMenu.HealthUpgrade.OnLevelChanged += UpdateMaxHealth;
             UpdateMaxHealth();
 
             _upgradeMenu.TowerLevel.OnLevelChanged += ChangeMesh;
+            ChangeMesh();
         }
         #endregion
 
         private void UpdateMaxHealth()
         {
-            MaxHealth = _upgradeMenu.TowerHealth;
+            MaxHealth = _upgradeMenu.HealthUpgrade.CurrentValue;
             CurrentHealth = MaxHealth;
             HpChanged?.Invoke();
         }
 
         private void ChangeMesh()
         {
-            for (int i = 0; i < meshes.childCount; i++)
+            for (var i = 0; i < levelsData.Length; i++)
             {
-                meshes.GetChild(i).gameObject.SetActive(i == CurrentLevel);
+                levelsData[i].gameObject.SetActive(i == CurrentLevel);
             }
         }
         
