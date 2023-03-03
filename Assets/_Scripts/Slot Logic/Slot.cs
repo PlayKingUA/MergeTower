@@ -33,7 +33,7 @@ namespace _Scripts.Slot_Logic
         private Coroutine _motionCoroutine;
         
         [Inject] private GameStateManager _gameStateManager;
-        [Inject] private WeaponManager _weaponManager;
+        [Inject] private SoldiersManager _soldiersManager;
         [Inject] private SlotManager _slotManager;
         [Inject] private VibrationManager _vibrationManager;
 
@@ -140,7 +140,7 @@ namespace _Scripts.Slot_Logic
 
         private bool CanUpgrade(Weapon weapon)
         {
-            return _weapon.Level < _weaponManager.MaxWeaponLevel 
+            return _weapon.Level < _soldiersManager.MaxWeaponLevel 
                 && _weapon.Level == weapon.Level;
         }
         #endregion
@@ -171,7 +171,7 @@ namespace _Scripts.Slot_Logic
         
         public Weapon SpawnWeapon(int level, bool showFx = false)
         {
-            SetWeaponToSlot(_weaponManager.CreateWeapon(level, weaponPosition));
+            SetWeaponToSlot(_soldiersManager.CreateWeapon(level, weaponPosition));
             _weapon.AppearFx.SetActive(showFx);
             return _weapon;
         }

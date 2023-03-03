@@ -25,7 +25,7 @@ namespace _Scripts.Units
         [SerializeField] private Transform shootPoint;
         [SerializeField] private GameObject dustObject;
         [Space]
-        [SerializeField] private Color damageColor;
+        //[SerializeField] private Color damageColor;
         [SerializeField] private ObjectPool damageText;
         [Space]
         [ShowInInspector, ReadOnly] private UnitState _currentState;

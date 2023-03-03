@@ -6,12 +6,12 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Weapon 1
+  m_Name: Weapon 7
   m_Controller: {fileID: 9100000, guid: 7b1a122aa88b21649b8abd1b653254a5, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 111c0a7bcc0efd541b0cd32c90fc95cc, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: ed3c7c86c3980d143af41bef818c0745, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: bb3f3a4c28963f847b1fadf586aaacc9, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: 792d54aca19886f429d2ea457afaa79e, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 39f43ab04fbf82249bfa9e259123112b, type: 3}
   - m_OriginalClip: {fileID: 7400000, guid: 6dfacb3ca3e22f54aa6278ae4f4f220b, type: 3}
-    m_OverrideClip: {fileID: 7400000, guid: 8be38cb9808064d4390d7601a45871bb, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: fc7a9be4da93afa4aac71f5e601703cf, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 111c0a7bcc0efd541b0cd32c90fc95cc, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 69138579e7ca1b44e86de482ed79a760, type: 3}

@@ -12,17 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9f7a432be94f40a4d296e2eedac839, type: 3}
   m_Name: Level 1
   m_EditorClassIdentifier: 
-  levelLocation: 0
+  locationType: 0
   zombiesWaves:
   - subWaves:
     - timeBetweenZombie: 0.5
       timeBetweenWaves: 0
       zombieCount:
-        usualZombieCount: 2
-        fastZombieCount: 0
-        bigZombieCount: 0
+        usualZombieCount: 15
+        fastZombieCount: 15
+        bigZombieCount: 15
     timeBetweenWaves: 4
-    speedMultiplier: 1.1
   - subWaves:
     - timeBetweenZombie: 0.5
       timeBetweenWaves: 0
@@ -31,7 +30,6 @@ MonoBehaviour:
         fastZombieCount: 0
         bigZombieCount: 0
     timeBetweenWaves: 4
-    speedMultiplier: 1.1
   - subWaves:
     - timeBetweenZombie: 0.5
       timeBetweenWaves: 0
@@ -40,5 +38,4 @@ MonoBehaviour:
         fastZombieCount: 0
         bigZombieCount: 0
     timeBetweenWaves: 0
-    speedMultiplier: 1.4
   index: 1

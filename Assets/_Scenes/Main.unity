@@ -5371,7 +5371,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 541318327}
-  m_LocalRotation: {x: 0.41321626, y: 0.000000027138974, z: -0.000000012314803, w: 0.9106329}
+  m_LocalRotation: {x: 0.41321626, y: 0.000000027138977, z: -0.000000012314805, w: 0.9106329}
   m_LocalPosition: {x: 0.651905, y: 23.943228, z: -16.672462}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6592,7 +6592,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   yWeaponPosition: 2
-  zWeaponPosition: 2
+  zWeaponPosition: -2
   selectedWeapon: {fileID: 0}
   currentDragState: 0
   previousSlot: {fileID: 0}
@@ -8624,7 +8624,7 @@ GameObject:
   - component: {fileID: 981873211}
   - component: {fileID: 981873212}
   m_Layer: 0
-  m_Name: Weapon Manager
+  m_Name: Soldiers Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8657,11 +8657,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a031040b406f243bd3573c91ffe1f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
+  soldiers:
   - {fileID: 6869063623581196546, guid: 07cd3aff5ffcaf74b9ede48064d100df, type: 3}
   - {fileID: 1521118869535433984, guid: a4d86605554f0b94ebba121a733dc03f, type: 3}
   - {fileID: 3917416894062219690, guid: 85c5e76e43acffe41b0f43404039af8b, type: 3}
   - {fileID: 4596888915595297859, guid: 92003188badd4f14aabc4086611f6bb6, type: 3}
+  - {fileID: 4596888915595297859, guid: 16c3d7ba5b4f4674c9076a80258c35b8, type: 3}
+  - {fileID: 4596888915595297859, guid: 97bf0ecf90b7ef845a4e2ca0a3f8a6f3, type: 3}
+  - {fileID: 4596888915595297859, guid: b54d9fb268010e8479235a55136bcced, type: 3}
+  - {fileID: 4596888915595297859, guid: a873e4062a8eed44e93717e3753390a8, type: 3}
+  - {fileID: 4596888915595297859, guid: dafe8cb90b5cd3c469ea29f64c8e0611, type: 3}
 --- !u!1 &985940650
 GameObject:
   m_ObjectHideFlags: 0
@@ -11248,7 +11253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slotManager: {fileID: 316686883}
   moneyWallet: {fileID: 1073831380}
-  weaponManager: {fileID: 981873212}
+  soldiersManager: {fileID: 981873212}
   inputHandler: {fileID: 1782505376}
   dragManager: {fileID: 669411772}
   windowsManager: {fileID: 1782505375}
@@ -15782,8 +15787,15 @@ MonoBehaviour:
   spawnRadius: 40
   usualZombie:
   - {fileID: 6325086252172432639, guid: 59a51384d1a05c44cb2ac2af9a367c5e, type: 3}
+  - {fileID: 7867857167495166091, guid: 29ea75bb132ab8f478eed443b1bf0274, type: 3}
+  - {fileID: 2468056259579216462, guid: 71148727fbd8f4f4c86227a493891af9, type: 3}
+  - {fileID: 7115929325316500364, guid: e71729250f64ac04ca997858d69b10f7, type: 3}
+  - {fileID: 4830859380038445140, guid: 0222b4fc6d1ffe9438354607d123d634, type: 3}
+  - {fileID: 2896727977241720946, guid: fbe8c3bf05e989d4798d0611b595cb1d, type: 3}
+  - {fileID: 5478968938249957597, guid: 7dec9254a749be343bb774d43c1bc37c, type: 3}
   fastZombie:
   - {fileID: 6325086252172432639, guid: 4a715ab49f6b4244f96df21dae21c354, type: 3}
+  - {fileID: 7429494325789493154, guid: f50b0f69df1315345a9083ce9f938f71, type: 3}
   bigZombie:
   - {fileID: 6325086252172432639, guid: 39b564d0008b07b4d89ca5ab169bf57c, type: 3}
   zombieTable: {fileID: 140990994}

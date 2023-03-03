@@ -20,7 +20,7 @@ namespace _Scripts.Resources
     {
         [SerializeField] private SlotManager slotManager;
         [SerializeField] private MoneyWallet moneyWallet;
-        [SerializeField] private WeaponManager weaponManager;
+        [SerializeField] private SoldiersManager soldiersManager;
         [SerializeField] private InputHandler inputHandler;
         [SerializeField] private DragManager dragManager;
         [SerializeField] private WindowsManager windowsManager;
@@ -41,7 +41,7 @@ namespace _Scripts.Resources
         {
             Container.Bind<SlotManager>().FromInstance(slotManager).AsSingle().NonLazy();
             Container.Bind<MoneyWallet>().FromInstance(moneyWallet).AsSingle().NonLazy();
-            Container.Bind<WeaponManager>().FromInstance(weaponManager).AsSingle().NonLazy();
+            Container.Bind<SoldiersManager>().FromInstance(soldiersManager).AsSingle().NonLazy();
             Container.Bind<InputHandler>().FromInstance(inputHandler).AsSingle().NonLazy();
             Container.Bind<DragManager>().FromInstance(dragManager).AsSingle().NonLazy();
             Container.Bind<WindowsManager>().FromInstance(windowsManager).AsSingle().NonLazy();
