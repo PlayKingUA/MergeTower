@@ -87,6 +87,10 @@ MonoBehaviour:
   gunTransform: {fileID: 5377281230909582685}
   shootPoint: {fileID: 0}
   projectilePool: {fileID: 11400000, guid: 28fff9f60737d3d47bc12374324fba02, type: 2}
+  hasShells: 1
+  shellsPool: {fileID: 11400000, guid: a461427cbf0d7994bb77fcfeceb900ec, type: 2}
+  hasMuzzleflare: 1
+  muzzleflarePool: {fileID: 0}
 --- !u!114 &2022539225022688577
 MonoBehaviour:
   m_ObjectHideFlags: 0

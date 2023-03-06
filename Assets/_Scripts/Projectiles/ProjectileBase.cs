@@ -8,18 +8,14 @@ namespace _Scripts.Projectiles
     public class ProjectileBase : MonoBehaviour
     {
         #region Variables
-        [SerializeField] protected bool isSplash;
-        [SerializeField, ShowIf(nameof(isSplash))] protected float damageRadius;
         [ShowInInspector, ReadOnly] 
         protected int Damage;
         
         protected Vector3 LaunchPosition;
         protected Zombie TargetZombie;
 
-        private Collider[] _colliders;
-        
         protected MasterObjectPooler MasterObjectPooler;
-        protected ObjectPool ProjectilePool;
+        private ObjectPool _projectilePool;
         #endregion
         
         #region Monobehavior Callbacks
@@ -29,42 +25,18 @@ namespace _Scripts.Projectiles
         }
         protected virtual void Start(){}
         protected virtual  void OnTriggerEnter(Collider other){}
+        
+        protected virtual void OnDrawGizmos(){}
         #endregion
         
         public virtual void Init(Zombie targetZombie, int damage, ObjectPool objectPool)
         {
-            ProjectilePool = objectPool;
+            _projectilePool = objectPool;
             LaunchPosition = transform.position;
             TargetZombie = targetZombie;
             Damage = damage;
         }
 
-        protected virtual void ReturnToPool() => MasterObjectPooler.Release(gameObject, ProjectilePool.PoolName);
-
-        protected virtual void SplashHit(Transform damagePoint = null)
-        {
-            if (damagePoint == null) damagePoint = transform;
-            
-            _colliders = Physics.OverlapSphere(damagePoint.position, damageRadius);
-
-            for (var i = 0; i < _colliders.Length; i++)
-            {
-                if (_colliders[i] == null || !_colliders[i].TryGetComponent(out Zombie zombie)) continue;
-                zombie.GetDamage(Damage);
-                if (!isSplash)
-                    break;
-            }
-            
-            ReturnToPool();
-        }
-        
-        protected virtual void OnDrawGizmos()
-        {
-            if (!isSplash)
-                return;
-            
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, damageRadius);
-        }
+        protected virtual void ReturnToPool() => MasterObjectPooler.Release(gameObject, _projectilePool.PoolName);
     }
 }

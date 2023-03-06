@@ -109,17 +109,68 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 20193b7b57421174ab9d10b294085267,
         type: 2}
+    - target: {fileID: 4321273802326034605, guid: 149b72ba0441d694aa4c69658f859e6b,
+        type: 3}
+      propertyPath: muzzleflarePool
+      value: 
+      objectReference: {fileID: 11400000, guid: ff2b271e27e9ff6459ccd0a80fcd711f,
+        type: 2}
     - target: {fileID: 5854450411255816681, guid: 149b72ba0441d694aa4c69658f859e6b,
         type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 22100000, guid: 407f626a320afe3409dc61b8550ced3b,
         type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4321273802326034605, guid: 149b72ba0441d694aa4c69658f859e6b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 149b72ba0441d694aa4c69658f859e6b, type: 3}
+--- !u!1 &478377047365654183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 184886033015069257, guid: 149b72ba0441d694aa4c69658f859e6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 302675475529288942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4754628757246582239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 478377047365654183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd18e8812b9b4c87935c2ed43872f715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 3
+  attackSpeedPerSecond: 1
+  appearFx: {fileID: 5232012305796231791}
+  destroyFx: {fileID: 7708422527323219062}
+  gunTransform: {fileID: 5669083566925472179}
+  shootPoint: {fileID: 3636851662421909670}
+  projectilePool: {fileID: 11400000, guid: 20193b7b57421174ab9d10b294085267, type: 2}
+  hasShells: 1
+  shellsPool: {fileID: 11400000, guid: a461427cbf0d7994bb77fcfeceb900ec, type: 2}
+  hasMuzzleflare: 1
+  muzzleflarePool: {fileID: 11400000, guid: ff2b271e27e9ff6459ccd0a80fcd711f, type: 2}
+  bulletCount: 3
+  otherProjectilesDamage: 2
+  angleBetweenProjectiles: 5
+--- !u!1 &5232012305796231791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5523813123809721985, guid: 149b72ba0441d694aa4c69658f859e6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 302675475529288942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5669083566925472179 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5377281230909582685, guid: 149b72ba0441d694aa4c69658f859e6b,
+    type: 3}
+  m_PrefabInstance: {fileID: 302675475529288942}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7708422527323219062 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7983334917601585304, guid: 149b72ba0441d694aa4c69658f859e6b,
     type: 3}
   m_PrefabInstance: {fileID: 302675475529288942}
   m_PrefabAsset: {fileID: 0}

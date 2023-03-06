@@ -4770,7 +4770,7 @@ GameObject:
   - component: {fileID: 198879403692676820}
   - component: {fileID: -5382559907077707922}
   m_Layer: 0
-  m_Name: Muzzleflare 1
+  m_Name: Muzzleflare 6
   m_TagString: FX
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

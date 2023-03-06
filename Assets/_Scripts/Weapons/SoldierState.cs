@@ -1,6 +1,6 @@
 ﻿namespace _Scripts.Weapons
 {
-    public enum WeaponState
+    public enum SoldierState
     {
         Idle,
         Attack,

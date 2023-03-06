@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad40add42ecce646952aaa9475056c8, type: 3}
-  m_Name: Muzzleflare Pool 8
+  m_Name: Projectile 6
   m_EditorClassIdentifier: 
-  _name: Muzzleflare Pool 8
-  _template: {fileID: 1584403288528622, guid: 1f135d89f0ffb0e4fb59ae3b64f11b0e, type: 3}
+  _name: Projectile 6
+  _template: {fileID: 1955566163644328152, guid: 48c53880897501044b3e51069004580f,
+    type: 3}
   _defaultSize: 0
   _maxSize: -1
   _incrementalInstanceNames: 0

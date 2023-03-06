@@ -176,6 +176,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 9a4d725b70475ea4a9e0aefdc5d8f5d9,
         type: 2}
+    - target: {fileID: 4321273802326034605, guid: 149b72ba0441d694aa4c69658f859e6b,
+        type: 3}
+      propertyPath: muzzleflarePool
+      value: 
+      objectReference: {fileID: 11400000, guid: 915fbf2603e28a8438fb79ecb348597d,
+        type: 2}
     - target: {fileID: 5854450411255816681, guid: 149b72ba0441d694aa4c69658f859e6b,
         type: 3}
       propertyPath: m_Controller

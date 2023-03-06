@@ -157,7 +157,7 @@ namespace _Scripts.Slot_Logic
             meshRenderer.gameObject.SetActive(false);
             if (_weapon != null)
             {
-                _weapon.ChangeState(WeaponState.Attack);
+                _weapon.ChangeState(SoldierState.Attack);
             }
         }
 
@@ -165,7 +165,7 @@ namespace _Scripts.Slot_Logic
         {
             if (_weapon != null)
             {
-                _weapon.ChangeState(WeaponState.Idle);
+                _weapon.ChangeState(SoldierState.Idle);
             }
         }
         

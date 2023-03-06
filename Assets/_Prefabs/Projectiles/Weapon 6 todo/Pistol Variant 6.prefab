@@ -397,7 +397,7 @@ PrefabInstance:
         type: 3}
       propertyPath: impactPool
       value: 
-      objectReference: {fileID: 11400000, guid: 3771d87481deb8d48ab2fc4230db5c95,
+      objectReference: {fileID: 11400000, guid: a5db11abbaa31204fa898deab01b0f63,
         type: 2}
     - target: {fileID: 588428771100745382, guid: e6d58459a1c059a4ca10f992b6497e93,
         type: 3}

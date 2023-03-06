@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad40add42ecce646952aaa9475056c8, type: 3}
-  m_Name: Impact Pool 5
+  m_Name: Impact Pool 6
   m_EditorClassIdentifier: 
-  _name: Impact Pool 5
+  _name: Impact Pool 6
   _template: {fileID: 1879272669879180, guid: a5b23ac202c3a5d40a3cc9d8eebfc8ef, type: 3}
   _defaultSize: 0
   _maxSize: -1

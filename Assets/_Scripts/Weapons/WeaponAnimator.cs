@@ -20,7 +20,7 @@ namespace _Scripts.Weapons
             _animator = GetComponent<Animator>();
         }
 
-        public void SetAnimation(WeaponState state)
+        public void SetAnimation(SoldierState state)
         {
             if (_currentState == _deathHash)
                 return;
@@ -30,13 +30,13 @@ namespace _Scripts.Weapons
                 _animator.Play(_currentState, 0, 0);
         }
 
-        private int GetHash(WeaponState state)
+        private int GetHash(SoldierState state)
         {
             var hash = state switch
             {
-                WeaponState.Idle => _idleHash,
-                WeaponState.Attack => _attackHash,
-                WeaponState.Death => _deathHash,
+                SoldierState.Idle => _idleHash,
+                SoldierState.Attack => _attackHash,
+                SoldierState.Death => _deathHash,
                 _ => throw new ArgumentOutOfRangeException(nameof(state), state, null)
             };
             return hash;

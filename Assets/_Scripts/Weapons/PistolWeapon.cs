@@ -1,5 +1,6 @@
 ﻿using _Scripts.Projectiles;
 using QFSW.MOP2;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Scripts.Weapons
@@ -11,14 +12,20 @@ namespace _Scripts.Weapons
         [SerializeField]
         protected Transform shootPoint;
         [SerializeField] protected ObjectPool projectilePool;
+        [SerializeField] protected bool hasShells;
+        [SerializeField, ShowIf(nameof(hasShells))]
+        protected ObjectPool shellsPool;
+        [SerializeField] protected bool hasMuzzleflare = true;
+        [SerializeField, ShowIf(nameof(hasMuzzleflare))]
+        protected ObjectPool muzzleflarePool;
 
-        protected MasterObjectPooler _masterObjectPooler;
+        protected MasterObjectPooler MasterObjectPooler;
         #endregion
 
         #region Monobehaviour Callbacks
         protected override void Start()
         {
-            _masterObjectPooler =MasterObjectPooler.Instance;
+            MasterObjectPooler =MasterObjectPooler.Instance;
             base.Start();
         }
         #endregion
@@ -38,11 +45,20 @@ namespace _Scripts.Weapons
         
         protected virtual void Fire()
         {
-            var bullet =
-                _masterObjectPooler.GetObjectComponent<Projectile>(projectilePool.PoolName, shootPoint.position, shootPoint.rotation);
+            if (hasMuzzleflare)
+            {
+                MasterObjectPooler.GetObject(muzzleflarePool.PoolName, shootPoint.position, shootPoint.rotation);
+            }
+            if (hasShells)
+            {
+                MasterObjectPooler.GetObject(shellsPool.PoolName, shootPoint.position, shootPoint.rotation);
+            }
+
+            var bullet = MasterObjectPooler.GetObjectComponent<Projectile>(projectilePool.PoolName, shootPoint.position,
+                shootPoint.rotation);
 
             bullet.Init(TargetZombie, Damage, projectilePool);
-            WeaponAnimator.SetAnimation(WeaponState.Attack);
+            WeaponAnimator.SetAnimation(SoldierState.Attack);
         }
     }
 }

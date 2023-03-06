@@ -19,7 +19,7 @@ namespace _Scripts.Weapons
         [SerializeField] private GameObject destroyFx;
         [SerializeField] private Transform gunTransform;
         [Space(10)]
-        [ShowInInspector, ReadOnly] private WeaponState _currentState;
+        [ShowInInspector, ReadOnly] private SoldierState _currentState;
         [ShowInInspector, ReadOnly] private int _level;
 
         [Inject] private GameStateManager _gameStateManager;
@@ -43,8 +43,7 @@ namespace _Scripts.Weapons
 
         private protected bool CanAttack => AttackTimer >= CoolDown  && TargetZombie != null;
 
-        protected override float CoolDown =>
-            base.CoolDown / _speedUpLogic.CoolDownSpeedUp;
+        protected override float CoolDown => base.CoolDown / _speedUpLogic.CoolDownSpeedUp;
         #endregion
         
         #region Monobehaviour Callbacks
@@ -53,7 +52,7 @@ namespace _Scripts.Weapons
             base.Start();
             WeaponAnimator = GetComponent<WeaponAnimator>();
             
-            ChangeState(WeaponState.Idle);
+            ChangeState(SoldierState.Idle);
             
             //_speedUpLogic.OnTapCountChanged += Shake;
 
@@ -75,7 +74,7 @@ namespace _Scripts.Weapons
         #endregion
         
         #region States Logic
-        public void ChangeState(WeaponState newState)
+        public void ChangeState(SoldierState newState)
         {
             _currentState = newState;
         }
@@ -84,10 +83,10 @@ namespace _Scripts.Weapons
         {
             switch (_currentState)
             {
-                case WeaponState.Idle:
+                case SoldierState.Idle:
                     IdleState();
                     break;
-                case WeaponState.Attack:
+                case SoldierState.Attack:
                     AttackState();
                     break;
                 default:
@@ -97,7 +96,7 @@ namespace _Scripts.Weapons
 
         protected virtual void IdleState()
         {
-            WeaponAnimator.SetAnimation(WeaponState.Idle);
+            WeaponAnimator.SetAnimation(SoldierState.Idle);
         }
 
         protected virtual void AttackState()
@@ -153,7 +152,7 @@ namespace _Scripts.Weapons
 
         private void DestroyWeapon()
         {
-            WeaponAnimator.SetAnimation(WeaponState.Death);
+            WeaponAnimator.SetAnimation(SoldierState.Death);
             if (destroyFx == null)
                 return;
             /*destroyFx.SetActive(true);
