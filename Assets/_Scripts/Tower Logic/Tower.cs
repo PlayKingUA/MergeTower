@@ -1,10 +1,12 @@
 ﻿using System;
+using _Scripts.Cameras;
 using _Scripts.Game_States;
 using _Scripts.Interface;
 using _Scripts.UI.Upgrade;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using Zenject;
+using CameraType = _Scripts.Cameras.CameraType;
 
 namespace _Scripts.Tower_Logic
 {
@@ -12,9 +14,12 @@ namespace _Scripts.Tower_Logic
     {
         #region Variables
         [SerializeField] private TowerLevel[] levelsData;
+        [Space(10)]
+        [SerializeField] private GameObject hpCanvas;
         
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private UpgradeMenu _upgradeMenu;
+        [Inject] private CameraManager _cameraManager;
         
         [ShowInInspector, ReadOnly] public float MaxHealth { get; private set;}
         public float CurrentHealth { get; private set; }
@@ -33,6 +38,9 @@ namespace _Scripts.Tower_Logic
 
             _upgradeMenu.TowerLevel.OnLevelChanged += ChangeMesh;
             ChangeMesh();
+            
+            hpCanvas.SetActive(false);
+            _gameStateManager.AttackStarted += () => { hpCanvas.SetActive(true); };
         }
         #endregion
 
@@ -47,8 +55,20 @@ namespace _Scripts.Tower_Logic
         {
             for (var i = 0; i < levelsData.Length; i++)
             {
-                levelsData[i].gameObject.SetActive(i == CurrentLevel);
+                EnableTowerLevel(levelsData[i], i == CurrentLevel);
             }
+        }
+
+        private void EnableTowerLevel(TowerLevel tower, bool isEnabled)
+        {
+            tower.gameObject.SetActive(isEnabled);
+            
+            if (!isEnabled)
+                return;
+            
+            _cameraManager.SetCamera(CameraType.Menu, tower.MenuCamera);
+            _cameraManager.SetCamera(CameraType.Abilities, tower.AbilityCamera);
+            _cameraManager.SetCamera(CameraType.Attack, tower.GameCamera);
         }
         
         #region Get Damage\Die

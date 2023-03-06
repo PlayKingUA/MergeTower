@@ -1,3 +1,4 @@
+using _Scripts.Cameras;
 using _Scripts.Game_States;
 using _Scripts.Input_Logic;
 using _Scripts.Levels;
@@ -36,6 +37,7 @@ namespace _Scripts.Resources
         [SerializeField] private TutorialWindow tutorialWindow;
         [SerializeField] private VibrationManager vibrationManager;
         [SerializeField] private CoinsAnimation coinsAnimation;
+        [SerializeField] private CameraManager cameraManager;
         
         public override void InstallBindings()
         {
@@ -56,8 +58,10 @@ namespace _Scripts.Resources
             Container.Bind<TutorialManager>().FromInstance(tutorialManager).AsSingle().NonLazy();
             Container.Bind<TutorialWindow>().FromInstance(tutorialWindow).AsSingle().NonLazy();
             Container.Bind<VibrationManager>().FromInstance(vibrationManager).AsSingle().NonLazy();
+            Container.Bind<CameraManager>().FromInstance(cameraManager).AsSingle().NonLazy();
             
             Container.Bind<CoinsAnimation>().FromInstance(coinsAnimation).AsSingle().NonLazy();
+            
         }
     }
 }

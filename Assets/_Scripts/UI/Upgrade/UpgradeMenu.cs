@@ -1,7 +1,10 @@
-﻿using _Scripts.UI.Buttons.Shop_Buttons;
+﻿using _Scripts.Cameras;
+using _Scripts.UI.Buttons.Shop_Buttons;
 using _Scripts.UI.Windows;
 using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
+using CameraType = _Scripts.Cameras.CameraType;
 
 namespace _Scripts.UI.Upgrade
 {
@@ -20,6 +23,8 @@ namespace _Scripts.UI.Upgrade
         [Space(10)]
         [SerializeField] private CanvasGroup upgradePanel;
         [SerializeField] private CanvasGroup abilitiesPanel;
+
+        [Inject] private CameraManager _cameraManager;
         #endregion
 
         #region Properties
@@ -33,10 +38,12 @@ namespace _Scripts.UI.Upgrade
             openAbilitiesButton.onClick.AddListener(() =>
             {
                 ShopWindowSwipe(true);
+                _cameraManager.ChangeCamera(CameraType.Abilities);
             });
             closeAbilitiesButton.onClick.AddListener(() =>
             {
                 ShopWindowSwipe(false);
+                _cameraManager.ChangeCamera(CameraType.Menu);
             });
         }
         

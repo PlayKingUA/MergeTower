@@ -3,7 +3,7 @@ using Cinemachine;
 using UnityEngine;
 using Zenject;
 
-namespace _Scripts.CameraManager
+namespace _Scripts.Cameras
 {
     public class CameraManager : MonoBehaviour
     {
@@ -19,12 +19,12 @@ namespace _Scripts.CameraManager
         {
             _gameStateManager.AttackStarted += () =>
             {
-                ChangeCameraPriority(CameraType.Attack);
+                ChangeCamera(CameraType.Attack);
             };
         }
 
         #region Change Camera
-        private void ChangeCameraPriority(CameraType cameraType)
+        public void ChangeCamera(CameraType cameraType)
         {
             currentCameraType = cameraType;
 
@@ -36,6 +36,17 @@ namespace _Scripts.CameraManager
             _currentCamera.m_Priority = 100;
         }
 
+        public void SetCamera(CameraType cameraType, CinemachineVirtualCamera targetCamera)
+        {
+            targetCamera.m_Priority = cameras[(int) cameraType].m_Priority;
+            cameras[(int) cameraType].m_Priority = 0;
+            cameras[(int) cameraType] = targetCamera;
+
+            if (currentCameraType == cameraType)
+            {
+                _currentCamera = targetCamera;
+            }
+        }
         #endregion`
     }
 }
