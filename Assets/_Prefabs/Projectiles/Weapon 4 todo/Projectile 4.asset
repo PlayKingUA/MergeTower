@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5ad40add42ecce646952aaa9475056c8, type: 3}
-  m_Name: Impact Prefab 1
+  m_Name: Projectile 4
   m_EditorClassIdentifier: 
-  _name: Impact Prefab 1
-  _template: {fileID: 1879272669879180, guid: 9a650fc40c5597b4fb05a4b7b6ec4baf, type: 3}
+  _name: Projectile 4
+  _template: {fileID: 1955566163644328152, guid: cbf091d9ecffc734383dac177e67b064,
+    type: 3}
   _defaultSize: 0
   _maxSize: -1
   _incrementalInstanceNames: 0

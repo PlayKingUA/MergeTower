@@ -6,7 +6,7 @@ namespace _Scripts.Weapons
 {
     public class WeaponAnimator : MonoBehaviour
     {
-        [ShowInInspector]
+        [ShowInInspector, ReadOnly]
         private Animator _animator;
 
         private readonly int _idleHash = Animator.StringToHash("Idle");

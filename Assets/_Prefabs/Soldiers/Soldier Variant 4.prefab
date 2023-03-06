@@ -41,7 +41,7 @@ PrefabInstance:
     - target: {fileID: 184886033015069257, guid: 149b72ba0441d694aa4c69658f859e6b,
         type: 3}
       propertyPath: m_Name
-      value: Soldier (4) Variant
+      value: Soldier Variant 4
       objectReference: {fileID: 0}
     - target: {fileID: 3172668987305890661, guid: 149b72ba0441d694aa4c69658f859e6b,
         type: 3}
@@ -103,6 +103,12 @@ PrefabInstance:
       propertyPath: shootPoint
       value: 
       objectReference: {fileID: 3636851662421909670}
+    - target: {fileID: 4321273802326034605, guid: 149b72ba0441d694aa4c69658f859e6b,
+        type: 3}
+      propertyPath: projectilePool
+      value: 
+      objectReference: {fileID: 11400000, guid: 20193b7b57421174ab9d10b294085267,
+        type: 2}
     - target: {fileID: 5854450411255816681, guid: 149b72ba0441d694aa4c69658f859e6b,
         type: 3}
       propertyPath: m_Controller

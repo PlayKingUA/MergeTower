@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 2446454604672163114, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: maxValue
-      value: 12.5
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 2446454604672163114, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
@@ -275,7 +275,7 @@ PrefabInstance:
     - target: {fileID: 2446454604672163114, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}
       propertyPath: startValue
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4030392460292522711, guid: b663bd94b13197547ba4357249e33c31,
         type: 3}

@@ -8,8 +8,8 @@ namespace _Scripts.Projectiles
     public class ProjectileBase : MonoBehaviour
     {
         #region Variables
-        [SerializeField] protected float damageRadius;
         [SerializeField] protected bool isSplash;
+        [SerializeField, ShowIf(nameof(isSplash))] protected float damageRadius;
         [ShowInInspector, ReadOnly] 
         protected int Damage;
         
@@ -60,6 +60,9 @@ namespace _Scripts.Projectiles
         
         protected virtual void OnDrawGizmos()
         {
+            if (!isSplash)
+                return;
+            
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, damageRadius);
         }
