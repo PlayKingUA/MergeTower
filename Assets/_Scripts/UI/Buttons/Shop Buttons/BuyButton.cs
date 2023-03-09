@@ -29,8 +29,8 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         {
             base.Start();
             
-            MoneyWallet.MoneyCountChanged += CheckMoney;
-            CheckMoney(MoneyWallet.MoneyCount);
+            MoneyWallet.MoneyCountChanged += ChangeButtonState;
+            ChangeButtonState();
         }
         #endregion
         
@@ -56,7 +56,7 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             states[(int)ButtonBuyState.BuyWithMoney].SetActive(targetState != ButtonBuyState.MaxLevel);
             states[(int)ButtonBuyState.MaxLevel].SetActive(targetState == ButtonBuyState.MaxLevel);
             
-            UpdateText();
+            UpdateInfo();
         }
         #endregion
 
@@ -78,11 +78,6 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
                 default:
                     break;
             }
-        }
-        
-        private void CheckMoney(float moneyCount)
-        {
-            ChangeButtonState();
         }
 
         public override void SetInteractable(bool isInteractable)

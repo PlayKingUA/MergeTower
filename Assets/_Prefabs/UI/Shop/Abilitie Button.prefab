@@ -359,6 +359,7 @@ MonoBehaviour:
 
 '
   requiredTowerLevel: 0
+  buyProgressBar: {fileID: 2430128317167728600}
 --- !u!1 &797130283544067390
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,12 +48,13 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 
         protected virtual void Start()
         {
-            UpdateText();
+            UpdateInfo();
         }
         #endregion
         
         #region Save/Load
-        protected void Save()
+
+        private void Save()
         {
             PlayerPrefs.SetInt(saveKey, CurrentLevel);
         }
@@ -72,9 +73,11 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             Save();
             
             OnBought?.Invoke();
+
+            UpdateInfo();
         }
 
-        protected virtual void UpdateText()
+        protected virtual void UpdateInfo()
         {
             priseText.text = MoneyDisplay.MoneyText(CurrentPrise);
         }

@@ -14,10 +14,7 @@ public class UpgradeNotif : MonoBehaviour
     
     private void Start()
     {
-        _moneyWallet.MoneyCountChanged += f =>
-        {
-            UpdateNotifState();
-        };
+        _moneyWallet.MoneyCountChanged += UpdateNotifState;
         foreach (var button in upgradeButtons)
         {
             button.OnBought += UpdateNotifState;

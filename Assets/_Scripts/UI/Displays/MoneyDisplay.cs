@@ -19,13 +19,13 @@ namespace _Scripts.UI.Displays
         private void Start()
         {
             _moneyWallet.MoneyCountChanged += Display;
-            Display(_moneyWallet.MoneyCount);
+            Display();
         }
         #endregion
         
-        private void Display(float value)
+        private void Display()
         {
-            moneyText.text = MoneyText(value);
+            moneyText.text = MoneyText(_moneyWallet.MoneyCount);
         }
 
         public static string MoneyText(float value)

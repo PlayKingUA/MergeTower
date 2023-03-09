@@ -18,6 +18,7 @@ namespace _Scripts.UI.Buttons
         [SerializeField, TextArea] private string description;
         [Space(10)]
         [SerializeField] private int requiredTowerLevel;
+        [SerializeField] private BuyProgressBar buyProgressBar;
         
         private Toggle _toggle;
 
@@ -53,6 +54,13 @@ namespace _Scripts.UI.Buttons
                 _abilitiesPanel.UpdateAbility(this);
             
             // green mesh
+        }
+        
+        protected override void UpdateInfo()
+        {
+            base.UpdateInfo();
+            
+            buyProgressBar.SetActiveToggles(CurrentLevel);
         }
     }
 }

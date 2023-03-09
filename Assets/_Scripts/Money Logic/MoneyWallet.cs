@@ -11,7 +11,7 @@ namespace _Scripts.Money_Logic
 
         public float MoneyCount => moneyCount;
         
-        public event Action<float> MoneyCountChanged;
+        public event Action MoneyCountChanged;
         #endregion
         
         #region Monobehaviour Callbacks
@@ -25,7 +25,7 @@ namespace _Scripts.Money_Logic
         public void Add(float addAmount)
         {
             moneyCount += addAmount;
-            MoneyCountChanged?.Invoke(moneyCount);
+            MoneyCountChanged?.Invoke();
             
             Save();
         }
@@ -33,7 +33,7 @@ namespace _Scripts.Money_Logic
         public void Get(int getAmount)
         {
             moneyCount -= getAmount;
-            MoneyCountChanged?.Invoke(moneyCount);
+            MoneyCountChanged?.Invoke();
 
             Save();
         }
@@ -49,7 +49,7 @@ namespace _Scripts.Money_Logic
         {
             moneyCount = PlayerPrefs.GetFloat(SaveKey, moneyCount);
             
-            MoneyCountChanged?.Invoke(moneyCount);
+            MoneyCountChanged?.Invoke();
         }
         #endregion
     }

@@ -21,7 +21,8 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         public float CurrentValue => GetValue(CurrentLevel);
         private float GetValue(int level) => Mathf.Lerp(startValue, maxValue, (float) level / maxLevel);
 
-        public override bool IsMaxLevel => (int) (CurrentLevel / levelsPerTowerLevel) >= UpgradeMenu.TowerLevel.CurrentLevel + 1;
+        public override bool IsMaxLevel =>
+            (CurrentLevel / levelsPerTowerLevel) >= UpgradeMenu.TowerLevel.CurrentLevel + 1;
 
         public int ProgressBarLevel => IsMaxLevel 
             ? levelsPerTowerLevel 
@@ -35,9 +36,9 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             ChangeButtonState();
         }
 
-        protected override void UpdateText()
+        protected override void UpdateInfo()
         {
-            base.UpdateText();
+            base.UpdateInfo();
             
             moreText.SetActive(CanBeBought);
             valueAfter.gameObject.SetActive(CanBeBought);

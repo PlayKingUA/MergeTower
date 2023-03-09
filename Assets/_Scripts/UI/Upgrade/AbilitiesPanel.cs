@@ -30,6 +30,7 @@ namespace _Scripts.UI.Upgrade
         private void BuyAbility()
         {
             _currentButton.BuyItem();
+            UpdateAbility(_currentButton);
         }
 
         public void UpdateAbility(AbilityButton abilityButton)
