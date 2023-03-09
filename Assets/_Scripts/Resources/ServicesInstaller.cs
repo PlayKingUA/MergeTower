@@ -38,6 +38,7 @@ namespace _Scripts.Resources
         [SerializeField] private VibrationManager vibrationManager;
         [SerializeField] private CoinsAnimation coinsAnimation;
         [SerializeField] private CameraManager cameraManager;
+        [SerializeField] private AbilitiesPanel abilitiesPanel;
         
         public override void InstallBindings()
         {
@@ -59,6 +60,7 @@ namespace _Scripts.Resources
             Container.Bind<TutorialWindow>().FromInstance(tutorialWindow).AsSingle().NonLazy();
             Container.Bind<VibrationManager>().FromInstance(vibrationManager).AsSingle().NonLazy();
             Container.Bind<CameraManager>().FromInstance(cameraManager).AsSingle().NonLazy();
+            Container.Bind<AbilitiesPanel>().FromInstance(abilitiesPanel).AsSingle();
             
             Container.Bind<CoinsAnimation>().FromInstance(coinsAnimation).AsSingle().NonLazy();
             

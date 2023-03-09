@@ -1,79 +1,43 @@
-﻿using System;
-using _Scripts.Money_Logic;
-using _Scripts.UI.Displays;
-using Sirenix.OdinInspector;
-using TMPro;
+﻿using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
 namespace _Scripts.UI.Buttons.Shop_Buttons
 {
     [RequireComponent(typeof(Button))]
-    public class BuyButton : MonoBehaviour
+    public class BuyButton : ShopButton
     {
         #region Variables
         [ShowInInspector] private ButtonBuyState _buttonState;
         [SerializeField] private GameObject[] states;
-        [SerializeField] private string saveKey = "WeaponPrice";
-        [Space(10)]
-        [SerializeField] protected int startPrice;
-        [SerializeField] protected int baseAmount;
-        [SerializeField] protected float multiplier;
-        [SerializeField] protected float powMultiplier;
-        [SerializeField] private TextMeshProUGUI priseText;
-
+        
         private Button _button;
-
-        [ShowInInspector, ReadOnly]
-        private int _currentLevel;
-
-        public int CurrentLevel
-        {
-            get => _currentLevel;
-            private set
-            {
-                _currentLevel = value; 
-                OnLevelChanged?.Invoke();
-            }
-        }
-
-        [Inject] protected MoneyWallet MoneyWallet;
-
-        public event Action OnBought;
-        public event Action OnLevelChanged;
-        #endregion
-
-        #region Properties
+        
         private ButtonBuyState ButtonState => _buttonState;
-
-        private int CurrentPrise => GetPrise(CurrentLevel);
-        public bool IsEnoughMoney => MoneyWallet.MoneyCount >= CurrentPrise;
-
-        protected virtual bool CanBeBought => IsEnoughMoney;
         #endregion
-    
+
         #region Monobehaviour Callbacks
-        protected virtual void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+            
             _button = GetComponent<Button>();
             _button.onClick.AddListener(Click);
-            Load();
         }
 
-        protected virtual void Start()
+        protected override void Start()
         {
-            UpdateText();
-
+            base.Start();
+            
             MoneyWallet.MoneyCountChanged += CheckMoney;
             CheckMoney(MoneyWallet.MoneyCount);
         }
         #endregion
         
         #region Display
-        protected virtual void ChangeButtonState()
+        protected override void ChangeButtonState()
         {
-            SetUIState((MoneyWallet.MoneyCount >= CurrentPrise)
+            SetUIState(IsEnoughMoney
                 ? ButtonBuyState.BuyWithMoney
                 : ButtonBuyState.BuyWithADs);
         }
@@ -94,14 +58,8 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             
             UpdateText();
         }
-
-        protected virtual void UpdateText()
-        {
-            priseText.text = MoneyDisplay.MoneyText(CurrentPrise);
-        }
         #endregion
 
-        #region Click
         private void Click()
         {
             if (!CanBeBought)
@@ -111,7 +69,7 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             {
                 case ButtonBuyState.BuyWithMoney:
                     MoneyWallet.Get(CurrentPrise);
-                    ClickEvent();
+                    BuyItem();
                     break;
                 case ButtonBuyState.BuyWithADs:
                     break;
@@ -121,47 +79,15 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
                     break;
             }
         }
-
-        protected virtual void ClickEvent()
-        {
-            CurrentLevel++;
-            Save();
-            
-            OnBought?.Invoke();
-            ChangeButtonState();
-        }
-        #endregion
         
-        #region Save/Load
-        private void Save()
-        {
-            PlayerPrefs.SetInt(saveKey, CurrentLevel);
-        }
-
-        private void Load()
-        {
-            CurrentLevel = PlayerPrefs.GetInt(saveKey);
-        }
-        #endregion
-
         private void CheckMoney(float moneyCount)
         {
             ChangeButtonState();
         }
 
-        public void SetInteractable(bool isInteractable)
+        public override void SetInteractable(bool isInteractable)
         {
             _button.interactable = isInteractable;
-        }
-        private int GetPrise(int level)
-        {
-            if (level == 0)
-            {
-                return startPrice;
-            }
-
-            return GetPrise(level - 1) + 
-                   (int) (multiplier * baseAmount * Mathf.Pow(level + 1,powMultiplier));
         }
     }
 }

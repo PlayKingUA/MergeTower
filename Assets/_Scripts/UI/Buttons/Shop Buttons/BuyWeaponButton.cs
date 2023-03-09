@@ -13,9 +13,9 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 
         protected override bool CanBeBought => base.CanBeBought && _slotManager.HasFreePlace();
 
-        protected override void ClickEvent()
+        public override void BuyItem()
         {
-            base.ClickEvent();
+            base.BuyItem();
             _slotManager.CreateNewWeapon(weaponLevel - 1);
         }
     }

@@ -215,12 +215,12 @@ PrefabInstance:
     - target: {fileID: 7710742948962050874, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 239.55731
+      value: 240
       objectReference: {fileID: 0}
     - target: {fileID: 7710742948962050874, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 347.37427
+      value: 347
       objectReference: {fileID: 0}
     - target: {fileID: 7710742948962050874, guid: bc84d657b3d2fd448a954565eed9a37f,
         type: 3}
@@ -339,14 +339,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af2ce41823748909050b84cda6eebca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveKey: Weapon Level
+  priceGenerator:
+    startPrice: 50
+    baseAmount: 50
+    multiplier: 1
+    powMultiplier: 1
+  priseText: {fileID: 3973029124264537081}
   states:
   - {fileID: 3423137473517102963}
   - {fileID: 2572224331103629259}
   - {fileID: 6686301924789320513}
-  saveKey: Weapon Level
-  startPrice: 50
-  baseAmount: 10
-  multiplier: 1
-  powMultiplier: 1.5
-  priseText: {fileID: 3973029124264537081}
   weaponLevel: 1

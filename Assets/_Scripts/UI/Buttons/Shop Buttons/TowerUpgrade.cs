@@ -4,9 +4,9 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 {
     public class TowerUpgrade : UpgradeButtonBase
     {
-        protected override void ClickEvent()
+        public override void BuyItem()
         {
-            base.ClickEvent();
+            base.BuyItem();
             //ToDo upgrade tower
         }
         
