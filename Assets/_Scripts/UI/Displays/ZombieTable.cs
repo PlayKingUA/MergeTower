@@ -21,6 +21,7 @@ namespace _Scripts.UI.Displays
             var usualZombie = 0;
             var fastZombie = 0;
             var bigZombie = 0;
+            var bombers = 0;
             
             foreach (var zombie in zombies)
             {
@@ -35,12 +36,15 @@ namespace _Scripts.UI.Displays
                     case ZombieType.Big:
                         bigZombie++;
                         break;
+                    case ZombieType.Bomber:
+                        bombers++;
+                        break;
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
             }
 
-            UpdatePanel(new ZombieCount(usualZombie, fastZombie, bigZombie));
+            UpdatePanel(new ZombieCount(usualZombie, fastZombie, bigZombie, bombers));
         }
 
         public void UpdatePanel(ZombieCount zombieCount)
@@ -57,6 +61,7 @@ namespace _Scripts.UI.Displays
             var usualZombie = _zombieCount.UsualZombieCount;
             var fastZombie = _zombieCount.FastZombieCount;
             var bigZombie = _zombieCount.BigZombieCount;
+            var bombers = _zombieCount.BomberCount;
             
             switch (zombieType)
             {
@@ -69,12 +74,15 @@ namespace _Scripts.UI.Displays
                 case ZombieType.Big:
                     bigZombie--;
                     break;
+                case ZombieType.Bomber:
+                    bombers--;
+                    break;
                 case ZombieType.CountTypes:
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             
-            UpdatePanel(new ZombieCount(usualZombie, fastZombie, bigZombie));
+            UpdatePanel(new ZombieCount(usualZombie, fastZombie, bigZombie, bombers));
         }
     }
 }

@@ -19,10 +19,11 @@ namespace _Scripts.Levels
         #endregion
 
         [ShowInInspector, ReadOnly]
-        public ZombieCount ZombieCount => new (
+        public ZombieCount ZombieCount => new(
             zombiesWaves.SelectMany(wave => wave.subWaves).Sum(subWave => subWave.ZombieCount.UsualZombieCount),
             zombiesWaves.SelectMany(wave => wave.subWaves).Sum(subWave => subWave.ZombieCount.FastZombieCount),
-            zombiesWaves.SelectMany(wave => wave.subWaves).Sum(subWave => subWave.ZombieCount.BigZombieCount));
+            zombiesWaves.SelectMany(wave => wave.subWaves).Sum(subWave => subWave.ZombieCount.BigZombieCount),
+            zombiesWaves.SelectMany(wave => wave.subWaves).Sum(subWave => subWave.ZombieCount.BomberCount));
     }
 
     [Serializable]
@@ -52,15 +53,18 @@ namespace _Scripts.Levels
         [SerializeField] private int usualZombieCount;
         [SerializeField] private int fastZombieCount;
         [SerializeField] private int bigZombieCount;
+        [SerializeField] private int bomberCount;
         public int UsualZombieCount => usualZombieCount;
         public int FastZombieCount => fastZombieCount;
         public int BigZombieCount => bigZombieCount;
+        public int BomberCount => bomberCount;
 
-        public ZombieCount(int usualZombieCount, int fastZombieCount, int bigZombieCount)
+        public ZombieCount(int usualZombieCount, int fastZombieCount, int bigZombieCount, int bomberCount)
         {
             this.usualZombieCount = usualZombieCount;
             this.fastZombieCount = fastZombieCount;
             this.bigZombieCount = bigZombieCount;
+            this.bomberCount = bomberCount;
         }
     }
 }

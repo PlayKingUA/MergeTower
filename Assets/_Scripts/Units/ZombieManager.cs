@@ -18,6 +18,7 @@ namespace _Scripts.Units
         [SerializeField] private Zombie[] usualZombie;
         [SerializeField] private Zombie[] fastZombie;
         [SerializeField] private Zombie[] bigZombie;
+        [SerializeField] private Zombie[] bombers;
         [Space]
         [SerializeField] private ZombieTable zombieTable;
         [SerializeField] private float messageTimeBeforeLastWave = 2f;
@@ -67,12 +68,14 @@ namespace _Scripts.Units
                     _zombiesLeft += subWave.ZombieCount.UsualZombieCount;
                     _zombiesLeft += subWave.ZombieCount.FastZombieCount;
                     _zombiesLeft += subWave.ZombieCount.BigZombieCount;
+                    _zombiesLeft += subWave.ZombieCount.BomberCount;
 
                     WholeHpSum += subWave.ZombieCount.UsualZombieCount *
                                   usualZombie[0].StartHp(_levelManager.CurrentLevel);
                     WholeHpSum += subWave.ZombieCount.FastZombieCount *
                                   fastZombie[0].StartHp(_levelManager.CurrentLevel);
                     WholeHpSum += subWave.ZombieCount.BigZombieCount * bigZombie[0].StartHp(_levelManager.CurrentLevel);
+                    WholeHpSum += subWave.ZombieCount.BomberCount * bombers[0].StartHp(_levelManager.CurrentLevel);
                 }
             }
             
@@ -103,7 +106,8 @@ namespace _Scripts.Units
                     var usualZombieLeft = subWave.ZombieCount.UsualZombieCount;
                     var fastZombieLeft = subWave.ZombieCount.FastZombieCount;
                     var bigZombieLeft = subWave.ZombieCount.BigZombieCount;
-                    var zombiesLeft = usualZombieLeft + fastZombieLeft + bigZombieLeft;
+                    var bombersLeft = subWave.ZombieCount.BomberCount;
+                    var zombiesLeft = usualZombieLeft + fastZombieLeft + bigZombieLeft + bombersLeft;
                     
                     while (zombiesLeft-- > 0)
                     {
@@ -126,6 +130,12 @@ namespace _Scripts.Units
                                 bigZombieLeft--;
                                 break;
                             }
+                            if (zombieType == ZombieType.Bomber && bombersLeft > 0)
+                            {
+                                bombersLeft--;
+                                break;
+                            }
+                            
                         }
                         
                         CreateZombie(GetTargetZombie(zombieType));
@@ -176,6 +186,9 @@ namespace _Scripts.Units
                     break;
                 case ZombieType.Big:
                     targetZombie = bigZombie[Random.Range(0, bigZombie.Length)];
+                    break;
+                case ZombieType.Bomber:
+                    targetZombie = bombers[Random.Range(0, bombers.Length)];
                     break;
                 case ZombieType.CountTypes:
                 default:
