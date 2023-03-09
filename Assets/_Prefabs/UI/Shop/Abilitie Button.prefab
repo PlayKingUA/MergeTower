@@ -217,6 +217,8 @@ GameObject:
   - component: {fileID: 797130282873707641}
   - component: {fileID: 3076275146555581077}
   - component: {fileID: 648620863683441199}
+  - component: {fileID: 2220099476361192113}
+  - component: {fileID: 5263286014791729609}
   m_Layer: 0
   m_Name: Abilitie Button
   m_TagString: Untagged
@@ -346,10 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states:
-  - {fileID: 2634206254491102036}
-  - {fileID: 2935671453788480492}
-  - {fileID: 6324599688545613670}
+  buttonStateManager: {fileID: 2220099476361192113}
   saveKey: WeaponPrice
   priceGenerator:
     startPrice: 50
@@ -357,17 +356,46 @@ MonoBehaviour:
     multiplier: 1
     powMultiplier: 1
   priseText: {fileID: 9219809684295897563}
+  maxLevel: 5
   nameText: {fileID: 797130283544067360}
   abilityName: Title
   description: 'Some description
 
 '
-  lockedState: {fileID: 1765531868582917167}
-  unlockedState: {fileID: 1088411844254633154}
   requiredLevelText: {fileID: 62535969604297960}
   requiredTowerLevel: 0
-  maxLevel: 5
   buyProgressBar: {fileID: 2430128317167728600}
+--- !u!114 &2220099476361192113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797130282873707636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0effde780b749b7b86632d621468c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  states:
+  - {fileID: 2634206254491102036}
+  - {fileID: 2935671453788480492}
+  - {fileID: 6324599688545613670}
+  - {fileID: 1765531868582917167}
+  unlockedState: {fileID: 1088411844254633154}
+--- !u!114 &5263286014791729609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797130282873707636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e642c2902664d3ca69b22e55a19fbfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityButton: {fileID: 0}
 --- !u!1 &797130283544067390
 GameObject:
   m_ObjectHideFlags: 0

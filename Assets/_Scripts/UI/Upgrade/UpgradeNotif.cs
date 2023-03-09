@@ -7,7 +7,7 @@ using Zenject;
 
 public class UpgradeNotif : MonoBehaviour
 {
-    [SerializeField] private BuyButton[] upgradeButtons;
+    [SerializeField] private ShopButton[] upgradeButtons;
     [SerializeField] private GameObject notifButton;
 
     [Inject] private MoneyWallet _moneyWallet;

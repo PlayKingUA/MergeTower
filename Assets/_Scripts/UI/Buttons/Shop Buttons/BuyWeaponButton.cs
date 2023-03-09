@@ -4,14 +4,14 @@ using Zenject;
 
 namespace _Scripts.UI.Buttons.Shop_Buttons
 {
-    public class BuyWeaponButton : BuyButton
+    public class BuyWeaponButton : ShopButton
     {
         #region Variables
         [SerializeField] private int weaponLevel;
         [Inject] private SlotManager _slotManager;
         #endregion
 
-        protected override bool CanBeBought => base.CanBeBought && _slotManager.HasFreePlace();
+        public override bool CanBeBought => base.CanBeBought && _slotManager.HasFreePlace();
 
         public override void BuyItem()
         {

@@ -8,11 +8,11 @@ namespace _Scripts.UI.Upgrade
         [Space(10)]
         [SerializeField] private UpgradeButton rangeUpgrade;
         [SerializeField] private UpgradeButton healthUpgrade;
-        [SerializeField] private TowerUpgrade towerLevel;
+        [SerializeField] private UpgradeButtonBase towerLevel;
         
         public UpgradeButton RangeUpgrade => rangeUpgrade;
         public UpgradeButton HealthUpgrade => healthUpgrade;
-        public TowerUpgrade TowerLevel => towerLevel;
+        public UpgradeButtonBase TowerLevel => towerLevel;
         
     }
 }

@@ -30,7 +30,7 @@ RectTransform:
   m_Children:
   - {fileID: 4283466012715016307}
   m_Father: {fileID: 5797226181241867892}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
@@ -285,18 +285,18 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 7766132344299811213, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bc84d657b3d2fd448a954565eed9a37f, type: 3}
---- !u!1 &2572224331103629259 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1784425743186608773, guid: bc84d657b3d2fd448a954565eed9a37f,
+--- !u!114 &1509526681056943961 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3423587976689529367, guid: bc84d657b3d2fd448a954565eed9a37f,
     type: 3}
   m_PrefabInstance: {fileID: 4283466013342641486}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3423137473517102963 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1508847444588202557, guid: bc84d657b3d2fd448a954565eed9a37f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4283466013342641486}
-  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100766849987132558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0effde780b749b7b86632d621468c8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3973029124264537081 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 888024228550313655, guid: bc84d657b3d2fd448a954565eed9a37f,
@@ -312,12 +312,6 @@ MonoBehaviour:
 --- !u!224 &5797226181241867892 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7710742948962050874, guid: bc84d657b3d2fd448a954565eed9a37f,
-    type: 3}
-  m_PrefabInstance: {fileID: 4283466013342641486}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &6686301924789320513 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7474684040003245583, guid: bc84d657b3d2fd448a954565eed9a37f,
     type: 3}
   m_PrefabInstance: {fileID: 4283466013342641486}
   m_PrefabAsset: {fileID: 0}
@@ -339,6 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5af2ce41823748909050b84cda6eebca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonStateManager: {fileID: 1509526681056943961}
   saveKey: Weapon Level
   priceGenerator:
     startPrice: 50
@@ -346,8 +341,17 @@ MonoBehaviour:
     multiplier: 1
     powMultiplier: 1
   priseText: {fileID: 3973029124264537081}
-  states:
-  - {fileID: 3423137473517102963}
-  - {fileID: 2572224331103629259}
-  - {fileID: 6686301924789320513}
   weaponLevel: 1
+--- !u!114 &6236333188627547233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7100766849987132558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c49ad446f1f4348b6cd24f081716cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetButton: {fileID: 794335832}

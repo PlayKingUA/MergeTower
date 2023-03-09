@@ -11,8 +11,7 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
     public class ShopButton : MonoBehaviour
     {
         #region Variables
-        [ShowInInspector] private ButtonBuyState _buttonState;
-        [SerializeField] protected GameObject[] states;
+        [SerializeField] protected ButtonStateManager buttonStateManager;
         [Space(10)]
         [SerializeField] protected string saveKey = "WeaponPrice";
         [SerializeField] protected PriceGenerator priceGenerator;
@@ -23,8 +22,6 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 
         [Inject] protected MoneyWallet MoneyWallet;
 
-        public ButtonBuyState ButtonState => _buttonState;
-
         public event Action OnLevelChanged;
         public event Action OnBought;
         #endregion
@@ -32,17 +29,15 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
         #region Properties
         public int CurrentPrise => priceGenerator.GetPrise(CurrentLevel);
         public bool IsEnoughMoney => MoneyWallet.MoneyCount >= CurrentPrise;
-        protected virtual bool CanBeBought => IsEnoughMoney;
+        public virtual bool CanBeBought => IsEnoughMoney;
         
         public int CurrentLevel
         {
             get => _currentLevel;
-            private set
-            {
-                _currentLevel = value; 
-                OnLevelChanged?.Invoke();
-            }
+            private set => _currentLevel = value;
         }
+
+        public ButtonBuyState CurrentButtonState => buttonStateManager.ButtonState; 
         #endregion
 
         #region Monobehaviour Callbacks
@@ -56,46 +51,29 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             MoneyWallet.MoneyCountChanged += ChangeButtonState;
             ChangeButtonState();
             
-            UpdateInfo();
+            OnLevelChanged?.Invoke();
         }
         #endregion
         
         public virtual void BuyItem()
         {
+            MoneyWallet.Get(CurrentPrise);
             CurrentLevel++;
-            Save();
-            
+
+            ChangeButtonState();
             OnBought?.Invoke();
-            UpdateInfo();
+            OnLevelChanged?.Invoke();
+            
+            Save();
         }
         
         #region Display
-
         protected virtual void ChangeButtonState()
         {
-            SetUIState(IsEnoughMoney ? ButtonBuyState.BuyWithMoney : ButtonBuyState.BuyWithADs);
-        }
-
-        protected void SetUIState(ButtonBuyState targetState)
-        {
-            _buttonState = targetState;
-            foreach (var state in states)
-            {
-                state.SetActive(false);
-            }
-
-            if (ButtonState == ButtonBuyState.BuyWithADs)
-            {
-                states[(int)ButtonBuyState.BuyWithMoney].SetActive(true);
-            }
-            else
-            {
-                states[(int)ButtonState].SetActive(true);
-            }
-            
+            buttonStateManager.SetUIState(IsEnoughMoney ? ButtonBuyState.BuyWithMoney : ButtonBuyState.BuyWithADs);
             UpdateInfo();
         }
-        
+
         protected virtual void UpdateInfo()
         {
             priseText.text = MoneyDisplay.MoneyText(CurrentPrise);
@@ -114,7 +92,5 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
             CurrentLevel = PlayerPrefs.GetInt(saveKey);
         }
         #endregion
-        
-        public virtual void SetInteractable(bool isInteractable){}
     }
 }

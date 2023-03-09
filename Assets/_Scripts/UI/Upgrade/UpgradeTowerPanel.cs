@@ -12,7 +12,7 @@ namespace _Scripts.UI.Upgrade
         
         private UpgradeButton RangeUpgrade => _upgradeMenu.RangeUpgrade;
         private UpgradeButton HealthUpgrade => _upgradeMenu.HealthUpgrade;
-        private TowerUpgrade TowerUpgrade => _upgradeMenu.TowerLevel;
+        private UpgradeButtonBase TowerUpgrade => _upgradeMenu.TowerLevel;
         private bool CanUpgrade => RangeUpgrade.IsMaxLevel && HealthUpgrade.IsMaxLevel;
     
         private void Start()

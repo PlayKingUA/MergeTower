@@ -19,7 +19,7 @@ namespace _Scripts.UI.Tutorial
         [SerializeField] private Button upgradeButton;
         [SerializeField] private GameObject upgradeButtonPointer;
         [SerializeField] private Button closeUpgradeButton;
-        [SerializeField] private UpgradeButton[] upgradeButtons;
+        [SerializeField] private BuyButton[] upgradeButtons;
         [SerializeField] private GameObject upgradeDamagePointer;
 
         public event Action OnWeaponBuy;
@@ -72,7 +72,7 @@ namespace _Scripts.UI.Tutorial
 
         private void EnableBaseButtons(bool isEnabled)
         {
-            buyWeapon.SetInteractable(isEnabled);
+            //buyWeapon.SetInteractable(isEnabled);
             weaponPointer.SetActive(false);
             startWave.interactable = isEnabled;
             startWavePointer.SetActive(false);
@@ -89,7 +89,7 @@ namespace _Scripts.UI.Tutorial
 
         private void EnableBuyButton()
         {
-            buyWeapon.SetInteractable(true);
+            //buyWeapon.SetInteractable(true);
             weaponPointer.SetActive(true);
         }
 
@@ -116,10 +116,10 @@ namespace _Scripts.UI.Tutorial
         {
             upgradeDamagePointer.SetActive(true);
             upgradeButtons[0].SetInteractable(true);
-            upgradeButtons[0].OnBought += () =>
+            /*upgradeButtons[0].OnBought += () =>
             {
                 OnUpgradeDamage?.Invoke();
-            };
+            };*/
         }
 
         private void EnableCloseUpgradeWindowButton()

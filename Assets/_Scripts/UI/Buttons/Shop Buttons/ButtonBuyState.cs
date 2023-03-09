@@ -4,6 +4,7 @@
     {
         BuyWithMoney,
         BuyWithADs,
-        MaxLevel
+        MaxLevel,
+        Locked
     }
 }

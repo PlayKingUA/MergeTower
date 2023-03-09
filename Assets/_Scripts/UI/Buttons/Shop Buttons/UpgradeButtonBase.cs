@@ -5,22 +5,24 @@ using Zenject;
 
 namespace _Scripts.UI.Buttons.Shop_Buttons
 {
-    public class UpgradeButtonBase : BuyButton
+    public class UpgradeButtonBase : ShopButton
     {
+        #region Variables
         [Space(10)] 
         [SerializeField] protected int maxLevel;
 
         [Inject] protected UpgradeMenu UpgradeMenu;
-        
-        protected override bool CanBeBought => base.CanBeBought && !IsMaxLevel;
-        public virtual bool IsMaxLevel => CurrentLevel >= maxLevel;
 
-        [Button("Update State")]
+        public override bool CanBeBought => base.CanBeBought && !IsMaxLevel;
+        public virtual bool IsMaxLevel => CurrentLevel >= maxLevel;
+        #endregion
+        
         protected override void ChangeButtonState()
         {
             if (IsMaxLevel)
             {
-                SetUIState(ButtonBuyState.MaxLevel);
+                buttonStateManager.SetUIState(ButtonBuyState.MaxLevel);
+                UpdateInfo();
                 return;
             }
             base.ChangeButtonState();

@@ -1,86 +1,50 @@
-﻿using _Scripts.UI.Buttons.Shop_Buttons;
-using _Scripts.UI.Upgrade;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Zenject;
 
-namespace _Scripts.UI.Buttons
+namespace _Scripts.UI.Buttons.Shop_Buttons
 {
     [RequireComponent(typeof(Toggle))]
-    public class AbilityButton : ShopButton
+    public class AbilityButton : UpgradeButtonBase
     {
         #region Variables
         [Space(10)]
         [SerializeField] private TextMeshProUGUI nameText;
-        [Space(10)]
         [SerializeField] private string abilityName;
         [SerializeField, TextArea] private string description;
         [Space(10)]
-        [SerializeField] private GameObject lockedState;
-        [SerializeField] private GameObject unlockedState;
-        [Space(10)]
         [SerializeField] private TextMeshProUGUI requiredLevelText;
         [SerializeField] private int requiredTowerLevel;
-        [SerializeField] private int maxLevel;
         [SerializeField] private BuyProgressBar buyProgressBar;
-        
-        private Toggle _toggle;
-
-        [Inject] private AbilitiesPanel _abilitiesPanel;
-        [Inject] private UpgradeMenu _upgradeMenu;
-
         public string AbilityName => abilityName;
         public string Description => description;
 
-        protected override bool CanBeBought => base.CanBeBought && !IsMaxLevel && !IsLocked;
-        protected virtual bool IsMaxLevel => CurrentLevel >= maxLevel;
-        public bool IsLocked => requiredTowerLevel > _upgradeMenu.TowerLevel.CurrentLevel;
+        public override bool CanBeBought => base.CanBeBought && !IsMaxLevel && !IsLocked;
+        private bool IsLocked => requiredTowerLevel > UpgradeMenu.TowerLevel.CurrentLevel;
         #endregion
 
-        #region Monobehaviour Callbacks
-        protected override void Awake()
+        protected override void Start()
         {
-            base.Awake();
-            _toggle = GetComponent<Toggle>();
-            _toggle.onValueChanged.AddListener(SelectAbility);
-
-            if (_toggle.isOn)
-            {
-                _abilitiesPanel.UpdateAbility(this);
-            }
+            UpgradeMenu.TowerLevel.OnLevelChanged += ChangeButtonState;
+            base.Start();
         }
 
         private void OnValidate()
         {
             nameText.text = abilityName;
         }
-        #endregion
 
         protected override void ChangeButtonState()
         {
-            lockedState.SetActive(IsLocked);
-            unlockedState.SetActive(!IsLocked);
-            
-            if (IsMaxLevel)
+            if (IsLocked)
             {
-                SetUIState(ButtonBuyState.MaxLevel);
+                UpdateInfo();
+                buttonStateManager.SetUIState(ButtonBuyState.Locked);
                 return;
             }
+            base.ChangeButtonState();
+        }
 
-            SetUIState(IsEnoughMoney
-                ? ButtonBuyState.BuyWithMoney
-                : ButtonBuyState.BuyWithADs);
-        }
-        
-        private void SelectAbility(bool isOn)
-        {
-            if (isOn)
-                _abilitiesPanel.UpdateAbility(this);
-            
-            // green mesh
-        }
-        
         protected override void UpdateInfo()
         {
             base.UpdateInfo();

@@ -31,9 +31,8 @@ namespace _Scripts.UI.Buttons.Shop_Buttons
 
         protected override void Start()
         {
-            base.Start();
             UpgradeMenu.TowerLevel.OnLevelChanged += ChangeButtonState;
-            ChangeButtonState();
+            base.Start();
         }
 
         protected override void UpdateInfo()

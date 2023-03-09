@@ -1,44 +1,38 @@
-﻿using UnityEngine;
+﻿using _Scripts.Money_Logic;
+using UnityEngine;
 using UnityEngine.UI;
+using Zenject;
 
 namespace _Scripts.UI.Buttons.Shop_Buttons
 {
     [RequireComponent(typeof(Button))]
-    public class BuyButton : ShopButton
+    public class BuyButton : MonoBehaviour
     {
-        #region Variables
+        [SerializeField] private ShopButton targetButton;
         private Button _button;
-        #endregion
+        
+        [Inject] protected MoneyWallet MoneyWallet;
 
-        protected override void Awake()
+        public ShopButton TargetButton
         {
-            base.Awake();
-            
+            set => targetButton = value;
+        }
+
+        protected void Awake()
+        {
             _button = GetComponent<Button>();
             _button.onClick.AddListener(Click);
         }
 
         private void Click()
         {
-            if (!CanBeBought)
+            if (!targetButton.CanBeBought)
                 return;
             
-            switch (ButtonState)
-            {
-                case ButtonBuyState.BuyWithMoney:
-                    MoneyWallet.Get(CurrentPrise);
-                    BuyItem();
-                    break;
-                case ButtonBuyState.BuyWithADs:
-                    break;
-                case ButtonBuyState.MaxLevel:
-                    return;
-                default:
-                    break;
-            }
+            targetButton.BuyItem();
         }
 
-        public override void SetInteractable(bool isInteractable)
+        public void SetInteractable(bool isInteractable)
         {
             _button.interactable = isInteractable;
         }
