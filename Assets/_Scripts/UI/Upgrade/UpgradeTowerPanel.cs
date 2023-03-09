@@ -1,28 +1,35 @@
 using _Scripts.UI.Buttons.Shop_Buttons;
 using UnityEngine;
+using Zenject;
 
-public class UpgradeTowerPanel : MonoBehaviour
+namespace _Scripts.UI.Upgrade
 {
-    [SerializeField] private BuyProgressBar towerProgressBar;
-    [SerializeField] private UpgradeButton rangeUpgrade;
-    [SerializeField] private UpgradeButton healthUpgrade;
-    [SerializeField] private TowerUpgrade towerUpgrade;
-    private bool CanUpgrade => rangeUpgrade.IsMaxLevel && healthUpgrade.IsMaxLevel;
-    
-    private void Start()
+    public class UpgradeTowerPanel : MonoBehaviour
     {
-        rangeUpgrade.OnLevelChanged += UpdateState;
-        healthUpgrade.OnLevelChanged += UpdateState;
-        towerUpgrade.OnLevelChanged += UpdateState;
-        UpdateState();
-    }
+        [SerializeField] private BuyProgressBar towerProgressBar;
 
-    private void UpdateState()
-    {
-        var currentProgress = rangeUpgrade.ProgressBarLevel + healthUpgrade.ProgressBarLevel;
-        towerProgressBar.SetActiveToggles(currentProgress);
+        [Inject] private UpgradeMenu _upgradeMenu;
         
-        towerUpgrade.gameObject.SetActive(CanUpgrade);
-        towerProgressBar.gameObject.SetActive(!CanUpgrade);
+        private UpgradeButton RangeUpgrade => _upgradeMenu.RangeUpgrade;
+        private UpgradeButton HealthUpgrade => _upgradeMenu.HealthUpgrade;
+        private TowerUpgrade TowerUpgrade => _upgradeMenu.TowerLevel;
+        private bool CanUpgrade => RangeUpgrade.IsMaxLevel && HealthUpgrade.IsMaxLevel;
+    
+        private void Start()
+        {
+            RangeUpgrade.OnLevelChanged += UpdateState;
+            HealthUpgrade.OnLevelChanged += UpdateState;
+            TowerUpgrade.OnLevelChanged += UpdateState;
+            UpdateState();
+        }
+
+        private void UpdateState()
+        {
+            var currentProgress = RangeUpgrade.ProgressBarLevel + HealthUpgrade.ProgressBarLevel;
+            towerProgressBar.SetActiveToggles(currentProgress);
+        
+            TowerUpgrade.gameObject.SetActive(CanUpgrade);
+            towerProgressBar.gameObject.SetActive(!CanUpgrade);
+        }
     }
 }

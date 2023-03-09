@@ -1487,6 +1487,7 @@ GameObject:
   m_Component:
   - component: {fileID: 108638431}
   - component: {fileID: 108638433}
+  - component: {fileID: 108638434}
   m_Layer: 0
   m_Name: Prepare To Level
   m_TagString: Untagged
@@ -1528,6 +1529,22 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &108638434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 108638430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce2af8fca984bec9db38501e2ff969a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openAbilitiesButton: {fileID: 857211}
+  closeAbilitiesButton: {fileID: 1130713232}
+  upgradePanel: {fileID: 1821967428}
+  abilitiesPanel: {fileID: 1326396228}
 --- !u!1001 &133388764
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6752,7 +6769,7 @@ PrefabInstance:
     - target: {fileID: 797130283544067360, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_text
-      value: Powered Ammo
+      value: Ricochet Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 1045090729918360083, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -10978,6 +10995,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityNameText: {fileID: 861089715}
   abilityDescriptionText: {fileID: 805552931}
+  buyButton: {fileID: 622094874}
+  priceText: {fileID: 1448114843}
+  buyButtonText: {fileID: 372532993}
+  buyText: Buy
+  upgradeText: Upgrade
 --- !u!1 &1334767523
 GameObject:
   m_ObjectHideFlags: 0
@@ -11255,6 +11277,7 @@ MonoBehaviour:
   vibrationManager: {fileID: 1810467559}
   coinsAnimation: {fileID: 1277285102}
   cameraManager: {fileID: 397332306}
+  abilitiesPanel: {fileID: 1326396229}
 --- !u!114 &1395148579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11701,6 +11724,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1427126077}
   m_CullTransparentMesh: 1
+--- !u!114 &1448114843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 1746191651}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1461262502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11842,7 +11877,7 @@ PrefabInstance:
     - target: {fileID: 797130283544067360, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_text
-      value: 'Reinforced ammo '
+      value: Powered Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 1045090729918360083, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -15602,10 +15637,6 @@ MonoBehaviour:
   rangeUpgrade: {fileID: 886279746}
   healthUpgrade: {fileID: 347644795}
   towerLevel: {fileID: 5608709091749786053}
-  openAbilitiesButton: {fileID: 857211}
-  closeAbilitiesButton: {fileID: 1130713232}
-  upgradePanel: {fileID: 1821967428}
-  abilitiesPanel: {fileID: 1326396228}
 --- !u!1 &1837136347
 GameObject:
   m_ObjectHideFlags: 0
@@ -17201,9 +17232,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerProgressBar: {fileID: 9020442043964971538}
-  rangeUpgrade: {fileID: 886279746}
-  healthUpgrade: {fileID: 347644795}
-  towerUpgrade: {fileID: 5608709091749786053}
 --- !u!1 &2071829583
 GameObject:
   m_ObjectHideFlags: 0
@@ -18266,31 +18294,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2057499439}
     m_Modifications:
-    - target: {fileID: 292161854036230146, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_fontSize
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 292161854036230146, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_margin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 292161854036230146, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_margin.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 292161854036230146, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_fontSizeBase
-      value: 31
-      objectReference: {fileID: 0}
-    - target: {fileID: 292161854036230146, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5242726590024808838, guid: bea140ce2a4ea994f94e4c609e28b83c,
         type: 3}
       propertyPath: m_Pivot.x
@@ -18395,16 +18398,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808401996608408624, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 73.3344
-      objectReference: {fileID: 0}
-    - target: {fileID: 7808401996608408624, guid: bea140ce2a4ea994f94e4c609e28b83c,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 3.0017
       objectReference: {fileID: 0}
     - target: {fileID: 8807061360525593468, guid: bea140ce2a4ea994f94e4c609e28b83c,
         type: 3}
@@ -18824,17 +18817,17 @@ PrefabInstance:
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39663288
+      value: 0.3966329
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000027357856
+      value: -3.2613106e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011820581
+      value: 1.4091232e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356491, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}

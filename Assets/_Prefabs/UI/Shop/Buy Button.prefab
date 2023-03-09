@@ -238,7 +238,6 @@ GameObject:
   - component: {fileID: 6540019121619968308}
   - component: {fileID: 7164128826443486353}
   - component: {fileID: 3262777929433661856}
-  - component: {fileID: 7766132344299811213}
   m_Layer: 5
   m_Name: Buy Button
   m_TagString: Untagged
@@ -351,28 +350,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &7766132344299811213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6483794165693223360}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c49ad446f1f4348b6cd24f081716cef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  states:
-  - {fileID: 1508847444588202557}
-  - {fileID: 1784425743186608773}
-  - {fileID: 7474684040003245583}
-  saveKey: WeaponPrice
-  startPrice: 0
-  baseAmount: 0
-  multiplier: 0
-  powMultiplier: 0
-  priseText: {fileID: 888024228550313655}
 --- !u!1 &7185447771727034490
 GameObject:
   m_ObjectHideFlags: 0
@@ -855,18 +832,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b453d1e5d0b658d48b1f93ffb25082ee, type: 3}
---- !u!114 &888024228550313655 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
-    type: 3}
-  m_PrefabInstance: {fileID: 8849420585848594473}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1563072700096715073 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8033950543508994408, guid: b453d1e5d0b658d48b1f93ffb25082ee,

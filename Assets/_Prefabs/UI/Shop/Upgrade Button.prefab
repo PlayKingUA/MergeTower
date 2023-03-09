@@ -843,16 +843,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6812b1de36834ff995e234741423aa08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveKey: WeaponPrice
+  priceGenerator:
+    startPrice: 50
+    baseAmount: 50
+    multiplier: 1
+    powMultiplier: 1
+  priseText: {fileID: 7081665991367562656}
   states:
   - {fileID: 8855559180567484714}
   - {fileID: 8563112160617582994}
   - {fileID: 697685682317935896}
-  saveKey: WeaponPrice
-  startPrice: 100
-  baseAmount: 200
-  multiplier: 1
-  powMultiplier: 1
-  priseText: {fileID: 7081665991367562656}
   maxLevel: 15
   levelsPerTowerLevel: 5
   startValue: 0
