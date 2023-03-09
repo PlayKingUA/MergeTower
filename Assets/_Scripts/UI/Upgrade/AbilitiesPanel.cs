@@ -1,4 +1,5 @@
 using _Scripts.UI.Buttons;
+using _Scripts.UI.Buttons.Shop_Buttons;
 using _Scripts.UI.Displays;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -17,7 +18,8 @@ namespace _Scripts.UI.Upgrade
         [SerializeField] private TextMeshProUGUI buyButtonText;
         [SerializeField] private string buyText = "Buy";
         [SerializeField] private string upgradeText = "Upgrade";
-        
+        [ShowInInspector] protected ButtonBuyState _buttonState;
+        [SerializeField] protected GameObject[] states;
         
         [ShowInInspector, ReadOnly]
         private AbilityButton _currentButton;
@@ -29,8 +31,22 @@ namespace _Scripts.UI.Upgrade
 
         private void BuyAbility()
         {
-            _currentButton.BuyItem();
-            UpdateAbility(_currentButton);
+            if (_currentButton.IsLocked)
+                return;
+            
+            switch (_currentButton.ButtonState)
+            {
+                case ButtonBuyState.BuyWithMoney:
+                    _currentButton.BuyItem();
+                    UpdateAbility(_currentButton);
+                    break;
+                case ButtonBuyState.BuyWithADs:
+                    break;
+                case ButtonBuyState.MaxLevel:
+                    return;
+                default:
+                    break;
+            }
         }
 
         public void UpdateAbility(AbilityButton abilityButton)
@@ -42,6 +58,24 @@ namespace _Scripts.UI.Upgrade
             priceText.text = $"{MoneyDisplay.MoneyText(_currentButton.CurrentPrise)}";
 
             buyButtonText.text = _currentButton.CurrentLevel == 0 ? buyText : upgradeText;
+            SetButtonState(abilityButton.ButtonState);
+        }
+
+        private void SetButtonState(ButtonBuyState targetState)
+        {
+            foreach (var state in states)
+            {
+                state.SetActive(false);
+            }
+
+            if (targetState == ButtonBuyState.BuyWithADs)
+            {
+                states[(int)ButtonBuyState.BuyWithMoney].SetActive(true);
+            }
+            else
+            {
+                states[(int)targetState].SetActive(true);
+            }
         }
     }
 }

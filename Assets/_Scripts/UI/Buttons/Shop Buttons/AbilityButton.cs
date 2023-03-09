@@ -17,16 +17,25 @@ namespace _Scripts.UI.Buttons
         [SerializeField] private string abilityName;
         [SerializeField, TextArea] private string description;
         [Space(10)]
+        [SerializeField] private GameObject lockedState;
+        [SerializeField] private GameObject unlockedState;
+        [Space(10)]
+        [SerializeField] private TextMeshProUGUI requiredLevelText;
         [SerializeField] private int requiredTowerLevel;
+        [SerializeField] private int maxLevel;
         [SerializeField] private BuyProgressBar buyProgressBar;
         
         private Toggle _toggle;
 
         [Inject] private AbilitiesPanel _abilitiesPanel;
+        [Inject] private UpgradeMenu _upgradeMenu;
 
         public string AbilityName => abilityName;
         public string Description => description;
-        public int RequiredTowerLevel => requiredTowerLevel;
+
+        protected override bool CanBeBought => base.CanBeBought && !IsMaxLevel && !IsLocked;
+        protected virtual bool IsMaxLevel => CurrentLevel >= maxLevel;
+        public bool IsLocked => requiredTowerLevel > _upgradeMenu.TowerLevel.CurrentLevel;
         #endregion
 
         #region Monobehaviour Callbacks
@@ -48,6 +57,22 @@ namespace _Scripts.UI.Buttons
         }
         #endregion
 
+        protected override void ChangeButtonState()
+        {
+            lockedState.SetActive(IsLocked);
+            unlockedState.SetActive(!IsLocked);
+            
+            if (IsMaxLevel)
+            {
+                SetUIState(ButtonBuyState.MaxLevel);
+                return;
+            }
+
+            SetUIState(IsEnoughMoney
+                ? ButtonBuyState.BuyWithMoney
+                : ButtonBuyState.BuyWithADs);
+        }
+        
         private void SelectAbility(bool isOn)
         {
             if (isOn)
@@ -59,7 +84,8 @@ namespace _Scripts.UI.Buttons
         protected override void UpdateInfo()
         {
             base.UpdateInfo();
-            
+
+            requiredLevelText.text = $"LVL {requiredTowerLevel}";
             buyProgressBar.SetActiveToggles(CurrentLevel);
         }
     }

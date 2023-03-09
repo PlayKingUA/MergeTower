@@ -717,6 +717,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
+      propertyPath: saveKey
+      value: Minefield
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
       propertyPath: abilityName
       value: Minefield
       objectReference: {fileID: 0}
@@ -3302,6 +3307,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
+      propertyPath: saveKey
+      value: 'Barbed Wire '
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
       propertyPath: abilityName
       value: 'Barbed Wire '
       objectReference: {fileID: 0}
@@ -3945,8 +3955,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -95.772, y: 0}
-  m_SizeDelta: {x: -191.54, y: 0}
+  m_AnchoredPosition: {x: -87.469, y: 0}
+  m_SizeDelta: {x: -174.93, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &372532993
 MonoBehaviour:
@@ -3968,7 +3978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: BUY
+  m_text: buy
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4995422ffdb954b70a642f73eb1442ea, type: 2}
   m_sharedMaterial: {fileID: 2517202264660172603, guid: 4995422ffdb954b70a642f73eb1442ea,
@@ -3999,10 +4009,10 @@ MonoBehaviour:
   m_fontSize: 42
   m_fontSizeBase: 42
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontSizeMax: 42
+  m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -4032,7 +4042,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 10, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6049,8 +6059,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
+      propertyPath: saveKey
+      value: 'Air Bombing '
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
       propertyPath: abilityName
       value: 'Air Bombing '
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
+      propertyPath: requiredTowerLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 797130282700794770, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -6637,8 +6657,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
+      propertyPath: saveKey
+      value: Ricochet Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
       propertyPath: abilityName
       value: Ricochet Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
+      propertyPath: requiredTowerLevel
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 797130282700794770, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -6961,8 +6991,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -101.6, y: 0}
-  m_SizeDelta: {x: 179.89, y: 100.97}
+  m_AnchoredPosition: {x: -88.59852, y: 0}
+  m_SizeDelta: {x: 153.8911, y: 100.97}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &794335830 stripped
 RectTransform:
@@ -10977,7 +11007,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326396226}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -11000,6 +11030,10 @@ MonoBehaviour:
   buyButtonText: {fileID: 372532993}
   buyText: Buy
   upgradeText: Upgrade
+  states:
+  - {fileID: 1705413767}
+  - {fileID: 459529569}
+  - {fileID: 158884197}
 --- !u!1 &1334767523
 GameObject:
   m_ObjectHideFlags: 0
@@ -11745,8 +11779,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
+      propertyPath: saveKey
+      value: Powered Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
       propertyPath: abilityName
       value: Powered Ammo
+      objectReference: {fileID: 0}
+    - target: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+        type: 3}
+      propertyPath: requiredTowerLevel
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 797130282700794770, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -15010,6 +15054,11 @@ PrefabInstance:
     - target: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
         type: 3}
       propertyPath: m_fontSize
+      value: 41.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
+        type: 3}
+      propertyPath: m_fontSizeMax
       value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
@@ -15020,7 +15069,7 @@ PrefabInstance:
     - target: {fileID: 8547146505392645790, guid: b453d1e5d0b658d48b1f93ffb25082ee,
         type: 3}
       propertyPath: m_enableAutoSizing
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b453d1e5d0b658d48b1f93ffb25082ee, type: 3}
@@ -18817,17 +18866,17 @@ PrefabInstance:
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.3966329
+      value: 0.39663288
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -3.2613106e-15
+      value: 0.000000027357856
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 1.4091232e-15
+      value: -0.000000011820581
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356491, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
