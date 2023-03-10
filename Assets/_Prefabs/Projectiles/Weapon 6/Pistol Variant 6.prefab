@@ -87,7 +87,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1371651515045854844}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4529569132064545443
+--- !u!1001 &8482020144771924890
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -153,11 +153,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile_Arrow_Generic
-      objectReference: {fileID: 0}
-    - target: {fileID: 1294479917604458980, guid: 0a538f297500e44409c77b9d30c7fd24,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a538f297500e44409c77b9d30c7fd24, type: 3}
