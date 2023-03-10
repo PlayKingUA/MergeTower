@@ -10,15 +10,12 @@ public class LookAtTheCamera : MonoBehaviour
 
     [SerializeField] private Mode mode;
     [SerializeField] private Transform targetCamera;
-
-    private void Start()
+    
+    private void LateUpdate()
     {
         if (targetCamera == null)
             targetCamera = Camera.main.transform;
-    }
-
-    private void LateUpdate()
-    {
+        
         switch (mode)
         {
             case Mode.LookAt:
