@@ -8,11 +8,16 @@ namespace _Scripts.Weapons
         [Space(10)]
         [SerializeField] private int bulletCount;
         [SerializeField] private int otherProjectilesDamage;
-        [SerializeField] private float angleBetweenProjectiles = 5f;
+        [SerializeField] private float angleBetweenProjectiles = 15f;
+
+        private Quaternion _baseRotation;
         
         protected override void Fire()
         {
             base.Fire();
+            
+            var direction = (TargetZombie.ShootPoint.position - shootPoint.position).normalized;
+            _baseRotation = Quaternion.LookRotation(direction);
             
             // first bullets created in base
             for (var i = 0; i < bulletCount - 1; i++)
@@ -30,11 +35,13 @@ namespace _Scripts.Weapons
                 MasterObjectPooler.GetObject(shellsPool.PoolName, shootPoint.position, shootPoint.rotation);
             }
             
-            var yDegrees = shootPoint.rotation.eulerAngles.y + degrees;
             var bullet = MasterObjectPooler.GetObjectComponent<Projectile>(projectilePool.PoolName,
-                shootPoint.position, Quaternion.Euler(0f, yDegrees, 0f));
+                shootPoint.position, _baseRotation);
 
-            bullet.Init(TargetZombie, otherProjectilesDamage, projectilePool);
+            var bulletTransform = bullet.transform;
+            bulletTransform.RotateAround(bulletTransform.position, bulletTransform.up, degrees);
+            
+            bullet.Init(otherProjectilesDamage, projectilePool);
             return bullet;
         }
     }

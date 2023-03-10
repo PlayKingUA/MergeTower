@@ -1,25 +1,29 @@
 ﻿using System.Collections;
 using _Scripts.Units;
-using DG.Tweening;
 using QFSW.MOP2;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace _Scripts.Projectiles
 {
-    public class Projectile : ProjectileBase
+    public sealed class Projectile : MonoBehaviour
     {
         #region Variables
-        [SerializeField] protected bool isSplash;
+        [SerializeField] private bool isSplash;
         [SerializeField, ShowIf(nameof(isSplash))]
-        protected float damageRadius;
+        private float damageRadius;
         [Space(10)]
-        [SerializeField] protected float speed;
-        [SerializeField] protected bool hasImpact = true;
+        [SerializeField]
+        private float speed;
+        [SerializeField] private bool hasImpact = true;
         [SerializeField, ShowIf(nameof(hasImpact))]
-        protected ObjectPool impactPool;
+        private ObjectPool impactPool;
 
-        private Tweener _motionTween;
+        [ShowInInspector, ReadOnly] 
+        private int _damage;
+
+        private MasterObjectPooler _masterObjectPooler;
+        private ObjectPool _projectilePool;
 
         private const float LifeTime = 3.0f;
 
@@ -27,15 +31,17 @@ namespace _Scripts.Projectiles
         #endregion
 
         #region Monobehavior Callbacks
-        protected override void Awake()
+        private void Awake()
         {
-            MasterObjectPooler = MasterObjectPooler.Instance;
+            _masterObjectPooler = MasterObjectPooler.Instance;
         }
-        protected override void OnTriggerEnter(Collider other)
+
+        private void OnTriggerEnter(Collider other)
         {
             if (hasImpact)
             {
-                MasterObjectPooler.GetObject(impactPool.PoolName, transform.position, transform.rotation);
+                var transform1 = transform;
+                _masterObjectPooler.GetObject(impactPool.PoolName, transform1.position, transform1.rotation);
             }
 
             if (isSplash)
@@ -44,12 +50,12 @@ namespace _Scripts.Projectiles
             }
             else if (other.TryGetComponent(out Zombie zombie))
             {
-                zombie.GetDamage(Damage);
+                zombie.GetDamage(_damage);
                 ReturnToPool();
             }
         }
-        
-        protected override void OnDrawGizmos()
+
+        private void OnDrawGizmos()
         {
             if (!isSplash)
                 return;
@@ -59,29 +65,27 @@ namespace _Scripts.Projectiles
         }
         #endregion
 
-        public override void Init(Zombie targetZombie, int damage, ObjectPool objectPool)
+        public void Init(int damage, ObjectPool objectPool, Zombie targetZombie = null)
         {
-            base.Init(targetZombie, damage, objectPool);
+            _projectilePool = objectPool;
+            _damage = damage;
+            
             _flyRoutine = StartCoroutine(FlyToTarget(targetZombie));
         }
 
         private IEnumerator FlyToTarget(Zombie targetZombie)
         {
-            float flyTime = 0;
-            var direction = (targetZombie.ShootPoint.position - LaunchPosition).normalized;
+            var flyTime = 0f;
+            var direction = transform.forward;
             
             while (true)
             {
-                if (targetZombie.IsDead)
+                if (targetZombie != null && !targetZombie.IsDead)
                 {
-                    transform.position += direction * (speed * Time.deltaTime);
-                }
-                else
-                {
-                    _motionTween.Kill();
-                    _motionTween = transform.DOMove(targetZombie.ShootPoint.position, speed).SetSpeedBased();
+                    direction = (targetZombie.ShootPoint.position - transform.position).normalized;
                 }
 
+                transform.position += direction * (speed * Time.deltaTime);
                 transform.rotation = Quaternion.LookRotation(direction);
 
                 flyTime += Time.deltaTime;
@@ -92,24 +96,27 @@ namespace _Scripts.Projectiles
                 yield break;
             }
         }
-        
-        protected override void ReturnToPool()
+
+        private void ReturnToPool()
         {
             if(_flyRoutine != null) 
                 StopCoroutine(_flyRoutine);
-            base.ReturnToPool();
-        }
-        
-        protected virtual void SplashHit(Transform damagePoint = null)
-        {
-            if (damagePoint == null) damagePoint = transform;
             
-            var _colliders = Physics.OverlapSphere(damagePoint.position, damageRadius);
+            _masterObjectPooler.Release(gameObject, _projectilePool.PoolName);
+        }
 
-            for (var i = 0; i < _colliders.Length; i++)
+        private void SplashHit(Transform damagePoint = null)
+        {
+            if (damagePoint == null)
             {
-                if (_colliders[i] == null || !_colliders[i].TryGetComponent(out Zombie zombie)) continue;
-                zombie.GetDamage(Damage);
+                damagePoint = transform;
+            }
+
+            var colliders = Physics.OverlapSphere(damagePoint.position, damageRadius);
+            for (var i = 0; i < colliders.Length; i++)
+            {
+                if (colliders[i] == null || !colliders[i].TryGetComponent(out Zombie zombie)) continue;
+                zombie.GetDamage(_damage);
                 if (!isSplash)
                     break;
             }

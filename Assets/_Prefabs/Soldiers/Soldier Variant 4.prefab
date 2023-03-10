@@ -155,7 +155,7 @@ MonoBehaviour:
   muzzleflarePool: {fileID: 11400000, guid: ff2b271e27e9ff6459ccd0a80fcd711f, type: 2}
   bulletCount: 3
   otherProjectilesDamage: 2
-  angleBetweenProjectiles: 5
+  angleBetweenProjectiles: 15
 --- !u!1 &5232012305796231791 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5523813123809721985, guid: 149b72ba0441d694aa4c69658f859e6b,
