@@ -6,7 +6,7 @@ using Zenject;
 
 namespace _Scripts.Abilities
 {
-    public class BarbedWire : MonoBehaviour
+    public class BarbedWire : AbilityBehaviour
     {
         #region Variables
         [Serializable]
@@ -31,9 +31,15 @@ namespace _Scripts.Abilities
         [Inject] private GameStateManager _gameStateManager;
         #endregion
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
             _gameStateManager.AttackStarted += UpdateStats;
+        }
+
+        protected override void Init()
+        {
+            TargetAbility = AbilityManager.BarbedWire;
         }
 
         private void UpdateStats()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Linq;
 using _Scripts.Game_States;
 using _Scripts.UI.Buttons.Shop_Buttons.AbilitiesButtons;
+using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
@@ -47,6 +48,9 @@ namespace _Scripts.Abilities
         {
             _gameStateManager.AttackStarted += () =>
             {
+                if (gameObject.activeSelf == false)
+                    return;
+                
                 if (_abilityManager.MineField.CurrentLevel > 0)
                 {
                     StartSpawn();
