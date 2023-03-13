@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace _Scripts.UI.Buttons.Shop_Buttons
+namespace _Scripts.UI.Buttons.Shop_Buttons.AbilitiesButtons
 {
     [RequireComponent(typeof(Toggle))]
     public class AbilityButton : UpgradeButtonBase

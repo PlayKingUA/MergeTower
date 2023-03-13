@@ -738,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_Name
-      value: Abilitie Button
+      value: Minefield
       objectReference: {fileID: 0}
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -983,6 +983,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 68682399}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &68682401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+    type: 3}
+  m_PrefabInstance: {fileID: 68682399}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &69696550
 GameObject:
   m_ObjectHideFlags: 0
@@ -3323,7 +3335,7 @@ PrefabInstance:
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_Name
-      value: Abilitie Button (1)
+      value: 'Barbed Wire '
       objectReference: {fileID: 0}
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -3679,6 +3691,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 327446061}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &327446063 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+    type: 3}
+  m_PrefabInstance: {fileID: 327446061}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &329133368
 GameObject:
   m_ObjectHideFlags: 0
@@ -6224,7 +6248,7 @@ PrefabInstance:
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_Name
-      value: Abilitie Button (2)
+      value: 'Air Bombing '
       objectReference: {fileID: 0}
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -6580,6 +6604,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 672018262}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &672018264 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+    type: 3}
+  m_PrefabInstance: {fileID: 672018262}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &672645182
 GameObject:
   m_ObjectHideFlags: 0
@@ -6932,7 +6968,7 @@ PrefabInstance:
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_Name
-      value: Abilitie Button (4)
+      value: Ricochet Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -7208,6 +7244,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 749518256}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &749518258 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+    type: 3}
+  m_PrefabInstance: {fileID: 749518256}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &755392693
 GameObject:
   m_ObjectHideFlags: 0
@@ -8820,6 +8868,7 @@ Transform:
   - {fileID: 981873211}
   - {fileID: 669411771}
   - {fileID: 1350072411}
+  - {fileID: 1529693262}
   - {fileID: 2098261438}
   - {fileID: 1971637530}
   - {fileID: 2072521972}
@@ -11593,6 +11642,7 @@ MonoBehaviour:
   coinsAnimation: {fileID: 1277285102}
   cameraManager: {fileID: 397332306}
   abilitiesPanel: {fileID: 1326396229}
+  abilityManager: {fileID: 1529693263}
 --- !u!114 &1395148579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12118,7 +12168,7 @@ PrefabInstance:
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
       propertyPath: m_Name
-      value: Abilitie Button (3)
+      value: Powered Ammo
       objectReference: {fileID: 0}
     - target: {fileID: 797130282873707636, guid: a3f3f51b1edd3b44e92e32f570d47714,
         type: 3}
@@ -12394,6 +12444,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1461262502}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1461262504 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 648620863683441199, guid: a3f3f51b1edd3b44e92e32f570d47714,
+    type: 3}
+  m_PrefabInstance: {fileID: 1461262502}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe8f2e1397848d996be16949592522e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1471943740
 GameObject:
   m_ObjectHideFlags: 0
@@ -13094,6 +13156,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506326695}
   m_CullTransparentMesh: 1
+--- !u!1 &1529693261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1529693262}
+  - component: {fileID: 1529693263}
+  m_Layer: 0
+  m_Name: Abilities Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1529693262
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529693261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 916730145}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1529693263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529693261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3991d51d252949fd8001a25f7d3e37d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mineField: {fileID: 68682401}
+  barbedWire: {fileID: 327446063}
+  airBombing: {fileID: 672018264}
+  poweredAmmo: {fileID: 1461262504}
+  ricochetAmmo: {fileID: 749518258}
 --- !u!1 &1530044709
 GameObject:
   m_ObjectHideFlags: 0
@@ -15826,7 +15937,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916730145}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1810467559
 MonoBehaviour:
@@ -16813,7 +16924,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916730145}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1971637531
 MonoBehaviour:
@@ -17813,7 +17924,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916730145}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2072521973
 MonoBehaviour:
@@ -17929,7 +18040,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 916730145}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2098261439
 MonoBehaviour:
@@ -19292,17 +19403,17 @@ PrefabInstance:
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.39663288
+      value: 0.3966329
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000027357856
+      value: -3.2613106e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356490, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000011820581
+      value: 1.4091232e-15
       objectReference: {fileID: 0}
     - target: {fileID: 8829491650623356491, guid: 0353ddcd8d1b8d54e865ebaa72ec15c4,
         type: 3}

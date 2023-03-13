@@ -7,6 +7,7 @@ using _Scripts.Slot_Logic;
 using _Scripts.Tower_Logic;
 using _Scripts.Tutorial;
 using _Scripts.UI;
+using _Scripts.UI.Buttons.Shop_Buttons.AbilitiesButtons;
 using _Scripts.UI.Tutorial;
 using _Scripts.UI.Upgrade;
 using _Scripts.UI.Windows;
@@ -39,6 +40,7 @@ namespace _Scripts.Resources
         [SerializeField] private CoinsAnimation coinsAnimation;
         [SerializeField] private CameraManager cameraManager;
         [SerializeField] private AbilitiesPanel abilitiesPanel;
+        [SerializeField] private AbilityManager abilityManager;
         
         public override void InstallBindings()
         {
@@ -61,6 +63,7 @@ namespace _Scripts.Resources
             Container.Bind<VibrationManager>().FromInstance(vibrationManager).AsSingle().NonLazy();
             Container.Bind<CameraManager>().FromInstance(cameraManager).AsSingle().NonLazy();
             Container.Bind<AbilitiesPanel>().FromInstance(abilitiesPanel).AsSingle();
+            Container.Bind<AbilityManager>().FromInstance(abilityManager).AsSingle();
             
             Container.Bind<CoinsAnimation>().FromInstance(coinsAnimation).AsSingle().NonLazy();
             

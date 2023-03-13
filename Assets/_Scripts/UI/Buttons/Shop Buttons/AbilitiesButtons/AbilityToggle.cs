@@ -1,10 +1,9 @@
-﻿using System;
-using _Scripts.UI.Upgrade;
+﻿using _Scripts.UI.Upgrade;
 using UnityEngine;
 using UnityEngine.UI;
 using Zenject;
 
-namespace _Scripts.UI.Buttons.Shop_Buttons
+namespace _Scripts.UI.Buttons.Shop_Buttons.AbilitiesButtons
 {
     [RequireComponent(typeof(AbilityButton))]
     public class AbilityToggle : MonoBehaviour
