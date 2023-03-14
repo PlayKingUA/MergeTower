@@ -6,11 +6,5 @@ namespace _Scripts.Abilities
         {
             TargetAbility = AbilityManager.RicochetAmmo;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
     }
 }

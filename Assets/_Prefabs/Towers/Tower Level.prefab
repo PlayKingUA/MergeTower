@@ -526,38 +526,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 917f6316cc78af24b990f0af8d958fec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 7.01
+  spawnRadius: 7
   mineStats:
   - prefab: {fileID: 5150390275274644037, guid: 20f9c231440aad444ae3c861375bb245,
       type: 3}
-    amount: 0
-    damage: 0
+    amount: 5
+    damage: 5
     damageRadius: -1
-    respawnTime: 0
+    respawnTime: 5
   - prefab: {fileID: 5150390275274644037, guid: 20f9c231440aad444ae3c861375bb245,
       type: 3}
-    amount: 0
-    damage: 0
+    amount: 8
+    damage: 5
     damageRadius: -1
-    respawnTime: 0
+    respawnTime: 4
   - prefab: {fileID: 5150390275274644037, guid: 20f9c231440aad444ae3c861375bb245,
       type: 3}
-    amount: 0
-    damage: 0
+    amount: 10
+    damage: 5
     damageRadius: -1
-    respawnTime: 0
+    respawnTime: 3
   - prefab: {fileID: 5150390275274644037, guid: 20f9c231440aad444ae3c861375bb245,
       type: 3}
-    amount: 0
-    damage: 0
+    amount: 12
+    damage: 5
     damageRadius: -1
-    respawnTime: 0
+    respawnTime: 2
   - prefab: {fileID: 5150390275274644037, guid: 20f9c231440aad444ae3c861375bb245,
       type: 3}
-    amount: 0
-    damage: 0
+    amount: 15
+    damage: 5
     damageRadius: -1
-    respawnTime: 0
+    respawnTime: 1.5
 --- !u!1 &4969581290516626147
 GameObject:
   m_ObjectHideFlags: 0

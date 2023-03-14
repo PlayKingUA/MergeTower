@@ -3,17 +3,16 @@ using System.Collections;
 using System.Linq;
 using _Scripts.Game_States;
 using _Scripts.UI.Buttons.Shop_Buttons.AbilitiesButtons;
-using Unity.VisualScripting;
 using UnityEngine;
 using Zenject;
 using Random = UnityEngine.Random;
 
 namespace _Scripts.Abilities
 {
-    public class MineField : MonoBehaviour
+    public class MineField : AbilityBehaviour
     {
         #region Variables
-        [SerializeField] private float radius;
+        [SerializeField] private float spawnRadius;
 
         [Serializable]
         private class MineStats
@@ -36,22 +35,25 @@ namespace _Scripts.Abilities
 
         private MineStats _currentStats;
         private bool[] _slots;
+        private Vector3 _center;
         
         private Coroutine _spawnCoroutine;
 
-        [Inject] private AbilityManager _abilityManager;
         [Inject] private GameStateManager _gameStateManager;
         [Inject] private DiContainer _diContainer;
         #endregion
 
-        private void Start()
+        protected override void Start()
         {
+            base.Start();
+            _center = transform.position;
+            
             _gameStateManager.AttackStarted += () =>
             {
-                if (gameObject.activeSelf == false)
+                if (isActiveAndEnabled == false)
                     return;
                 
-                if (_abilityManager.MineField.CurrentLevel > 0)
+                if (IsBought)
                 {
                     StartSpawn();
                 }
@@ -60,9 +62,14 @@ namespace _Scripts.Abilities
             _gameStateManager.Victory += StopSpawn;
         }
 
+        protected override void Init()
+        {
+            TargetAbility = AbilityManager.MineField;
+        }
+
         private void StartSpawn()
         {
-            _currentStats = mineStats[_abilityManager.MineField.CurrentLevel];
+            _currentStats = mineStats[TargetAbility.CurrentLevel - 1];
             _slots = new bool[_currentStats.Amount];
             
             _spawnCoroutine = StartCoroutine(SpawningCoroutine());
@@ -70,7 +77,6 @@ namespace _Scripts.Abilities
 
         private IEnumerator SpawningCoroutine()
         {
-            
             var wait = new WaitForSeconds(_currentStats.RespawnTime);
 
             while (true)
@@ -95,8 +101,15 @@ namespace _Scripts.Abilities
 
             _slots[targetIndex] = true;
             
-            
-            var bomb = _diContainer.InstantiatePrefabForComponent<Mine>(_currentStats.Mine, transform);
+            var angle = (360 / _currentStats.Amount) * targetIndex;
+            var spawnPosition = new Vector3(
+                _center.x + spawnRadius * Mathf.Sin(angle * Mathf.Deg2Rad),
+                _center.y,
+                _center.z + spawnRadius * Mathf.Cos(angle * Mathf.Deg2Rad)
+            );
+
+            var bomb = _diContainer.InstantiatePrefabForComponent<Mine>(_currentStats.Mine, spawnPosition,
+                Quaternion.identity, transform);
             bomb.Init(_currentStats.Damage, _currentStats.DamageRadius);
         }
 
@@ -111,7 +124,7 @@ namespace _Scripts.Abilities
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawWireSphere(transform.position, radius);
+            Gizmos.DrawWireSphere(transform.position, spawnRadius);
         }
     }
 }
